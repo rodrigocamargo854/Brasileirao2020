@@ -14,7 +14,7 @@ namespace dev.Brasileirao2020
             NameTeam = nameTeam;
             Players = players;
         }
-
+        //metodo para adicionar um jogador
         public void AddPlayer(List<string> players)
         {
             foreach (var item in players)
@@ -23,16 +23,19 @@ namespace dev.Brasileirao2020
 
             }
         }
-
+        //metodo para remover um jogador
+        
         public void AddPlayer(string players)
         {
             foreach (var item in players)
             {
-                Players.Remove(item);
+                if (item == players)
+                {
+                    Players.Remove(item);
+                }
+
 
             }
-
-
 
         }
     }
