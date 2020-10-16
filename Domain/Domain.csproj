@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+        <StartupObject>Brasileirao2020.Program</StartupObject>
   </PropertyGroup>
+
+
+  
 
 </Project>

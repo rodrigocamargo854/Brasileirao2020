@@ -1,7 +1,6 @@
 
 using System.Collections.Generic;
-namespace Brasileirao2020
-{
+namespace Domain{
     public class Time
     {
         public string Nome { get; set; }
@@ -17,6 +16,7 @@ namespace Brasileirao2020
 
         public void AddJogador()
         {
+            
 
         }
         //metodo para remover um jogador
