@@ -1,6 +1,6 @@
 namespace dev.Brasileirao2020
 {
-    public class Time
+    public class Torcedor
     {
         
     }

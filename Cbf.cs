@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace dev.Brasileirao2020
 {
@@ -14,28 +15,6 @@ namespace dev.Brasileirao2020
             NameTeam = nameTeam;
             Players = players;
         }
-        //metodo para adicionar um jogador
-        public void AddPlayer(List<string> players)
-        {
-            foreach (var item in players)
-            {
-                Players.Add(item);
-
-            }
-        }
-        //metodo para remover um jogador
-        
-        public void AddPlayer(string players)
-        {
-            foreach (var item in players)
-            {
-                if (item == players)
-                {
-                    Players.Remove(item);
-                }
-
-
-            }
-
-        }
+       
     }
+}
