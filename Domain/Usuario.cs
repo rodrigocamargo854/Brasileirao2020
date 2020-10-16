@@ -1,7 +1,14 @@
 namespace dev.Brasileirao2020
 {
-   public class Usuario
-   {
-       public string  Nome { get; set; }
-   }
+   public abstract class Usuario
+    {
+        protected string Nome { get; set; }
+
+        public Usuario(string nome)
+        {
+            Nome = nome;
+        }
+    }
+
+
 }
