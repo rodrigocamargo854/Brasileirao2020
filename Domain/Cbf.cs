@@ -3,15 +3,12 @@ using System.Linq;
 
 namespace dev.Brasileirao2020
 {
-    public class Cbf
-    {
-
-        public sealed class Torcedor : Usuario
+    
+        public sealed class Cbf : Usuario
         {
-            public Torcedor(string nome) : base(nome)
+            public Cbf(string nome) : base(nome)
             {
                 Nome = nome;
             }
         }
-    }
 }
