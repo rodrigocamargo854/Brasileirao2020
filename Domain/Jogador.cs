@@ -1,4 +1,5 @@
-namespace Domain{
+namespace Domain
+{
     public class Jogador
     {
         public string Nome { get; set; }

@@ -1,5 +1,6 @@
 
 using System.Collections.Generic;
+
 namespace Domain{
     public class Time
     {
@@ -16,7 +17,7 @@ namespace Domain{
 
         public void AddJogador()
         {
-            
+
 
         }
         //metodo para remover um jogador
