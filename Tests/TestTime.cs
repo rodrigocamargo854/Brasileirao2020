@@ -8,26 +8,30 @@ namespace Tests
     public class TestTime
     {
         [Fact]
-        public void Deve_retornar_true_se_numero_de_jogadores_for_entre_16_e_32()
+        public void Deve_retornar_False_se_numero_de_jogadores_abaixo_de16_ou_acima_de32()
         {
+
+            // a criacao do time 'igual ao criação do candidato, para testar
+            //no campeonato é necessário copiar o metodo
+            // inicializçaõ objeto jogador necessariamente com propriedade nome
             //given
-            var jogador = new Time();
+            var Atletico = new Time("Atletico");
+
             //when
+            // herança do jogador
             var jogadores = new List<Jogador>()
             {
-                new Jogador("ximira"),
-                new Jogador("teteco"),
-                new Jogador("Tatuane tiral")
+                new JogadorCampeonato("ximira"),
+                new JogadorCampeonato("teteco"),
+                new JogadorCampeonato("Tatuane tiral")
             };
 
-            var result = jogador.AddJogador(jogadores);
+            var result = Atletico.AddJogador(jogadores);
+
+            //then
 
             Assert.False(result);
 
-
-            //then
         }
-
-        
     }
 }
