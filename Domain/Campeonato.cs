@@ -8,12 +8,7 @@ namespace Domain
         public bool IniciaCampeonato { get; set; }
         public int Rodadas { get; set; }
 
-        public Campeonato(bool iniciaCampeonato, int rodadas)
-        {
-            IniciaCampeonato = iniciaCampeonato;
-            Rodadas = rodadas;
-
-        }
+        
 
         public bool AddTimes(List<Time> times, Usuario usuario)
         {
