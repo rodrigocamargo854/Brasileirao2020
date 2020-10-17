@@ -1,11 +1,12 @@
 
 using System.Collections.Generic;
 
-namespace Domain{
+namespace Domain
+{
     public class Time
     {
         public string Nome { get; set; }
-        public List<Jogador> Jogadores { get; set; }
+        public List<Jogador> Jogadores { get; set; } =  new List<Jogador> ();
         public int PontosTime { get; set; }
         public int Vitorias { get; set; }
         public int Derrotas { get; set; }
@@ -13,29 +14,39 @@ namespace Domain{
         public double PorcentagemDeAproveitamento { get; set; }
         public int GolsPro { get; set; }
         public int GolsContra { get; set; }
-        
+
+        public Time(string nome)
+        {
+            Nome = nome;
+            
+        }
 
         public bool AddJogador(List<Jogador> jogadores)
         {
-            if(Jogadores.Count <= 16 && Jogadores.Count >=32)
-            {
-                return false;
-            }
-            Jogadores = jogadores;
-            return true;
-        }
-        //metodo para remover um jogador
 
+
+            if (Jogadores.Count >= 16 && Jogadores.Count <= 32)
+            {
+                Jogadores = jogadores;
+
+                return true;
+            }
+
+            return false;
+        }
+
+
+        //metodo para remover um jogador
         public void RemoveJogador(Jogador jogador)
         {
             foreach (Jogador item in Jogadores)
             {
-              if (jogador == item)
-            {
-                Jogadores.Remove(item);
-            }  
+                if (jogador == item)
+                {
+                    Jogadores.Remove(item);
+                }
             }
-            
+
         }
 
         // public void AddPontosJogador()

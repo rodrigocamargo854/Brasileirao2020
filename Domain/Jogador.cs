@@ -1,6 +1,6 @@
 namespace Domain
 {
-    public class Jogador
+    public abstract class Jogador
     {
         public string Nome { get; set; }
 
@@ -8,5 +8,6 @@ namespace Domain
         {
             Nome = nome;
         }
+        
     }
 }
