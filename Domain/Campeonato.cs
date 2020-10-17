@@ -9,7 +9,7 @@ namespace Domain
         public int Rodadas { get; set; }
 
         
-
+        ///Regra de negocio usuario CBF
         public bool AddTimes(List<Time> times, Usuario usuario)
         {
             //como é uma variavel de referencia é preciso utilizar o is
@@ -29,5 +29,8 @@ namespace Domain
         
 
     }
+
+    //!Todo  Regra de necogio usuario torcedor
+    //!Todo Metodos 
 
 }
