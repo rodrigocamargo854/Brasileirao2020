@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 
-namespace Brasileirao2020
-{
+namespace Domain{
     public class Campeonato
     {
       public List<Time> Time { get; set; } = new List<Time>();//inicializa vazia

@@ -1,4 +1,4 @@
-namespace Brasileirao2020
+namespace Domain
 {
     public class Jogador
     {
@@ -6,7 +6,7 @@ namespace Brasileirao2020
 
         public Jogador(string nome)
         {
-            Nome= nome;
+            Nome = nome;
         }
     }
 }

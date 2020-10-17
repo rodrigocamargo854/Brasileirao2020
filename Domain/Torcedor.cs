@@ -1,5 +1,4 @@
-namespace dev.Brasileirao2020
-{
+namespace Domain{
     //herança da classe usuario
     public sealed class Torcedor : Usuario
     {
