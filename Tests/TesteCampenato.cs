@@ -68,22 +68,22 @@ namespace Tests
 
             var jogadoresAtletico = new List<Jogador>()
             {
-                new JogadorCampeonato ("ximira"),
-                new JogadorCampeonato ("teteco"),
-                new JogadorCampeonato ("Tatuane tiral"),
-                new JogadorCampeonato ("ximira"),
-                new JogadorCampeonato ("teteco"),
-                new JogadorCampeonato ("Tatuane tiral"),
-                new JogadorCampeonato ("ximira"),
-                new JogadorCampeonato ("teteco"),
-                new JogadorCampeonato ("Tatuane tiral"),
-                new JogadorCampeonato ("ximira"),
-                new JogadorCampeonato ("teteco"),
-                new JogadorCampeonato ("Tatuane tiral"),
-                new JogadorCampeonato ("ximira"),
-                new JogadorCampeonato ("teteco"),
-                new JogadorCampeonato ("Tatuane tiral"),
-                new JogadorCampeonato ("Tatuane tiral")
+                new JogadorCampeonato ("SpiderMan"),
+                new JogadorCampeonato ("Wolverine"),
+                new JogadorCampeonato ("Hulk"),
+                new JogadorCampeonato ("Thor"),
+                new JogadorCampeonato ("Tony stark"),
+                new JogadorCampeonato ("Doutor Manhatan"),
+                new JogadorCampeonato ("Rosarch"),
+                new JogadorCampeonato ("Hellboy"),
+                new JogadorCampeonato ("Punisher"),
+                new JogadorCampeonato ("Spawn"),
+                new JogadorCampeonato ("Squal"),
+                new JogadorCampeonato ("Link"),
+                new JogadorCampeonato ("Solid Snake"),
+                new JogadorCampeonato ("Jaspion"),
+                new JogadorCampeonato ("Bruce Lee"),
+                new JogadorCampeonato ("Jason")
 
             };
 
