@@ -14,13 +14,13 @@ namespace Domain
 
         public string[] Conflitos { get; set; }
 
-
+        //Metodo para misturar os times dentro de uma lista
         private void embaralhar(List<Time> times)
         {
             // cria um objeto da classe Random
             Random rnd = new Random();
 
-            // vamos embaralhar o ArrayList
+            // a lista de times
             for (int i = 0; i < times.Count; i++)
             {
                 int a = rnd.Next(times.Count);
@@ -32,7 +32,9 @@ namespace Domain
 
 
         ///Regra de negocio usuario CBF
-        public bool AddTimes(List<Time> times, Usuario usuario)
+        //Este metodo recebe uma lista de jogadores do timpo Time e o tipo de usuario
+        //Para validar o acesso . Usuario cdf ou torcedor
+        public List<Time> AddTimes(List<Time> times, Usuario usuario)
         {
             //como é uma variavel de referencia é preciso utilizar o is
             // se fosse variaveis normais, utilizaria ==
@@ -42,10 +44,10 @@ namespace Domain
             if (usuario is Cbf)
             {
                 Times = times;
-                return true;
+                return Times;
             }
 
-            return false;
+            return Times = null;
         }
 
         public Time[,] GeraConflitos(List<Time> times, Usuario usuario)
