@@ -26,7 +26,7 @@ namespace Domain
         {
 
             
-            if (Jogadores.Count > 15 && Jogadores.Count <33)
+            if (jogadores.Count > 15 && jogadores.Count <33)
             {
                 Jogadores = jogadores;
 
