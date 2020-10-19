@@ -2,6 +2,7 @@ using System;
 using Xunit;
 using Domain;
 using System.Collections.Generic;
+using Domain;
 
 namespace Tests
 {
@@ -18,20 +19,40 @@ namespace Tests
             var Atletico = new Time("Atletico");
 
             //when
-            // herança do jogador
-            var jogadores = new List<Jogador>()
-            {
-                new JogadorCampeonato("ximira"),
-                new JogadorCampeonato("teteco"),
-                new JogadorCampeonato("Tatuane tiral")
-            };
-
-            var result = Atletico.AddJogador(jogadores);
-
+            var Jogadores = Atletico.AddJogador(GeradorListaJogadores());
             //then
 
-            Assert.False(result);
+            Assert.False(Jogadores);
 
+
+        }
+//////////////////////////////////////////////////////////////////////////////////////////////
+         public List<Jogador> GeradorListaJogadores()
+        {
+
+            var jogadores = new List<Jogador>()
+            {
+                new JogadorCampeonato ("SpiderMan"),
+                new JogadorCampeonato ("Wolverine"),
+                new JogadorCampeonato ("Hulk"),
+                new JogadorCampeonato ("Thor"),
+                new JogadorCampeonato ("Tony stark"),
+                new JogadorCampeonato ("Doutor Manhatan"),
+                new JogadorCampeonato ("Rosarch"),
+                new JogadorCampeonato ("Hellboy"),
+                new JogadorCampeonato ("Punisher"),
+                new JogadorCampeonato ("Spawn"),
+                new JogadorCampeonato ("Squal"),
+                new JogadorCampeonato ("Link"),
+                new JogadorCampeonato ("Solid Snake"),
+                new JogadorCampeonato ("Jaspion"),
+                new JogadorCampeonato ("Bruce Lee"),
+                new JogadorCampeonato ("Jason"),
+                new JogadorCampeonato ("Fred Kruger")
+
+            };
+
+            return jogadores;
         }
     }
 }

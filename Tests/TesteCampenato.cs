@@ -27,7 +27,33 @@ namespace Tests
 
             //then
 
-            Assert.True(result);
+            Assert.NotNull(result);
+
+        }
+
+        [Fact]
+        public void Deve_Retornar_Tabela_de_conflitos_de_Times_Se_Usuario_For_Cbf()
+        {
+
+            // !cria o time
+            //given
+            var campeonato = new Campeonato();
+            var Time = GeradorListaDeTimes();
+
+            //criação de usuario para validacao da inserção de times
+            var cbf = new Cbf("Administrador");//usuario cbf para validar a inserção de dados
+
+
+            //when
+            //Metodo criado no escopo gerador de jogadores
+            var times = campeonato.AddTimes(Time, cbf);
+
+            // todo entrar com listTimes e usuarios
+            var result = campeonato.GeraConflitos(times, cbf);
+
+            //then
+            Assert.NotNull(result);
+
 
         }
 
@@ -61,12 +87,12 @@ namespace Tests
             return ListaDeTimes;
 
         }
-        
+
         // !Metodo criador de jogador
         public List<Jogador> GeradorListaJogadores()
         {
 
-            var jogadoresAtletico = new List<Jogador>()
+            var jogadores = new List<Jogador>()
             {
                 new JogadorCampeonato ("SpiderMan"),
                 new JogadorCampeonato ("Wolverine"),
@@ -84,10 +110,9 @@ namespace Tests
                 new JogadorCampeonato ("Jaspion"),
                 new JogadorCampeonato ("Bruce Lee"),
                 new JogadorCampeonato ("Jason")
-
             };
 
-            return jogadoresAtletico;
+            return jogadores;
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////
