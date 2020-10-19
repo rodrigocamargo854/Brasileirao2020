@@ -3,11 +3,8 @@ using Xunit;
 using Domain;
 using System.Collections.Generic;
 
-
 namespace Tests
 {
-
-    
     public class TestTime
     {
 
