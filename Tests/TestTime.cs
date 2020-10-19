@@ -6,28 +6,12 @@ using Domain;
 
 namespace Tests
 {
+
+    
     public class TestTime
     {
-        [Fact]
-        public void Deve_retornar_False_se_numero_de_jogadores_abaixo_de16_ou_acima_de32()
-        {
 
-            // a criacao do time 'igual ao criação do candidato, para testar
-            //no campeonato é necessário copiar o metodo
-            // inicializçaõ objeto jogador necessariamente com propriedade nome
-            //given
-            var Atletico = new Time("Atletico");
-
-            //when
-            var Jogadores = Atletico.AddJogador(GeradorListaJogadores());
-            //then
-
-            Assert.False(Jogadores);
-
-
-        }
-//////////////////////////////////////////////////////////////////////////////////////////////
-         public List<Jogador> GeradorListaJogadores()
+         private List<Jogador> GeradorListaJogadores()
         {
 
             var jogadores = new List<Jogador>()
@@ -54,5 +38,27 @@ namespace Tests
 
             return jogadores;
         }
+
+        
+        [Fact]
+        public void Deve_retornar_True_se_numero_de_jogadores_for_acima_de15_ou_abaixo_de33()
+        {
+
+            // a criacao do time 'igual ao criação do candidato, para testar
+            //no campeonato é necessário copiar o metodo
+            // inicializçaõ objeto jogador necessariamente com propriedade nome
+            //given
+            var atletico = new Time("Atletico");
+
+            //when
+            var jogadores = atletico.AddJogador(GeradorListaJogadores());
+            //then
+
+            Assert.True(jogadores);
+
+
+        }
+//////////////////////////////////////////////////////////////////////////////////////////////
+        
     }
 }
