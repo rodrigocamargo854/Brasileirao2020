@@ -34,7 +34,7 @@ namespace Domain
         ///Regra de negocio usuario CBF
         //Este metodo recebe uma lista de jogadores do timpo Time e o tipo de usuario
         //Para validar o acesso . Usuario cdf ou torcedor
-        public List<Time> AddTimes(List<Time> times, Usuario usuario)
+        public bool AddTimes(List<Time> times, Usuario usuario)
         {
             //como é uma variavel de referencia é preciso utilizar o is
             // se fosse variaveis normais, utilizaria ==
@@ -43,14 +43,14 @@ namespace Domain
 
             if (usuario is Cbf)
             {
-                Times = times;
-                return Times;
+                Times = new List<Time>{new Time("sd")};
+                return true;
             }
+            return false;
 
-            return Times = null;
         }
 
-        public Time[,] GeraConflitos(List<Time> times, Usuario usuario)
+        public Time[,] GerarPrimeiraRodada(List<Time> times, Usuario usuario)
         {
 
             embaralhar(times);

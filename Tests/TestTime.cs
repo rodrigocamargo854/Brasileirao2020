@@ -2,7 +2,7 @@ using System;
 using Xunit;
 using Domain;
 using System.Collections.Generic;
-using Domain;
+
 
 namespace Tests
 {
