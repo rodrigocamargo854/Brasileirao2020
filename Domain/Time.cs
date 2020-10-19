@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 
+
 namespace Domain
 {
     public class Time
@@ -14,7 +15,7 @@ namespace Domain
         public double PorcentagemDeAproveitamento { get; set; }
         public int GolsPro { get; set; }
         public int GolsContra { get; set; }
-
+        
         public Time(string nome)
         {
             Nome = nome;
@@ -24,8 +25,8 @@ namespace Domain
         public bool AddJogador(List<Jogador> jogadores)
         {
 
-
-            if (Jogadores.Count >= 16 && Jogadores.Count <= 32)
+            
+            if (Jogadores.Count > 15 && Jogadores.Count <33)
             {
                 Jogadores = jogadores;
 

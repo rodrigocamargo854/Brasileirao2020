@@ -9,7 +9,7 @@ namespace Domain
     public class Campeonato
     {
         public List<Time> Times { get; set; } = new List<Time>();//inicializa vazia
-        public bool IniciaCampeonato { get; set; }
+        public bool InicioCampeonato { get; set; } = false;
         public int Rodadas { get; set; }
 
         public string[] Conflitos { get; set; }
@@ -59,7 +59,7 @@ namespace Domain
 
             //recebe a conversão times em array
             Time[] arrayTimes = times.ToArray();
-
+            
 
 
             if (usuario is Cbf)
@@ -67,7 +67,7 @@ namespace Domain
                 //objeto do tipo Random para misturar os times
 
                 int s = -1;
-
+                
                 for (int i = 0; i < arrayTimes.Length/2; i+=2)
                 {
                     
@@ -84,9 +84,22 @@ namespace Domain
             }
             return tabelaConflitos = null;
         }
-        // método que embaralha os jogadores da lista
 
+        // soment o usuario do tipo Cbf tem permissao para iniciar o Campeonato
+        //caso contrario o metodo retorna o defaut da prop InicioCampeonato(false)
+        public bool iniciaCampeonato(Usuario usuario)
+        {
+            
+            if (usuario is Cbf)
+            {
+                return !InicioCampeonato;
+            }
+
+            return InicioCampeonato;
+        }
     }
+
+    
 
 
 
