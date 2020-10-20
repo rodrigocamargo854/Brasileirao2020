@@ -49,19 +49,17 @@ namespace Domain
 
             return Times = null;
         }
-
-        public Time[,] GeraConflitos(List<Time> times, Usuario usuario)
+                    //gerar sempre no infinitivo
+        public Time[,] GeraConflitos(Usuario usuario)
         {
 
-            embaralhar(times);
-
-            Time[,] tabelaConflitos = new Time[4, 2];
-
-            //recebe a conversão times em array
-            Time[] arrayTimes = times.ToArray();
             
-
-
+            embaralhar(Times);
+            Time[,] tabelaConflitos = new Time[4, 2];
+            //recebe a conversão times em array
+            Time[] arrayTimes = Times.ToArray();
+            
+        
             if (usuario is Cbf)
             {
                 //objeto do tipo Random para misturar os times
@@ -83,6 +81,7 @@ namespace Domain
             }
             return tabelaConflitos = null;
         }
+
 
         // soment o usuario do tipo Cbf tem permissao para iniciar o Campeonato
         //caso contrario o metodo retorna o defaut da prop InicioCampeonato(false)

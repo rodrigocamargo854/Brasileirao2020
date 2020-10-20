@@ -49,7 +49,7 @@ namespace Tests
             var times = campeonato.AddTimes(Time, cbf);
 
             // todo entrar com listTimes e usuarios
-            var result = campeonato.GeraConflitos(times, cbf);
+            var result = campeonato.GeraConflitos(cbf);
 
             //then
             Assert.NotNull(result);
