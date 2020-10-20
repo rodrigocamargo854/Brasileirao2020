@@ -27,9 +27,34 @@ namespace Tests
 
             //then
 
-            Assert.NotNull(result);
+            Assert.True(result);
+            Assert.NotEmpty(campeonato.Times);
+            
+        }
+        [Fact]
+        public void Deve_retornar_Falso_Se_O_Usuarios_Nao_for_Cbf()
+        {
+
+            // !cria o time
+            //given
+            var campeonato = new Campeonato();
+            var Time = GeradorListaDeTimes();
+            //criação de usuario para validacao da inserção de times
+            var torcedor = new Torcedor("Torcedor");//usuario cbf para validar a inserção de dados
+
+
+            //when
+            //Metodo criado no escopo gerador de jogadores
+            var result = campeonato.AddTimes(Time, torcedor);
+            
+
+            //then
+
+            Assert.False(result);
+            Assert.Empty(campeonato.Times);
 
         }
+        
 
         [Fact]
         public void Deve_Retornar_Tabela_de_conflitos_de_Times_Se_Usuario_For_Cbf()
@@ -49,7 +74,7 @@ namespace Tests
             var times = campeonato.AddTimes(Time, cbf);
 
             // todo entrar com listTimes e usuarios
-            var result = campeonato.GeraConflitos(cbf);
+            var result = campeonato.GerarPrimeiraRodada(new Cbf ("Adm") );
 
             //then
             Assert.NotNull(result);
@@ -57,11 +82,10 @@ namespace Tests
 
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
 
         // !Metodo criador de times
 
-        public List<Time> GeradorListaDeTimes()
+        private List<Time> GeradorListaDeTimes()
         {
 
             var Time2 = new Time("Atletico");
@@ -89,7 +113,7 @@ namespace Tests
         }
 
         // !Metodo criador de jogador
-        public List<Jogador> GeradorListaJogadores()
+        private List<Jogador> GeradorListaJogadores()
         {
 
             var jogadores = new List<Jogador>()
@@ -115,7 +139,6 @@ namespace Tests
             return jogadores;
         }
 
-        /////////////////////////////////////////////////////////////////////////////////////////////
     }
 }
 

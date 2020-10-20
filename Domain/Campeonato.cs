@@ -34,7 +34,7 @@ namespace Domain
         ///Regra de negocio usuario CBF
         //Este metodo recebe uma lista de jogadores do timpo Time e o tipo de usuario
         //Para validar o acesso . Usuario cdf ou torcedor
-        public List<Time> AddTimes(List<Time> times, Usuario usuario)
+        public bool AddTimes(List<Time> times, Usuario usuario)
         {
             //como é uma variavel de referencia é preciso utilizar o is
             // se fosse variaveis normais, utilizaria ==
@@ -43,14 +43,14 @@ namespace Domain
 
             if (usuario is Cbf)
             {
-                Times = times;
-                return Times;
+                Times = new List<Time>{new Time("Atletico")};
+                return true;
             }
+            return false;
 
-            return Times = null;
         }
-                    //gerar sempre no infinitivo
-        public Time[,] GeraConflitos(Usuario usuario)
+
+        public Time[,] GerarPrimeiraRodada(Usuario usuario)
         {
 
             
@@ -85,7 +85,7 @@ namespace Domain
 
         // soment o usuario do tipo Cbf tem permissao para iniciar o Campeonato
         //caso contrario o metodo retorna o defaut da prop InicioCampeonato(false)
-        public bool iniciaCampeonato(Usuario usuario)
+        public bool iniciarCampeonato(Usuario usuario)
         {
             
             if (usuario is Cbf)
