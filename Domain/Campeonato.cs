@@ -91,7 +91,8 @@ namespace Domain
         {
             
             if (usuario is Cbf)
-            {
+            {   
+                
                 return !InicioCampeonato;
             }
 

@@ -17,31 +17,29 @@ namespace Domain {
         public Time (string nome) 
         {
             Nome = nome;
-
         }
 
         public bool adicionarJogador (List<Jogador> jogadores) 
         {
-
             if (jogadores.Count > 15 && jogadores.Count < 33) 
             {
                 Jogadores = jogadores;
 
                 return true;
             }
-
             return false;
         }
 
         //metodo para remover um jogador
         public void removerJogador (Jogador jogador) 
         {
-            foreach (Jogador item in Jogadores) {
-                if (jogador == item) {
+            foreach (Jogador item in Jogadores) 
+            {
+                if (jogador == item) 
+                {
                     Jogadores.Remove (item);
                 }
             }
-
         }
 
         // public void AddPontosJogador()
