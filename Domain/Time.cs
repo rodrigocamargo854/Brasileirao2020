@@ -1,27 +1,30 @@
 using System.Collections.Generic;
 
-namespace Domain {
-    public  class Time {
+namespace Domain
+{
+    public class Time
+    {
         public string Nome { get; set; }
-        public List<Jogador> Jogadores { get; set; } = new List<Jogador> ();
-        public int PontosTime { get; set; }
+        public List<Jogador> Jogadores { get; set; } = new List<Jogador>();
+        public List<Jogador> Artilheiro { get; set; } = new List<Jogador>();
         public int Vitorias { get; set; }
+        public int PontosJogador { get; set; } = 0;
+
         public int Derrotas { get; set; }
         public int Empates { get; set; }
         public double PorcentagemDeAproveitamento { get; set; }
         public int GolsPro { get; set; }
         public int GolsContra { get; set; }
         public string NomeTime { get; private set; }
-        
 
-        public Time (string nome) 
+        public Time(string nome)
         {
             Nome = nome;
         }
 
-        public bool adicionarJogador (List<Jogador> jogadores) 
+        public bool adicionarJogador(List<Jogador> jogadores)
         {
-            if (jogadores.Count > 15 && jogadores.Count < 33) 
+            if (jogadores.Count > 15 && jogadores.Count < 33)
             {
                 Jogadores = jogadores;
 
@@ -31,21 +34,47 @@ namespace Domain {
         }
 
         //metodo para remover um jogador
-        public void removerJogador (Jogador jogador) 
+        public void removerJogador(Jogador jogador)
         {
-            foreach (Jogador item in Jogadores) 
+            foreach (Jogador item in Jogadores)
             {
-                if (jogador == item) 
+                if (jogador == item)
                 {
-                    Jogadores.Remove (item);
+                    Jogadores.Remove(item);
                 }
             }
         }
 
-        // public void AddPontosJogador()
-        // {
+        public void AddPontosJogador(Jogador nome, int pontosCampeonato)
+        {
+            foreach (Jogador jogador in Jogadores)
+            {
+                if (jogador == nome)
+                {
+                    jogador.Pontos += pontosCampeonato;
+                }
+            }
 
-        // }
+        }
+
+        public void adicionarArtilheiro()
+        {
+
+            //criar uma maneira de obter o jogador com maior numero de gols dentro do time
+            // tendo base a pontuacao da classe
+            //inserir em uma variavel e inserir esta variavel em uma lista 
+            //artilheiro
+
+            foreach (Jogador jogador in Jogadores)
+            {
+                if (jogador.Pontos > PontosJogador)
+                {
+                    PontosJogador = jogador.Pontos;
+                    artilheiro = jogador;
+                }
+            }
+            Artilheiro.Add(artilheiro);
+        }
 
         // public void AddPontosTime()
         // {
@@ -64,10 +93,6 @@ namespace Domain {
         //     return true;
         // }
 
-        // public void AddArtilheiros()
-        // {
-
-        // }
         // public void Goldcontra()
         // {
         //     GolsContra ++;
