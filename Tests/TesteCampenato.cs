@@ -22,7 +22,7 @@ namespace Tests
 
             //when
             //Metodo criado no escopo gerador de jogadores
-            var result = campeonato.AddTimes(Time, cbf);
+            var result = campeonato.AdicionarTimes(Time, cbf);
 
 
             //then
@@ -45,7 +45,7 @@ namespace Tests
 
             //when
             //Metodo criado no escopo gerador de jogadores
-            var result = campeonato.AddTimes(Time, torcedor);
+            var result = campeonato.AdicionarTimes(Time, torcedor);
             
 
             //then
@@ -71,7 +71,7 @@ namespace Tests
 
             //when
             //Metodo criado no escopo gerador de jogadores
-            var times = campeonato.AddTimes(Time, cbf);
+            var times = campeonato.AdicionarTimes(Time, cbf);
 
             // todo entrar com listTimes e usuarios
             var result = campeonato.GerarPrimeiraRodada(new Cbf ("Adm") );

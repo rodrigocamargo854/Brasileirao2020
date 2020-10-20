@@ -22,7 +22,7 @@ namespace Domain
             
         }
 
-        public bool AddJogador(List<Jogador> jogadores)
+        public bool adicionarJogador(List<Jogador> jogadores)
         {
 
             
@@ -38,7 +38,7 @@ namespace Domain
 
 
         //metodo para remover um jogador
-        public void RemoveJogador(Jogador jogador)
+        public void removerJogador(Jogador jogador)
         {
             foreach (Jogador item in Jogadores)
             {

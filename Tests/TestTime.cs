@@ -48,7 +48,7 @@ namespace Tests
             var atletico = new Time("Atletico");
 
             //when
-            var jogadores = atletico.AddJogador(GeradorListaJogadores());
+            var jogadores = atletico.adicionarJogador(GeradorListaJogadores());
             //then
 
             Assert.True(jogadores);
