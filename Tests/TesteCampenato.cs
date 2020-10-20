@@ -14,7 +14,7 @@ namespace Tests
             // !cria o time
             //given
             var campeonato = new Campeonato();
-            var Time = GeradorListaDeTimes();
+            var times = GeradorListaDeTimes();
 
             //criação de usuario para validacao da inserção de times
             var cbf = new Cbf("Administrador");//usuario cbf para validar a inserção de dados
@@ -22,14 +22,13 @@ namespace Tests
 
             //when
             //Metodo criado no escopo gerador de jogadores
-            var result = campeonato.AddTimes(Time, cbf);
+            var result = campeonato.AddTimes(times, cbf);
 
 
             //then
 
             Assert.True(result);
-            Assert.NotEmpty(campeonato.Times);
-            Assert.
+            Assert.Equal(times,campeonato.Times);
 
         }
         [Fact]

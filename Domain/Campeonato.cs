@@ -43,7 +43,7 @@ namespace Domain
 
             if (usuario is Cbf)
             {
-                Times = new List<Time>{new Time("sd")};
+                Times = times;
                 return true;
             }
             return false;
