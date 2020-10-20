@@ -31,6 +31,7 @@ namespace Tests
             Assert.NotEmpty(campeonato.Times);
             
         }
+        
         [Fact]
         public void Deve_retornar_Falso_Se_O_Usuarios_Nao_for_Cbf()
         {
@@ -97,14 +98,14 @@ namespace Tests
             var Time7 = new Time("Ituano");
             var Time8 = new Time("Portuguesa");
 
-            Time1.AddJogador(GeradorListaJogadores());
-            Time2.AddJogador(GeradorListaJogadores());
-            Time3.AddJogador(GeradorListaJogadores());
-            Time4.AddJogador(GeradorListaJogadores());
-            Time5.AddJogador(GeradorListaJogadores());
-            Time6.AddJogador(GeradorListaJogadores());
-            Time7.AddJogador(GeradorListaJogadores());
-            Time8.AddJogador(GeradorListaJogadores());
+            Time2.adicionarJogador(GeradorListaJogadores());
+            Time3.adicionarJogador(GeradorListaJogadores());
+            Time4.adicionarJogador(GeradorListaJogadores());
+            Time5.adicionarJogador(GeradorListaJogadores());
+            Time6.adicionarJogador(GeradorListaJogadores());
+            Time7.adicionarJogador(GeradorListaJogadores());
+            Time8.adicionarJogador(GeradorListaJogadores());
+            Time1.adicionarJogador(GeradorListaJogadores());
 
             var ListaDeTimes = new List<Time>() { Time1, Time2, Time3, Time4, Time5, Time6, Time7, Time8 };
 

@@ -1,13 +1,9 @@
-
 using System.Collections.Generic;
 
-
-namespace Domain
-{
-    public class Time
-    {
+namespace Domain {
+    public  class Time {
         public string Nome { get; set; }
-        public List<Jogador> Jogadores { get; set; } =  new List<Jogador> ();
+        public List<Jogador> Jogadores { get; set; } = new List<Jogador> ();
         public int PontosTime { get; set; }
         public int Vitorias { get; set; }
         public int Derrotas { get; set; }
@@ -15,18 +11,19 @@ namespace Domain
         public double PorcentagemDeAproveitamento { get; set; }
         public int GolsPro { get; set; }
         public int GolsContra { get; set; }
+        public string NomeTime { get; private set; }
         
-        public Time(string nome)
+
+        public Time (string nome) 
         {
             Nome = nome;
-            
+
         }
 
-        public bool adicionarJogador(List<Jogador> jogadores)
+        public bool adicionarJogador (List<Jogador> jogadores) 
         {
 
-            
-            if (jogadores.Count > 15 && jogadores.Count <33)
+            if (jogadores.Count > 15 && jogadores.Count < 33) 
             {
                 Jogadores = jogadores;
 
@@ -36,15 +33,12 @@ namespace Domain
             return false;
         }
 
-
         //metodo para remover um jogador
-        public void removerJogador(Jogador jogador)
+        public void removerJogador (Jogador jogador) 
         {
-            foreach (Jogador item in Jogadores)
-            {
-                if (jogador == item)
-                {
-                    Jogadores.Remove(item);
+            foreach (Jogador item in Jogadores) {
+                if (jogador == item) {
+                    Jogadores.Remove (item);
                 }
             }
 
@@ -53,14 +47,12 @@ namespace Domain
         // public void AddPontosJogador()
         // {
 
-
         // }
 
         // public void AddPontosTime()
         // {
 
         // }
-
 
         // public void AddVitoria()
         // {
@@ -73,7 +65,6 @@ namespace Domain
         //     Empates ++;
         //     return true;
         // }
-
 
         // public void AddArtilheiros()
         // {
@@ -89,11 +80,6 @@ namespace Domain
         //     GolsPro ++;
         //     return true;
         // }
-
-
-
-
-
 
     }
 }
