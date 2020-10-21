@@ -8,29 +8,27 @@ namespace Tests
     public class TestTime
     {
 
-         private List<Jogador> GeradorListaJogadores()
+        private List<Jogador> GeradorListaJogadores()
         {
 
             var jogadores = new List<Jogador>()
             {
-                new JogadorCampeonato ("SpiderMan"),
-                new JogadorCampeonato ("Wolverine"),
-                new JogadorCampeonato ("Hulk"),
-                new JogadorCampeonato ("Thor"),
-                new JogadorCampeonato ("Tony stark"),
-                new JogadorCampeonato ("Doutor Manhatan"),
-                new JogadorCampeonato ("Rosarch"),
-                new JogadorCampeonato ("Hellboy"),
-                new JogadorCampeonato ("Punisher"),
-                new JogadorCampeonato ("Spawn"),
-                new JogadorCampeonato ("Squal"),
-                new JogadorCampeonato ("Link"),
-                new JogadorCampeonato ("Solid Snake"),
-                new JogadorCampeonato ("Jaspion"),
-                new JogadorCampeonato ("Bruce Lee"),
-                new JogadorCampeonato ("Jason"),
-                new JogadorCampeonato ("Fred Kruger")
-
+                new JogadorCampeonato (new Guid(),"SpiderMan",5),
+                new JogadorCampeonato (new Guid(),"Wolverine",2),
+                new JogadorCampeonato (new Guid(),"Hulk",0),
+                new JogadorCampeonato (new Guid(),"Thor",0),
+                new JogadorCampeonato (new Guid(),"Tony stark",1),
+                new JogadorCampeonato (new Guid(),"Doutor Manhatan",2),
+                new JogadorCampeonato (new Guid(),"Rosarch",0),
+                new JogadorCampeonato (new Guid(),"Hellboy",0),
+                new JogadorCampeonato (new Guid(),"Punisher",0),
+                new JogadorCampeonato (new Guid(),"Spawn",0),
+                new JogadorCampeonato (new Guid(),"Squal",0),
+                new JogadorCampeonato (new Guid(),"Link",0),
+                new JogadorCampeonato (new Guid(),"Solid Snake",0),
+                new JogadorCampeonato (new Guid(),"Jaspion",0),
+                new JogadorCampeonato (new Guid(),"Bruce Lee",1),
+                new JogadorCampeonato (new Guid(),"Jason",0)
             };
 
             return jogadores;

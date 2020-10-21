@@ -8,8 +8,8 @@ namespace Domain
 
     public class Campeonato
     {
-        public List<Time> Times { get; private set; } = new List<Time>();//inicializa vazia
-        public bool InicioCampeonato { get; private set; } = false;
+        public List<Time> Times { get; protected set; } = new List<Time>();//inicializa vazia
+        public bool InicioCampeonato { get; protected set; } = false;
 
 
         //Metodo para misturar os times dentro de uma lista
@@ -29,6 +29,20 @@ namespace Domain
         }
 
 
+        // soment o usuario do tipo Cbf tem permissao para iniciar o Campeonato
+        //caso contrario o metodo retorna o defaut da prop InicioCampeonato(false)
+        public bool iniciarCampeonato(Usuario usuario)
+        {
+
+            if (usuario is Cbf)
+            {
+
+                return !InicioCampeonato;
+
+            }
+
+            return InicioCampeonato;
+        }
         ///Regra de negocio usuario CBF
         //Este metodo recebe uma lista de jogadores do timpo Time e o tipo de usuario
         //Para validar o acesso . Usuario cdf ou torcedor
@@ -54,7 +68,6 @@ namespace Domain
         {
 
             var rodadas = new List<Time[,]>();
-            embaralhar(Times);
             Time[,] tabelaConflitos = new Time[4, 2];
             //recebe a conversão times em array
             Time[] arrayTimes = Times.ToArray();
@@ -62,6 +75,8 @@ namespace Domain
 
             if (usuario is Cbf)
             {
+                embaralhar(Times);
+
                 for (int k = 0; k < numeroRodadas; k++)
                 {
                     //objeto do tipo Random para misturar os times
@@ -79,7 +94,6 @@ namespace Domain
                         }
                     }
                     rodadas.Add(tabelaConflitos);
-
                 }
                 return rodadas;
             }
@@ -88,20 +102,7 @@ namespace Domain
         }
 
 
-        // soment o usuario do tipo Cbf tem permissao para iniciar o Campeonato
-        //caso contrario o metodo retorna o defaut da prop InicioCampeonato(false)
-        public bool iniciarCampeonato(Usuario usuario)
-        {
 
-            if (usuario is Cbf)
-            {
-
-                return !InicioCampeonato;
-
-            }
-
-            return InicioCampeonato;
-        }
     }
 }
 

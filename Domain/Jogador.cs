@@ -4,14 +4,15 @@ namespace Domain {
     public  class Jogador 
     {
        public Guid Id { get;  private set; } = new Guid();
-        public string Nome { get; private set; }
+        public string Nome { get; set; }
         public int Pontos { get; private set;}
-        protected Jogador(string nome)
-        {
-            
-        }
 
-        protected Jogador(){}
+        public Jogador(Guid id, string nome, int pontos)
+        {
+            Id = id;
+            Nome = nome;
+            Pontos = pontos;
+        }
 
         public void MarcarPontos()
         {

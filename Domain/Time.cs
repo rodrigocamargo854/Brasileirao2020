@@ -1,15 +1,16 @@
 using System.Collections.Generic;
+using System.Text;
 
 namespace Domain
 {
-    public  class Time 
+    public class Time
     {
         public List<Jogador> Jogadores { get; private set; } = new List<Jogador>();
-        public List<Jogador> Artilheiro { get; private set; } = new List<Jogador>();
-        
-        public string Nome { get; private set; }
+        public Jogador Artilheiro { get; private set; } 
 
-        public Time(  string nome)
+        public string Nome { get; private set; }
+        public Jogador JogadorComMaisGols { get; set; }
+        public Time(string nome)
         {
             Nome = nome;
         }
@@ -26,7 +27,7 @@ namespace Domain
         }
 
         //metodo para remover um jogador
-        public void removerJogador(Jogador jogador)
+        private void removerJogador(Jogador jogador)
         {
             foreach (Jogador item in Jogadores)
             {
@@ -37,7 +38,7 @@ namespace Domain
             }
         }
 
-        public void AddicionarPontosJogador(Jogador nome)
+        private void AddicionarPontosJogador(Jogador nome)
         {
             foreach (Jogador jogador in Jogadores)
             {
@@ -51,20 +52,20 @@ namespace Domain
 
         }
 
-        public void adicionarArtilheiro()
+        private void adicionarArtilheiro()
         {
 
             var pontosJogador = 0;
-            
             foreach (Jogador jogador in Jogadores)
             {
                 if (jogador.Pontos > pontosJogador)
                 {
                     pontosJogador = jogador.Pontos;
-                    // artilheiro = jogador.Nome;
+                    JogadorComMaisGols = jogador;
                 }
             }
-            // // Artilheiro.Add()
+
+            Artilheiro = JogadorComMaisGols;
         }
 
         // public void AddPontosTime()
