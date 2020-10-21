@@ -75,7 +75,7 @@ namespace Tests
             var times = campeonato.AdicionarTimes(Time, cbf);
 
             // todo entrar com listTimes e usuarios
-            var result = campeonato.GerarPrimeiraRodada(new Cbf ("Adm") );
+            var result = campeonato.GerarRodadas(new Cbf ("Adm") , 5);
 
             //then
             Assert.NotNull(result);

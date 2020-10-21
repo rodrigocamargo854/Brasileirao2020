@@ -8,11 +8,9 @@ namespace Domain
 
     public class Campeonato
     {
-        public List<Time> Times { get; set; } = new List<Time>();//inicializa vazia
-        public bool InicioCampeonato { get; set; } = false;
-        public int Rodadas { get; set; }
+        public List<Time> Times { get; private set; } = new List<Time>();//inicializa vazia
+        public bool InicioCampeonato { get; private set; } = false;
 
-        public string[] Conflitos { get; set; }
 
         //Metodo para misturar os times dentro de uma lista
         private void embaralhar(List<Time> times)
@@ -44,7 +42,7 @@ namespace Domain
             if (usuario is Cbf)
             {
                 Times = times;
-                
+
                 return true;
             }
 
@@ -52,36 +50,41 @@ namespace Domain
 
         }
 
-        public Time[,] GerarPrimeiraRodada(Usuario usuario)
+        public List<Time[,]> GerarRodadas(Usuario usuario, int numeroRodadas)
         {
 
-            
+            var rodadas = new List<Time[,]>();
             embaralhar(Times);
             Time[,] tabelaConflitos = new Time[4, 2];
             //recebe a conversão times em array
             Time[] arrayTimes = Times.ToArray();
-            
-        
+
+
             if (usuario is Cbf)
             {
-                //objeto do tipo Random para misturar os times
-
-                int s = -1;
-                
-                for (int i = 0; i < arrayTimes.Length/2; i++)
+                for (int k = 0; k < numeroRodadas; k++)
                 {
-                    
-                    for (int j = 0; j < 2; j++)
+                    //objeto do tipo Random para misturar os times
+
+                    int s = -1;
+
+                    for (int i = 0; i < arrayTimes.Length / 2; i++)
                     {
-                        
-                        tabelaConflitos[i,j] = arrayTimes[++s];
 
+                        for (int j = 0; j < 2; j++)
+                        {
+
+                            tabelaConflitos[i, j] = arrayTimes[++s];
+
+                        }
                     }
-                }
-                return tabelaConflitos;
+                    rodadas.Add(tabelaConflitos);
 
+                }
+                return rodadas;
             }
-            return tabelaConflitos = null;
+            return rodadas = null;
+
         }
 
 
@@ -89,22 +92,17 @@ namespace Domain
         //caso contrario o metodo retorna o defaut da prop InicioCampeonato(false)
         public bool iniciarCampeonato(Usuario usuario)
         {
-            
+
             if (usuario is Cbf)
-            {   
-                
+            {
+
                 return !InicioCampeonato;
+
             }
 
             return InicioCampeonato;
         }
     }
-
-    
-
-
-
-
 }
 
 //!Todo  Regra de necogio usuario torcedor

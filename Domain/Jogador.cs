@@ -1,13 +1,23 @@
-namespace Domain {
-    public abstract class Jogador 
-    {
-        public string Nome { get; set; }
-        public int Pontos { get;  set; }
+using System;
 
-        public Jogador (string nome) 
+namespace Domain {
+    public  class Jogador 
+    {
+       public Guid Id { get;  private set; } = new Guid();
+        public string Nome { get; private set; }
+        public int Pontos { get; private set;}
+        protected Jogador(string nome)
         {
-            Nome = nome;
+            
         }
 
+        protected Jogador(){}
+
+        public void MarcarPontos()
+        {
+            Pontos++;
+        }
+
+        
     }
 }
