@@ -51,7 +51,41 @@ namespace Tests
 
             Assert.True(jogadores);
 
+        }
 
+        [Fact]
+        public void Deve_Remover_Um_Jogador_que_Possui_O_mesmo_Nome_Passado()
+        {
+
+
+            var atletico = new Time("Atletico");
+
+            //when
+            var jogadores = atletico.adicionarJogador(GeradorListaJogadores());
+            var jogadorASerRemovido = new Jogador(new Guid(), "SpiderMan", 5);
+
+            atletico.removerJogador(jogadorASerRemovido);
+
+            //then
+
+            Assert.DoesNotContain(jogadorASerRemovido, atletico.Jogadores);
+
+        }
+        [Fact]
+
+        public void Deve_Incrementar_Os_Gols_Do_Jogador_Passado_Como_Parametro()
+        {
+            var atletico = new Time("Atletico");
+
+            //when
+            var jogadores = atletico.adicionarJogador(GeradorListaJogadores());
+            var jogadorQueMarcouGol = new Jogador(new Guid(), "SpiderMan", 5);
+
+            atletico.AddicionarPontosJogador(jogadorQueMarcouGol);
+
+            //then
+
+            Assert.Equal(6, jogadorQueMarcouGol.Pontos);
         }
 
         [Fact]
@@ -70,8 +104,7 @@ namespace Tests
 
             //then
 
-            Assert.Equal("SpiderMan",atletico.Artilheiro.Nome);
-
+            Assert.Equal("SpiderMan", atletico.Artilheiro.Nome);
 
         }
         //////////////////////////////////////////////////////////////////////////////////////////////
