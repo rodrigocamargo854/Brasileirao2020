@@ -27,18 +27,18 @@ namespace Domain
         }
 
         //metodo para remover um jogador
-        private void removerJogador(Jogador jogador)
+        public void removerJogador(Jogador jogador)
         {
             foreach (Jogador item in Jogadores)
             {
                 if (jogador == item)
                 {
-                    Jogadores.Remove(item);
+                    Jogadores.Add(item);
                 }
             }
         }
 
-        private void AddicionarPontosJogador(Jogador nome)
+        public void AddicionarPontosJogador(Jogador nome)
         {
             foreach (Jogador jogador in Jogadores)
             {
@@ -52,7 +52,7 @@ namespace Domain
 
         }
 
-        private void adicionarArtilheiro()
+        public void adicionarArtilheiro()
         {
 
             var pontosJogador = 0;

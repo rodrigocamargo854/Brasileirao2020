@@ -34,7 +34,7 @@ namespace Tests
             return jogadores;
         }
 
-        
+
         [Fact]
         public void Deve_retornar_True_se_numero_de_jogadores_for_acima_de15_ou_abaixo_de33()
         {
@@ -53,7 +53,28 @@ namespace Tests
 
 
         }
-//////////////////////////////////////////////////////////////////////////////////////////////
-        
+
+        [Fact]
+        public void Deve_Retornar_Jogador_Artilheiro_Quando_Adicionado_ListaDEJogadores_Com_Gols()
+        {
+
+            // a criacao do time 'igual ao criação do candidato, para testar
+            //no campeonato é necessário copiar o metodo
+            // inicializçaõ objeto jogador necessariamente com propriedade nome
+            //given
+            var atletico = new Time("Atletico");
+
+            //when
+            var jogadores = atletico.adicionarJogador(GeradorListaJogadores());
+            atletico.adicionarArtilheiro();
+
+            //then
+
+            Assert.Equal("SpiderMan",atletico.Artilheiro.Nome);
+
+
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
     }
 }
