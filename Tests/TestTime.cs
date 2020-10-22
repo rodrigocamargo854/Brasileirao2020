@@ -8,35 +8,33 @@ namespace Tests
     public class TestTime
     {
 
-         private List<Jogador> GeradorListaJogadores()
+        private List<Jogador> GeradorListaJogadores()
         {
 
             var jogadores = new List<Jogador>()
             {
-                new JogadorCampeonato ("SpiderMan"),
-                new JogadorCampeonato ("Wolverine"),
-                new JogadorCampeonato ("Hulk"),
-                new JogadorCampeonato ("Thor"),
-                new JogadorCampeonato ("Tony stark"),
-                new JogadorCampeonato ("Doutor Manhatan"),
-                new JogadorCampeonato ("Rosarch"),
-                new JogadorCampeonato ("Hellboy"),
-                new JogadorCampeonato ("Punisher"),
-                new JogadorCampeonato ("Spawn"),
-                new JogadorCampeonato ("Squal"),
-                new JogadorCampeonato ("Link"),
-                new JogadorCampeonato ("Solid Snake"),
-                new JogadorCampeonato ("Jaspion"),
-                new JogadorCampeonato ("Bruce Lee"),
-                new JogadorCampeonato ("Jason"),
-                new JogadorCampeonato ("Fred Kruger")
-
+                new JogadorCampeonato (new Guid(),"SpiderMan",5),
+                new JogadorCampeonato (new Guid(),"Wolverine",2),
+                new JogadorCampeonato (new Guid(),"Hulk",0),
+                new JogadorCampeonato (new Guid(),"Thor",0),
+                new JogadorCampeonato (new Guid(),"Tony stark",1),
+                new JogadorCampeonato (new Guid(),"Doutor Manhatan",2),
+                new JogadorCampeonato (new Guid(),"Rosarch",0),
+                new JogadorCampeonato (new Guid(),"Hellboy",0),
+                new JogadorCampeonato (new Guid(),"Punisher",0),
+                new JogadorCampeonato (new Guid(),"Spawn",0),
+                new JogadorCampeonato (new Guid(),"Squal",0),
+                new JogadorCampeonato (new Guid(),"Link",0),
+                new JogadorCampeonato (new Guid(),"Solid Snake",0),
+                new JogadorCampeonato (new Guid(),"Jaspion",0),
+                new JogadorCampeonato (new Guid(),"Bruce Lee",1),
+                new JogadorCampeonato (new Guid(),"Jason",0)
             };
 
             return jogadores;
         }
 
-        
+
         [Fact]
         public void Deve_retornar_True_se_numero_de_jogadores_for_acima_de15_ou_abaixo_de33()
         {
@@ -55,7 +53,28 @@ namespace Tests
 
 
         }
-//////////////////////////////////////////////////////////////////////////////////////////////
-        
+
+        [Fact]
+        public void Deve_Retornar_Jogador_Artilheiro_Quando_Adicionado_ListaDEJogadores_Com_Gols()
+        {
+
+            // a criacao do time 'igual ao criação do candidato, para testar
+            //no campeonato é necessário copiar o metodo
+            // inicializçaõ objeto jogador necessariamente com propriedade nome
+            //given
+            var atletico = new Time("Atletico");
+
+            //when
+            var jogadores = atletico.adicionarJogador(GeradorListaJogadores());
+            atletico.adicionarArtilheiro();
+
+            //then
+
+            Assert.Equal("SpiderMan",atletico.Artilheiro.Nome);
+
+
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
     }
 }

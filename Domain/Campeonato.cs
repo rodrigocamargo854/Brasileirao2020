@@ -8,11 +8,9 @@ namespace Domain
 
     public class Campeonato
     {
-        public List<Time> Times { get; set; } = new List<Time>();//inicializa vazia
-        public bool InicioCampeonato { get; set; } = false;
-        public int Rodadas { get; set; }
+        public List<Time> Times { get; protected set; } = new List<Time>();//inicializa vazia
+        public bool InicioCampeonato { get; protected set; } = false;
 
-        public string[] Conflitos { get; set; }
 
         //Metodo para misturar os times dentro de uma lista
         private void embaralhar(List<Time> times)
@@ -31,6 +29,20 @@ namespace Domain
         }
 
 
+        // soment o usuario do tipo Cbf tem permissao para iniciar o Campeonato
+        //caso contrario o metodo retorna o defaut da prop InicioCampeonato(false)
+        public bool iniciarCampeonato(Usuario usuario)
+        {
+
+            if (usuario is Cbf)
+            {
+
+                return !InicioCampeonato;
+
+            }
+
+            return InicioCampeonato;
+        }
         ///Regra de negocio usuario CBF
         //Este metodo recebe uma lista de jogadores do timpo Time e o tipo de usuario
         //Para validar o acesso . Usuario cdf ou torcedor
@@ -44,7 +56,7 @@ namespace Domain
             if (usuario is Cbf)
             {
                 Times = times;
-                
+
                 return true;
             }
 
@@ -52,59 +64,46 @@ namespace Domain
 
         }
 
-        public Time[,] GerarPrimeiraRodada(Usuario usuario)
+        public List<Time[,]> GerarRodadas(Usuario usuario, int numeroRodadas)
         {
 
-            
-            embaralhar(Times);
+            var rodadas = new List<Time[,]>();
             Time[,] tabelaConflitos = new Time[4, 2];
             //recebe a conversão times em array
             Time[] arrayTimes = Times.ToArray();
-            
-        
+
+
             if (usuario is Cbf)
             {
-                //objeto do tipo Random para misturar os times
+                embaralhar(Times);
 
-                int s = -1;
-                
-                for (int i = 0; i < arrayTimes.Length/2; i++)
+                for (int k = 0; k < numeroRodadas; k++)
                 {
-                    
-                    for (int j = 0; j < 2; j++)
+                    //objeto do tipo Random para misturar os times
+
+                    int s = -1;
+
+                    for (int i = 0; i < arrayTimes.Length / 2; i++)
                     {
-                        
-                        tabelaConflitos[i,j] = arrayTimes[++s];
 
+                        for (int j = 0; j < 2; j++)
+                        {
+
+                            tabelaConflitos[i, j] = arrayTimes[++s];
+
+                        }
                     }
+                    rodadas.Add(tabelaConflitos);
                 }
-                return tabelaConflitos;
-
+                return rodadas;
             }
-            return tabelaConflitos = null;
+            return rodadas = null;
+
         }
 
 
-        // soment o usuario do tipo Cbf tem permissao para iniciar o Campeonato
-        //caso contrario o metodo retorna o defaut da prop InicioCampeonato(false)
-        public bool iniciarCampeonato(Usuario usuario)
-        {
-            
-            if (usuario is Cbf)
-            {   
-                
-                return !InicioCampeonato;
-            }
 
-            return InicioCampeonato;
-        }
     }
-
-    
-
-
-
-
 }
 
 //!Todo  Regra de necogio usuario torcedor

@@ -1,22 +1,15 @@
 using System.Collections.Generic;
+using System.Text;
 
 namespace Domain
 {
     public class Time
     {
-        public string Nome { get; set; }
-        public List<Jogador> Jogadores { get; set; } = new List<Jogador>();
-        public List<Jogador> Artilheiro { get; set; } = new List<Jogador>();
-        public int Vitorias { get; set; }
-        public int PontosJogador { get; set; } = 0;
+        public List<Jogador> Jogadores { get; private set; } = new List<Jogador>();
+        public Jogador Artilheiro { get; private set; } 
 
-        public int Derrotas { get; set; }
-        public int Empates { get; set; }
-        public double PorcentagemDeAproveitamento { get; set; }
-        public int GolsPro { get; set; }
-        public int GolsContra { get; set; }
-        public string NomeTime { get; private set; }
-
+        public string Nome { get; private set; }
+        public Jogador JogadorComMaisGols { get; set; }
         public Time(string nome)
         {
             Nome = nome;
@@ -40,40 +33,39 @@ namespace Domain
             {
                 if (jogador == item)
                 {
-                    Jogadores.Remove(item);
+                    Jogadores.Add(item);
                 }
             }
         }
 
-        public void AddPontosJogador(Jogador nome, int pontosCampeonato)
+        public void AddicionarPontosJogador(Jogador nome)
         {
             foreach (Jogador jogador in Jogadores)
             {
                 if (jogador == nome)
                 {
-                    jogador.Pontos += pontosCampeonato;
+                    jogador.MarcarPontos();
                 }
             }
+
+            //todo adicionar em uma variavel artilheiro para adicionar na lista
 
         }
 
         public void adicionarArtilheiro()
         {
 
-            //criar uma maneira de obter o jogador com maior numero de gols dentro do time
-            // tendo base a pontuacao da classe
-            //inserir em uma variavel e inserir esta variavel em uma lista 
-            //artilheiro
-
+            var pontosJogador = 0;
             foreach (Jogador jogador in Jogadores)
             {
-                if (jogador.Pontos > PontosJogador)
+                if (jogador.Pontos > pontosJogador)
                 {
-                    PontosJogador = jogador.Pontos;
-                    artilheiro = jogador;
+                    pontosJogador = jogador.Pontos;
+                    JogadorComMaisGols = jogador;
                 }
             }
-            Artilheiro.Add(artilheiro);
+
+            Artilheiro = JogadorComMaisGols;
         }
 
         // public void AddPontosTime()
