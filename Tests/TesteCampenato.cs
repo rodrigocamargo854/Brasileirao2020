@@ -79,8 +79,26 @@ namespace Tests
 
             //then
             Assert.NotNull(result);
+        }
+        public void Deve_Retornar_Criacao_De_Campeonato_Se_O_Usuario_For_Cbf()
+        {
 
+            // !cria o time
+            //given
+            var campeonato = new Campeonato();
 
+            //criação de usuario para validacao da inserção de times
+            var cbf = new Cbf("Administrador");//usuario cbf para validar a inserção de dados
+
+            //when
+            //Metodo criado no escopo gerador de jogadores
+            var times = campeonato.iniciarCampeonato(cbf);
+
+            // todo entrar com listTimes e usuarios
+            var result = campeonato.GerarPrimeiraRodada(new Cbf ("Adm") );
+
+            //then
+            Assert.Equal(result);
         }
 
 
