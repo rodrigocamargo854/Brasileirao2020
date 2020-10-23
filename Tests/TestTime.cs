@@ -51,6 +51,7 @@ namespace Tests
 
             Assert.True(jogadores);
 
+<<<<<<< HEAD
         }
 
         [Fact]
@@ -85,6 +86,10 @@ namespace Tests
 
             
         }
+=======
+
+        }
+>>>>>>> a86b5c39e99f785af9617a9ff8637273d3b34143
 
         [Fact]
         public void Deve_Retornar_Jogador_Artilheiro_Quando_Adicionado_ListaDeJogadores_Com_Gols()
@@ -106,7 +111,8 @@ namespace Tests
 
             //then
 
-            Assert.Equal("SpiderMan", atletico.Artilheiro.Nome);
+            Assert.Equal("SpiderMan",atletico.Artilheiro.Nome);
+
 
         }
         //////////////////////////////////////////////////////////////////////////////////////////////
