@@ -5,18 +5,18 @@ namespace Domain {
     {
        public Guid Id { get;  private set; } = new Guid();
         public string Nome { get; set; }
-        public int Pontos { get; private set;}
+        public int Gols { get; private set;}
 
-        public Jogador(Guid id, string nome, int pontos)
+        public Jogador(string nome)
         {
-            Id = id;
-            Nome = nome;
-            Pontos = pontos;
+            Id = Guid.NewGuid();
+            Nome=nome;
+            
         }
 
-        public void MarcarPontos()
+        public void MarcarGols()
         {
-            Pontos++;
+            Gols++;
         }
 
         

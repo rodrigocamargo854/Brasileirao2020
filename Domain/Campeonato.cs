@@ -13,7 +13,7 @@ namespace Domain
 
 
         //Metodo para misturar os times dentro de uma lista
-        private void embaralhar(List<Time> times)
+        private List<Time> embaralhar(List<Time> times)
         {
             // cria um objeto da classe Random
             Random rnd = new Random();
@@ -25,7 +25,9 @@ namespace Domain
                 var temp = times[i];
                 times[i] = times[a];
                 times[a] = temp;
+
             }
+            return times;
         }
 
 
@@ -64,25 +66,46 @@ namespace Domain
 
         }
 
-        public List<Time[,]> GerarRodadas(Usuario usuario, int numeroRodadas)
+        public void AdicionarPontosAoTime(Usuario usuario, string nomeTime)
+        {
+            //como é uma variavel de referencia é preciso utilizar o is
+            // se fosse variaveis normais, utilizaria ==
+            // Como é um objeto do tipo Usuario ele reconhece automaticamente
+            // a herança
+
+            if (usuario is Cbf)
+            {
+                foreach (Time time in Times)
+                {
+                    if (time.Nome == nomeTime)
+                    {
+                        time.Pontos += 1;
+                    }
+                }
+            }
+
+        }
+        public List<Time[,]> GerarRodadas(Usuario usuario, int numeroRodadas, string nomeTime)
         {
 
             var rodadas = new List<Time[,]>();
             Time[,] tabelaConflitos = new Time[4, 2];
-            //recebe a conversão times em array
-            Time[] arrayTimes = Times.ToArray();
 
 
             if (usuario is Cbf)
             {
-                embaralhar(Times);
 
                 for (int k = 0; k < numeroRodadas; k++)
                 {
-                    //objeto do tipo Random para misturar os times
+
+
+                    var timesRandomicos = embaralhar(Times).ToArray();
+
+                    // var timesRandomicos = Times.OrderBy(time => time.Pontos).ToArray();
+
+                    Time[] arrayTimes = timesRandomicos;
 
                     int s = -1;
-
                     for (int i = 0; i < arrayTimes.Length / 2; i++)
                     {
 
@@ -92,9 +115,12 @@ namespace Domain
                             tabelaConflitos[i, j] = arrayTimes[++s];
 
                         }
+
                     }
                     rodadas.Add(tabelaConflitos);
+
                 }
+
                 return rodadas;
             }
             return rodadas = null;

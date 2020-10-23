@@ -6,9 +6,11 @@ namespace Domain
     public class Time
     {
         public List<Jogador> Jogadores { get; private set; } = new List<Jogador>();
-        public Jogador Artilheiro { get; private set; } 
+        public Jogador Artilheiro { get; private set; }
 
         public string Nome { get; private set; }
+        public int Pontos { get;  set; }
+
         public Jogador JogadorComMaisGols { get; set; }
         public Time(string nome)
         {
@@ -44,7 +46,7 @@ namespace Domain
             {
                 if (jogador == nome)
                 {
-                    jogador.MarcarPontos();
+                    jogador.MarcarGols();
                 }
             }
 
@@ -52,20 +54,21 @@ namespace Domain
 
         }
 
-        public void adicionarArtilheiro()
+        public Jogador adicionarArtilheiro()
         {
 
             var pontosJogador = 0;
             foreach (Jogador jogador in Jogadores)
             {
-                if (jogador.Pontos > pontosJogador)
+                if (jogador.Gols > pontosJogador)
                 {
-                    pontosJogador = jogador.Pontos;
+                    pontosJogador = jogador.Gols;
                     JogadorComMaisGols = jogador;
                 }
             }
 
             Artilheiro = JogadorComMaisGols;
+            return Artilheiro;
         }
 
         // public void AddPontosTime()

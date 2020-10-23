@@ -29,9 +29,9 @@ namespace Tests
 
             Assert.True(result);
             Assert.NotEmpty(campeonato.Times);
-            
+
         }
-        
+
         [Fact]
         public void Deve_retornar_Falso_Se_O_Usuarios_Nao_for_Cbf()
         {
@@ -47,7 +47,7 @@ namespace Tests
             //when
             //Metodo criado no escopo gerador de jogadores
             var result = campeonato.AdicionarTimes(Time, torcedor);
-            
+
 
             //then
 
@@ -55,7 +55,7 @@ namespace Tests
             Assert.Empty(campeonato.Times);
 
         }
-        
+
 
         [Fact]
         public void Deve_Retornar_Tabela_De__Acordo_com_Numero_de_Conflitos_e_Se_Usuario_for_Cbf_()
@@ -74,12 +74,18 @@ namespace Tests
             //Metodo criado no escopo gerador de jogadores
             var times = campeonato.AdicionarTimes(Time, cbf);
 
-            // todo entrar com listTimes e usuarios
-            var result = campeonato.GerarRodadas(new Cbf ("Adm") , 6);
+            // todo entrar com listadeTimes e usuario
+            
+
+            var result = campeonato.GerarRodadas(new Cbf("Adm"), 6,"Atletico");
+
+
+
+
 
             //then
             Assert.NotNull(result);
-            Assert.Equal(6,result.Count);
+            Assert.Equal(6, result.Count);
 
         }
 
@@ -97,7 +103,7 @@ namespace Tests
             var Time6 = new Time("Atletico");
             var Time7 = new Time("Ituano");
             var Time8 = new Time("Portuguesa");
-            
+
             Time2.adicionarJogador(GeradorListaJogadores());
             Time3.adicionarJogador(GeradorListaJogadores());
             Time4.adicionarJogador(GeradorListaJogadores());
@@ -119,24 +125,23 @@ namespace Tests
 
             var jogadores = new List<Jogador>()
             {
-                new JogadorCampeonato (new Guid(),"SpiderMan",5),
-                new JogadorCampeonato (new Guid(),"Wolverine",2),
-                new JogadorCampeonato (new Guid(),"Hulk",0),
-                new JogadorCampeonato (new Guid(),"Thor",0),
-                new JogadorCampeonato (new Guid(),"Tony stark",1),
-                new JogadorCampeonato (new Guid(),"Doutor Manhatan",2),
-                new JogadorCampeonato (new Guid(),"Rosarch",0),
-                new JogadorCampeonato (new Guid(),"Hellboy",0),
-                new JogadorCampeonato (new Guid(),"Punisher",0),
-                new JogadorCampeonato (new Guid(),"Spawn",0),
-                new JogadorCampeonato (new Guid(),"Squal",0),
-                new JogadorCampeonato (new Guid(),"Link",0),
-                new JogadorCampeonato (new Guid(),"Solid Snake",0),
-                new JogadorCampeonato (new Guid(),"Jaspion",0),
-                new JogadorCampeonato (new Guid(),"Bruce Lee",1),
-                new JogadorCampeonato (new Guid(),"Jason",0)
+                new JogadorCampeonato ("SpiderMan"),
+                new JogadorCampeonato ("Wolverine"),
+                new JogadorCampeonato ("Thor"),
+                new JogadorCampeonato ("Tony stark"),
+                new JogadorCampeonato ("Doutor Manhatan"),
+                new JogadorCampeonato ("Rosarch"),
+                new JogadorCampeonato ("Hellboy"),
+                new JogadorCampeonato ("Hulk"),
+                new JogadorCampeonato ("Punisher"),
+                new JogadorCampeonato ("Spawn"),
+                new JogadorCampeonato ("Squal"),
+                new JogadorCampeonato ("Link"),
+                new JogadorCampeonato ("Solid Snake"),
+                new JogadorCampeonato ("Jaspion"),
+                new JogadorCampeonato ("Bruce Lee"),
+                new JogadorCampeonato ("Jason")
             };
-
             return jogadores;
         }
 

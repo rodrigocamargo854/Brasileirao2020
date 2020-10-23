@@ -12,25 +12,25 @@ namespace Tests
         {
 
             var jogadores = new List<Jogador>()
-            {
-                new JogadorCampeonato (new Guid(),"SpiderMan",5),
-                new JogadorCampeonato (new Guid(),"Wolverine",2),
-                new JogadorCampeonato (new Guid(),"Hulk",0),
-                new JogadorCampeonato (new Guid(),"Thor",0),
-                new JogadorCampeonato (new Guid(),"Tony stark",1),
-                new JogadorCampeonato (new Guid(),"Doutor Manhatan",2),
-                new JogadorCampeonato (new Guid(),"Rosarch",0),
-                new JogadorCampeonato (new Guid(),"Hellboy",0),
-                new JogadorCampeonato (new Guid(),"Punisher",0),
-                new JogadorCampeonato (new Guid(),"Spawn",0),
-                new JogadorCampeonato (new Guid(),"Squal",0),
-                new JogadorCampeonato (new Guid(),"Link",0),
-                new JogadorCampeonato (new Guid(),"Solid Snake",0),
-                new JogadorCampeonato (new Guid(),"Jaspion",0),
-                new JogadorCampeonato (new Guid(),"Bruce Lee",1),
-                new JogadorCampeonato (new Guid(),"Jason",0)
-            };
 
+            {  
+                new JogadorCampeonato ("SpiderMan"),
+                new JogadorCampeonato ("Wolverine"),
+                new JogadorCampeonato ("Hulk"),
+                new JogadorCampeonato ("Thor"),
+                new JogadorCampeonato ("Tony stark"),
+                new JogadorCampeonato ("Doutor Manhatan"),
+                new JogadorCampeonato ("Rosarch"),
+                new JogadorCampeonato ("Hellboy"),
+                new JogadorCampeonato ("Punisher"),
+                new JogadorCampeonato ("Spawn"),
+                new JogadorCampeonato ("Squal"),
+                new JogadorCampeonato ("Link"),
+                new JogadorCampeonato ("Solid Snake"),
+                new JogadorCampeonato ("Jaspion"),
+                new JogadorCampeonato ("Bruce Lee"),
+                new JogadorCampeonato ("Jason")
+            };
             return jogadores;
         }
 
@@ -62,7 +62,7 @@ namespace Tests
 
             //when
             var jogadores = atletico.adicionarJogador(GeradorListaJogadores());
-            var jogadorASerRemovido = new Jogador(new Guid(), "SpiderMan", 5);
+            var jogadorASerRemovido = new Jogador("SpiderMan");
 
             atletico.removerJogador(jogadorASerRemovido);
 
@@ -79,17 +79,15 @@ namespace Tests
 
             //when
             var jogadores = atletico.adicionarJogador(GeradorListaJogadores());
-            var jogadorQueMarcouGol = new Jogador(new Guid(), "SpiderMan", 5);
 
-            atletico.AddicionarPontosJogador(jogadorQueMarcouGol);
 
             //then
 
-            Assert.Equal(6, jogadorQueMarcouGol.Pontos);
+            
         }
 
         [Fact]
-        public void Deve_Retornar_Jogador_Artilheiro_Quando_Adicionado_ListaDEJogadores_Com_Gols()
+        public void Deve_Retornar_Jogador_Artilheiro_Quando_Adicionado_ListaDeJogadores_Com_Gols()
         {
 
             // a criacao do time 'igual ao criação do candidato, para testar
@@ -99,8 +97,12 @@ namespace Tests
             var atletico = new Time("Atletico");
 
             //when
+            //jogadores do atletico
             var jogadores = atletico.adicionarJogador(GeradorListaJogadores());
-            atletico.adicionarArtilheiro();
+
+            var jogadorQueMarcouGol = new Jogador("SpiderMan");
+            atletico.AddicionarPontosJogador(jogadorQueMarcouGol);
+            var result = atletico.adicionarArtilheiro();
 
             //then
 
