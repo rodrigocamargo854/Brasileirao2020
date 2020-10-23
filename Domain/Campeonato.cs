@@ -102,7 +102,7 @@ namespace Domain
                     var timesRandomicos = embaralhar(Times).ToArray();
 
                     // var timesRandomicos = Times.OrderBy(time => time.Pontos).ToArray();
-
+                    //memdoto gerar partidas precisa gerar partidas diferentes
                     Time[] arrayTimes = timesRandomicos;
 
                     int s = -1;
