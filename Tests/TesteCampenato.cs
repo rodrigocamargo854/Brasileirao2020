@@ -74,22 +74,17 @@ namespace Tests
             //Metodo criado no escopo gerador de jogadores
             var times = campeonato.AdicionarTimes(Time, cbf);
 
-            // todo entrar com listadeTimes e usuario
-            
-
-            var result = campeonato.GerarRodadas(new Cbf("Adm"), 6,"Atletico");
-
-
-
-
+            // todo entrar com listadeTimes, numero de rodadas e usuario
+            var result = campeonato.GerarRodadas(new Cbf("Adm"));
+            AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
 
             //then
             Assert.NotNull(result);
-            Assert.Equal(6, result.Count);
+            Assert.Equal(3, result.Count);
 
         }
 
-        
+
 
 
         // !Metodo criador de times

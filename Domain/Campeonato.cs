@@ -13,21 +13,21 @@ namespace Domain
 
 
         //Metodo para misturar os times dentro de uma lista
-        private List<Time> embaralhar(List<Time> times)
+        private List<Time> embaralhar(List<Time> listaDeTimes)
         {
             // cria um objeto da classe Random
             Random rnd = new Random();
 
             // a lista de times
-            for (int i = 0; i < times.Count; i++)
+            for (int i = 0; i < listaDeTimes.Count; i++)
             {
-                int a = rnd.Next(times.Count);
-                var temp = times[i];
-                times[i] = times[a];
-                times[a] = temp;
+                int a = rnd.Next(listaDeTimes.Count);
+                var temp = listaDeTimes[i];
+                listaDeTimes[i] = listaDeTimes[a];
+                listaDeTimes[a] = temp;
 
             }
-            return times;
+            return listaDeTimes;
         }
 
 
@@ -55,14 +55,13 @@ namespace Domain
             // Como é um objeto do tipo Usuario ele reconhece automaticamente
             // a herança
 
-            if (usuario is Cbf)
+            if (InicioCampeonato || !(usuario is Cbf))
             {
-                Times = times;
-
-                return true;
+                return false;
             }
 
-            return false;
+            Times = times;
+            return true;
 
         }
 
@@ -85,9 +84,9 @@ namespace Domain
             }
 
         }
-        public List<Time[,]> GerarRodadas(Usuario usuario, int numeroRodadas, string nomeTime)
+        public List<Time[,]> GerarRodadas(Usuario usuario)
         {
-
+                //todo arrumar a logica de times aleatorio 1 para todos
             var rodadas = new List<Time[,]>();
             Time[,] tabelaConflitos = new Time[4, 2];
 
@@ -95,31 +94,28 @@ namespace Domain
             if (usuario is Cbf)
             {
 
-                for (int k = 0; k < numeroRodadas; k++)
-                {
+               
+                    var conflitos = Times.ToArray();
 
-
-                    var timesRandomicos = embaralhar(Times).ToArray();
-
-                    // var timesRandomicos = Times.OrderBy(time => time.Pontos).ToArray();
+                    // var timesRandomicos = Times.OrderByDescending(time => time.Pontos).ToArray();
                     //memdoto gerar partidas precisa gerar partidas diferentes
-                    Time[] arrayTimes = timesRandomicos;
+
+                    Time[] arrayTimes = conflitos;
 
                     int s = -1;
                     for (int i = 0; i < arrayTimes.Length / 2; i++)
                     {
-
                         for (int j = 0; j < 2; j++)
                         {
-
                             tabelaConflitos[i, j] = arrayTimes[++s];
-
                         }
-
+                        rodadas.Add(tabelaConflitos);
                     }
-                    rodadas.Add(tabelaConflitos);
+                    Times = embaralhar(arrayTimes.ToList());
 
-                }
+
+                
+
 
                 return rodadas;
             }

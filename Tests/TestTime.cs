@@ -51,45 +51,8 @@ namespace Tests
 
             Assert.True(jogadores);
 
-<<<<<<< HEAD
-        }
-
-        [Fact]
-        public void Deve_Remover_Um_Jogador_que_Possui_O_mesmo_Nome_Passado()
-        {
-
-
-            var atletico = new Time("Atletico");
-
-            //when
-            var jogadores = atletico.adicionarJogador(GeradorListaJogadores());
-            var jogadorASerRemovido = new Jogador("SpiderMan");
-
-            atletico.removerJogador(jogadorASerRemovido);
-
-            //then
-
-            Assert.DoesNotContain(jogadorASerRemovido, atletico.Jogadores);
 
         }
-        [Fact]
-
-        public void Deve_Incrementar_Os_Gols_Do_Jogador_Passado_Como_Parametro()
-        {
-            var atletico = new Time("Atletico");
-
-            //when
-            var jogadores = atletico.adicionarJogador(GeradorListaJogadores());
-
-
-            //then
-
-            
-        }
-=======
-
-        }
->>>>>>> a86b5c39e99f785af9617a9ff8637273d3b34143
 
         [Fact]
         public void Deve_Retornar_Jogador_Artilheiro_Quando_Adicionado_ListaDeJogadores_Com_Gols()
