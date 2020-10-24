@@ -5,12 +5,10 @@ using System.Linq;
 namespace Domain
 {
 
-
     public class Campeonato
     {
-        public List<Time> Times { get; protected set; } = new List<Time>();//inicializa vazia
+        public List<Time> Times { get; protected set; } = new List<Time>(); //inicializa vazia
         public bool InicioCampeonato { get; protected set; } = false;
-
 
         //Metodo para misturar os times dentro de uma lista
         private List<Time> embaralhar(List<Time> listaDeTimes)
@@ -29,7 +27,6 @@ namespace Domain
             }
             return listaDeTimes;
         }
-
 
         // soment o usuario do tipo Cbf tem permissao para iniciar o Campeonato
         //caso contrario o metodo retorna o defaut da prop InicioCampeonato(false)
@@ -84,50 +81,77 @@ namespace Domain
             }
 
         }
-        public List<Time[,]> GerarRodadas(Usuario usuario)
+        // public List<Time[,]> GerarRodadas(Usuario usuario)
+        public List<(Time, Time)> GerarRodadas(Usuario usuario)
         {
-                //todo arrumar a logica de times aleatorio 1 para todos
-            var rodadas = new List<Time[,]>();
+            //todo arrumar a logica de times aleatorio 1 para todos
             Time[,] tabelaConflitos = new Time[4, 2];
+            var rodadas = new List<Time[,]>();
+
+            var tabelaRodadas = new List<(Time, Time)> { };
+            var testeRodadas = new Time[] { };
 
 
             if (usuario is Cbf)
             {
 
-               
-                    var conflitos = Times.ToArray();
+                var conflitos = Times.ToArray();
 
-                    // var timesRandomicos = Times.OrderByDescending(time => time.Pontos).ToArray();
-                    //memdoto gerar partidas precisa gerar partidas diferentes
+                // var timesRandomicos = Times.OrderByDescending(time => time.Pontos).ToArray();
+                //memdoto gerar partidas precisa gerar partidas diferentes
 
-                    Time[] arrayTimes = conflitos;
+                // Time[] arrayTimes = conflitos;
 
-                    int s = -1;
-                    for (int i = 0; i < arrayTimes.Length / 2; i++)
+                // int s = 0;
+                // for (int i = 0; i < arrayTimes.Length / 2; i++)
+                // {
+                //     for (int j = 0; j < 2; j++)
+                //     {
+                //         tabelaConflitos[i, j] = arrayTimes[s++];
+                //     }
+                //     rodadas.Add(tabelaConflitos);
+                // }
+                // Times = embaralhar(arrayTimes.ToList());
+
+                Time[] arrayTimes = conflitos;
+
+                for (int i = 0; i < arrayTimes.Length; i++)
+                {
+
+                    for (int j = 1; j < arrayTimes.Length; j++)
                     {
-                        for (int j = 0; j < 2; j++)
+                        if (arrayTimes[i] != arrayTimes[j])
                         {
-                            tabelaConflitos[i, j] = arrayTimes[++s];
+                            tabelaRodadas.Add((arrayTimes[i], arrayTimes[j]));
                         }
-                        rodadas.Add(tabelaConflitos);
+
                     }
-                    Times = embaralhar(arrayTimes.ToList());
+
+                    var timeList = arrayTimes.ToList();
+                    timeList.RemoveAt(i);
+                    arrayTimes = timeList.ToArray();
 
 
-                
+                }
 
+                // int s = -1;
+                // for (int i = 0; i < 11; i++)
+                // {
+                //     for (int j = 0; j < 2; j++)
+                //     {
+                //         tabelaConflitos[i, j] = arrayTimes[++s];
+                //     }
+                //     rodadas.Add(tabelaConflitos);
+                // }
 
-                return rodadas;
+                return tabelaRodadas;
             }
-            return rodadas = null;
+            return tabelaRodadas = null;
 
         }
-
-
 
     }
 }
 
 //!Todo  Regra de necogio usuario torcedor
-//!Todo Metodos 
-
+//!Todo Metodos
