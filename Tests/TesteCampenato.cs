@@ -88,9 +88,12 @@ namespace Tests
 
             // !cria o time
             //given
+            var tabelaDeResultados = new Campeonato();
+            var assert = new List<((string, int), (string, int))>();
+
             var campeonato = new Campeonato();
             var Time = GeradorListaDeTimes();
-
+            
             //criação de usuario para validacao da inserção de times
             var cbf = new Cbf("Administrador");//usuario cbf para validar a inserção de dados
 
@@ -98,10 +101,9 @@ namespace Tests
             //when
             //Metodo criado no escopo gerador de jogadores
             var times = campeonato.AdicionarTimes(Time, cbf);
+            var rodadasGeradas = campeonato.GerarRodadas(new Cbf("Adm"));
 
-            // todo entrar com listadeTimes, numero de rodadas e usuario
-            var result = campeonato.GerarRodadas(new Cbf("Adm"));
-
+            //Adicionando pontos aos times
             AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
             AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
             AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
@@ -122,13 +124,11 @@ namespace Tests
             AdicionarPontosAoTime(new Cbf("Admin"), "Flamengo");
             AdicionarPontosAoTime(new Cbf("Admin"), "Atletico");
             AdicionarPontosAoTime(new Cbf("Admin"), "Palmeiras");
-
-
-
+            
 
             //then
-            Assert.NotNull(result);
-            Assert.Equal(28, result.Count);
+            
+            Assert.Equal(assert, tabelaDeResultados.RetornarTabelaResultados(cbf));
 
         }
 

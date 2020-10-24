@@ -52,7 +52,7 @@ namespace Domain
             // Como é um objeto do tipo Usuario ele reconhece automaticamente
             // a herança
 
-            if (InicioCampeonato || !(usuario is Cbf))
+            if (!(usuario is Cbf))
             {
                 return false;
             }
@@ -115,7 +115,7 @@ namespace Domain
 
                 Time[] arrayTimes = conflitos;
 
-                for (int i = 0; i < arrayTimes.Length; i++)
+                for (int i = 0; i < arrayTimes.Length/2; i++)
                 {
 
                     for (int j = 0; j < arrayTimes.Length; j++)
@@ -154,11 +154,8 @@ namespace Domain
         public List<((string, int), (string, int))> RetornarTabelaResultados(Usuario usuario)
         {
             //todo arrumar a logica de times aleatorio 1 para todos
-            Time[,] tabelaConflitos = new Time[4, 2];
-            var rodadas = new List<Time[,]>();
 
             var tabelaDePontosDeCadaPartida = new List<((string, int), (string, int))> { };
-            var testeRodadas = new Time[] { };
 
 
             if (usuario is Cbf)
@@ -168,7 +165,7 @@ namespace Domain
 
                 Time[] arrayTimes = conflitos;
 
-                for (int i = 0; i < arrayTimes.Length; i++)
+                for (int i = 0; i < arrayTimes.Length/2; i++)
                 {
 
                     for (int j = 1; j < arrayTimes.Length; j++)
