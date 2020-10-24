@@ -122,22 +122,22 @@ namespace Tests
 
             var jogadores = new List<Jogador>()
             {
-                new JogadorCampeonato ("SpiderMan"),
-                new JogadorCampeonato ("Wolverine"),
-                new JogadorCampeonato ("Thor"),
-                new JogadorCampeonato ("Tony stark"),
-                new JogadorCampeonato ("Doutor Manhatan"),
-                new JogadorCampeonato ("Rosarch"),
-                new JogadorCampeonato ("Hellboy"),
-                new JogadorCampeonato ("Hulk"),
-                new JogadorCampeonato ("Punisher"),
-                new JogadorCampeonato ("Spawn"),
-                new JogadorCampeonato ("Squal"),
-                new JogadorCampeonato ("Link"),
-                new JogadorCampeonato ("Solid Snake"),
-                new JogadorCampeonato ("Jaspion"),
-                new JogadorCampeonato ("Bruce Lee"),
-                new JogadorCampeonato ("Jason")
+                new JogadorCampeonato ("Galvao"),
+                new JogadorCampeonato ("Bruno"),
+                new JogadorCampeonato ("Jorge salvador"),
+                new JogadorCampeonato ("Vamputo"),
+                new JogadorCampeonato ("Jorginho satan"),
+                new JogadorCampeonato ("Dinamite"),
+                new JogadorCampeonato ("fogonorabo"),
+                new JogadorCampeonato ("ligeirinho"),
+                new JogadorCampeonato ("CaiCai"),
+                new JogadorCampeonato ("Banheirinha"),
+                new JogadorCampeonato ("deixaQeuEuChuto"),
+                new JogadorCampeonato ("PassaPMim"),
+                new JogadorCampeonato ("MarcaMarca"),
+                new JogadorCampeonato ("Michele"),
+                new JogadorCampeonato ("caixeta"),
+                new JogadorCampeonato ("Henrique Alves")
             };
             return jogadores;
         }
