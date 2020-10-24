@@ -77,6 +77,7 @@ namespace Tests
             // todo entrar com listadeTimes, numero de rodadas e usuario
             var result = campeonato.GerarRodadas(new Cbf("Adm"));
             //then
+            //Cada time joga com todos times, em casa e fora de casa
             Assert.NotNull(result);
             Assert.Equal(28, result.Count);
 

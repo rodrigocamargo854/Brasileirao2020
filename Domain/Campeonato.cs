@@ -118,18 +118,19 @@ namespace Domain
                 for (int i = 0; i < arrayTimes.Length; i++)
                 {
 
-                    for (int j = 1; j < arrayTimes.Length; j++)
+                    for (int j = 0; j < arrayTimes.Length; j++)
                     {
                         if (arrayTimes[i] != arrayTimes[j])
                         {
                             tabelaRodadas.Add((arrayTimes[i], arrayTimes[j]));
                         }
-
+                        
                     }
 
-                    var timeList = arrayTimes.ToList();
-                    timeList.RemoveAt(i);
-                    arrayTimes = timeList.ToArray();
+                    //var timeList = arrayTimes.ToList();
+                    //timeList.RemoveAt(i);
+                    //arrayTimes = timeList.ToArray();
+
 
 
                 }
@@ -150,9 +151,50 @@ namespace Domain
 
         }
 
-         public List<(Time, Time)> RetornarTabelaResultados(Usuario usuario)
+        public List<((string, int), (string, int))> RetornarTabelaResultados(Usuario usuario)
         {
-            
+            //todo arrumar a logica de times aleatorio 1 para todos
+            Time[,] tabelaConflitos = new Time[4, 2];
+            var rodadas = new List<Time[,]>();
+
+            var tabelaDePontosDeCadaPartida = new List<((string, int), (string, int))> { };
+            var testeRodadas = new Time[] { };
+
+
+            if (usuario is Cbf)
+            {
+
+                var conflitos = Times.ToArray();
+
+                Time[] arrayTimes = conflitos;
+
+                for (int i = 0; i < arrayTimes.Length; i++)
+                {
+
+                    for (int j = 1; j < arrayTimes.Length; j++)
+                    {
+
+                        tabelaDePontosDeCadaPartida.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos)));
+                    }
+
+
+
+
+                }
+
+                // int s = -1;
+                // for (int i = 0; i < 11; i++)
+                // {
+                //     for (int j = 0; j < 2; j++)
+                //     {
+                //         tabelaConflitos[i, j] = arrayTimes[++s];
+                //     }
+                //     rodadas.Add(tabelaConflitos);
+                // }
+
+                return tabelaDePontosDeCadaPartida;
+            }
+            return tabelaDePontosDeCadaPartida = null;
 
         }
 
