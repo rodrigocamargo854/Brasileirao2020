@@ -150,6 +150,12 @@ namespace Domain
 
         }
 
+         public List<(Time, Time)> RetornarTabelaResultados(Usuario usuario)
+        {
+            
+
+        }
+
     }
 }
 
