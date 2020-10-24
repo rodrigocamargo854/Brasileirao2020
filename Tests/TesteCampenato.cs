@@ -76,11 +76,11 @@ namespace Tests
 
             // todo entrar com listadeTimes, numero de rodadas e usuario
             var result = campeonato.GerarRodadas(new Cbf("Adm"));
-            AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
+            // AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
 
             //then
             Assert.NotNull(result);
-            Assert.Equal(3, result.Count);
+            Assert.Equal(28, result.Count);
 
         }
 
