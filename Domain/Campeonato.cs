@@ -52,7 +52,7 @@ namespace Domain
             // Como é um objeto do tipo Usuario ele reconhece automaticamente
             // a herança
 
-            if (!(usuario is Cbf))
+            if (!(usuario is Cbf) || !InicioCampeonato)
             {
                 return false;
             }
@@ -71,13 +71,8 @@ namespace Domain
 
             if (usuario is Cbf)
             {
-                foreach (Time time in Times)
-                {
-                    if (time.Nome == nomeTime)
-                    {
-                        time.Pontos += 1;
-                    }
-                }
+                Times.Find(time => time.Nome == nomeTime).Pontos++;
+            
             }
 
         }
@@ -95,8 +90,6 @@ namespace Domain
             if (usuario is Cbf)
             {
 
-                var conflitos = Times.ToArray();
-
                 // var timesRandomicos = Times.OrderByDescending(time => time.Pontos).ToArray();
                 //memdoto gerar partidas precisa gerar partidas diferentes
 
@@ -112,7 +105,7 @@ namespace Domain
                 //     rodadas.Add(tabelaConflitos);
                 // }
                 // Times = embaralhar(arrayTimes.ToList());
-
+                var conflitos = Times.ToArray();
                 Time[] arrayTimes = conflitos;
 
                 for (int i = 0; i < arrayTimes.Length/2; i++)
@@ -126,7 +119,7 @@ namespace Domain
                         }
                         
                     }
-
+                    //Descomenta caso queira que os times não joguem fora de casa
                     //var timeList = arrayTimes.ToList();
                     //timeList.RemoveAt(i);
                     //arrayTimes = timeList.ToArray();
@@ -151,32 +144,47 @@ namespace Domain
 
         }
 
-        public List<((string, int), (string, int))> RetornarTabelaResultados(Usuario usuario)
+         public List<((string,int),(string,int))> retornarTabelaDeResultados(Usuario usuario)
         {
             //todo arrumar a logica de times aleatorio 1 para todos
+            Time[,] tabelaConflitos = new Time[4, 2];
+            var rodadas = new List<Time[,]>();
 
-            var tabelaDePontosDeCadaPartida = new List<((string, int), (string, int))> { };
-
-
-            if (usuario is Cbf)
+            var tabelaRodadas = new List<((string,int),(string,int))>{ };
+            if (usuario is Torcedor || usuario is Cbf)
             {
 
-                var conflitos = Times.ToArray();
+                // var timesRandomicos = Times.OrderByDescending(time => time.Pontos).ToArray();
+                //memdoto gerar partidas precisa gerar partidas diferentes
 
+                // Time[] arrayTimes = conflitos;
+
+                // int s = 0;
+                // for (int i = 0; i < arrayTimes.Length / 2; i++)
+                // {
+                //     for (int j = 0; j < 2; j++)
+                //     {
+                //         tabelaConflitos[i, j] = arrayTimes[s++];
+                //     }
+                //     rodadas.Add(tabelaConflitos);
+                // }
+                // Times = embaralhar(arrayTimes.ToList());
+                var conflitos = Times.ToArray();
                 Time[] arrayTimes = conflitos;
 
                 for (int i = 0; i < arrayTimes.Length/2; i++)
                 {
-
-                    for (int j = 1; j < arrayTimes.Length; j++)
+                    for (int j = 0; j < arrayTimes.Length; j++)
                     {
-
-                        tabelaDePontosDeCadaPartida.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos)));
+                        if (arrayTimes[i] != arrayTimes[j])
+                        {
+                            tabelaRodadas.Add(((arrayTimes[i].Nome,arrayTimes[i].Pontos),(arrayTimes[j].Nome,arrayTimes[j].Pontos)));
+                        }
                     }
-
-
-
-
+                    //Descomenta caso queira que os times não joguem fora de casa
+                    //var timeList = arrayTimes.ToList();
+                    //timeList.RemoveAt(i);
+                    //arrayTimes = timeList.ToArray();
                 }
 
                 // int s = -1;
@@ -189,9 +197,9 @@ namespace Domain
                 //     rodadas.Add(tabelaConflitos);
                 // }
 
-                return tabelaDePontosDeCadaPartida;
+                return tabelaRodadas;
             }
-            return tabelaDePontosDeCadaPartida = null;
+            return tabelaRodadas = null;
 
         }
 

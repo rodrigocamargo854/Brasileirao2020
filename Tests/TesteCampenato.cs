@@ -56,9 +56,33 @@ namespace Tests
 
         }
 
+        [Fact]
+        public void Deve_retornar_Pontos_Adicionados_Ao_Time_Passado_Como_Parametro()
+        {
+
+            // !cria o time
+            //given
+            var campeonato = new Campeonato();
+            var Time = GeradorListaDeTimes();
+            //criação de usuario para validacao da inserção de times
+            var torcedor = new Torcedor("Torcedor");//usuario cbf para validar a inserção de dados
+
+
+            //when
+            //Metodo criado no escopo gerador de jogadores
+            var result = campeonato.AdicionarTimes(Time, torcedor);
+
+
+            //then
+
+            Assert.False(result);
+            Assert.Empty(campeonato.Times);
+
+        }
+
 
         [Fact]
-        public void Deve_Retornar_Tabela_de_Conflitos_de_Acordo_com_numero_de_times_e_Se_Usuario_for_Cbf_()
+        public void Deve_Retornar_Ponto_ao_Adicionado_Ao_Time_Passado_Como_Parametro()
         {
 
             // !cria o time
@@ -72,14 +96,15 @@ namespace Tests
 
             //when
             //Metodo criado no escopo gerador de jogadores
-            var times = campeonato.AdicionarTimes(Time, cbf);
+            campeonato.AdicionarTimes(Time, cbf);
+            
+            AdicionarPontosAoTime(cbf,"Santos");
+            AdicionarPontosAoTime(cbf,"Santos");
 
-            // todo entrar com listadeTimes, numero de rodadas e usuario
-            var result = campeonato.GerarRodadas(new Cbf("Adm"));
+            var result = Time.Find(time => time.Nome == "Santos").Pontos ;
             //then
             //Cada time joga com todos times, em casa e fora de casa
-            Assert.NotNull(result);
-            Assert.Equal(28, result.Count);
+            Assert.Equal(2,result );
 
         }
         [Fact]
@@ -93,7 +118,7 @@ namespace Tests
 
             var campeonato = new Campeonato();
             var Time = GeradorListaDeTimes();
-            
+
             //criação de usuario para validacao da inserção de times
             var cbf = new Cbf("Administrador");//usuario cbf para validar a inserção de dados
 
@@ -101,34 +126,33 @@ namespace Tests
             //when
             //Metodo criado no escopo gerador de jogadores
             var times = campeonato.AdicionarTimes(Time, cbf);
-            var rodadasGeradas = campeonato.GerarRodadas(new Cbf("Adm"));
+            var rodadasGeradas = campeonato.GerarRodadas(cbf);
 
-            //Adicionando pontos aos times
-            AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Ituano");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Corinthians");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Corinthians");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Corinthians");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Santos");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Flamengo");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Flamengo");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Atletico");
-            AdicionarPontosAoTime(new Cbf("Admin"), "Palmeiras");
-            
+            //Adicionando pontos acbf
+
+            AdicionarPontosAoTime(cbf, "Santos");
+            AdicionarPontosAoTime(cbf, "Santos");
+            AdicionarPontosAoTime(cbf, "Santos");
+            AdicionarPontosAoTime(cbf, "Santos");
+            AdicionarPontosAoTime(cbf, "Santos");
+            AdicionarPontosAoTime(cbf, "Santos");
+            AdicionarPontosAoTime(cbf, "Santos");
+            AdicionarPontosAoTime(cbf, "Santos");
+            AdicionarPontosAoTime(cbf, "Santos");
+            AdicionarPontosAoTime(cbf, "Santos");
+            AdicionarPontosAoTime(cbf, "Ituano");
+            AdicionarPontosAoTime(cbf, "Corinthians");
+            AdicionarPontosAoTime(cbf, "Corinthians");
+            AdicionarPontosAoTime(cbf, "Corinthians");
+            AdicionarPontosAoTime(cbf, "Santos");
+            AdicionarPontosAoTime(cbf, "Flamengo");
+            AdicionarPontosAoTime(cbf, "Flamengo");
+            AdicionarPontosAoTime(cbf, "Atletico");
+            AdicionarPontosAoTime(cbf, "Palmeiras");
 
             //then
-            
-            Assert.Equal(assert, tabelaDeResultados.RetornarTabelaResultados(cbf));
+
+            Assert.Equal(assert, tabelaDeResultados.retornarTabelaDeResultados(cbf));
 
         }
 
