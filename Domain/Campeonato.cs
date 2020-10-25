@@ -7,14 +7,16 @@ namespace Domain
 
     public class Campeonato
     {
-        public List<Time> Times { get; private set; }  
-        
-        private bool InicioCampeonato  = false;
+        public List<Time> Times { get; private set; }
 
-        public Campeonato( )
+        private bool InicioCampeonato = false;
+
+        public bool Empate { get; set; }
+
+        public Campeonato()
         {
             Times = new List<Time>();
-            
+
         }
 
 
@@ -153,16 +155,19 @@ namespace Domain
 
         }
 
-        public List<((string, int), (string, int))> retornarTabelaDeResultados(Usuario usuario)
+        public List<List<((string, int), (string, int))>> retornarTabelaDeResultados(Usuario usuario)
         {
             //todo arrumar a logica de times aleatorio 1 para todos
             Time[,] tabelaConflitos = new Time[4, 2];
             var rodadas = new List<Time[,]>();
+            var ListaDosResultadosPorRodada = new List<List<((string, int), (string, int))>>();
+            
+
 
             var tabelaRodadas = new List<((string, int), (string, int))> { };
             if (usuario is Torcedor || usuario is Cbf)
             {
-
+                //descomenta se quiser gerar partidas randomicas
                 // var timesRandomicos = Times.OrderByDescending(time => time.Pontos).ToArray();
                 //memdoto gerar partidas precisa gerar partidas diferentes
 
@@ -178,6 +183,7 @@ namespace Domain
                 //     rodadas.Add(tabelaConflitos);
                 // }
                 // Times = embaralhar(arrayTimes.ToList());
+
                 var conflitos = Times.ToArray();
                 Time[] arrayTimes = conflitos;
 
@@ -190,30 +196,22 @@ namespace Domain
                             tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos)));
                         }
                     }
+
                     //Descomenta caso queira que os times não joguem fora de casa
                     //var timeList = arrayTimes.ToList();
                     //timeList.RemoveAt(i);
                     //arrayTimes = timeList.ToArray();
+                    ListaDosResultadosPorRodada.Add(tabelaRodadas);
                 }
 
-                // int s = -1;
-                // for (int i = 0; i < 11; i++)
-                // {
-                //     for (int j = 0; j < 2; j++)
-                //     {
-                //         tabelaConflitos[i, j] = arrayTimes[++s];
-                //     }
-                //     rodadas.Add(tabelaConflitos);
-                // }
-
-                return tabelaRodadas;
+                return ListaDosResultadosPorRodada;
             }
-            return tabelaRodadas = null;
+            return ListaDosResultadosPorRodada = null;
 
         }
 
     }
 }
 
-//!Todo  Regra de necogio usuario torcedor
+//!Todo  Regra de negocio usuario torcedor
 //!Todo Metodos

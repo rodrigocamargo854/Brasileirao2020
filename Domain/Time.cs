@@ -12,6 +12,7 @@ namespace Domain
         public int Pontos { get;  set; }
 
         public Jogador JogadorComMaisGols { get; set; }
+        
         public Time(string nome )
         {
             Nome = nome;
