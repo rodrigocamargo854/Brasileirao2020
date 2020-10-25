@@ -7,26 +7,35 @@ namespace Domain
 
     public class Campeonato
     {
-        public List<Time> Times { get; protected set; } = new List<Time>(); //inicializa vazia
-        public bool InicioCampeonato { get; protected set; } = false;
+        public List<Time> Times { get; private set; }  
+        
+        private bool InicioCampeonato  = false;
+
+        public Campeonato( )
+        {
+            Times = new List<Time>();
+            
+        }
+
+
 
         //Metodo para misturar os times dentro de uma lista
-        private List<Time> embaralhar(List<Time> listaDeTimes)
-        {
-            // cria um objeto da classe Random
-            Random rnd = new Random();
+        // private List<Time> embaralhar(List<Time> listaDeTimes)
+        // {
+        //     // cria um objeto da classe Random
+        //     Random rnd = new Random();
 
-            // a lista de times
-            for (int i = 0; i < listaDeTimes.Count; i++)
-            {
-                int a = rnd.Next(listaDeTimes.Count);
-                var temp = listaDeTimes[i];
-                listaDeTimes[i] = listaDeTimes[a];
-                listaDeTimes[a] = temp;
+        //     // a lista de times
+        //     for (int i = 0; i < listaDeTimes.Count; i++)
+        //     {
+        //         int a = rnd.Next(listaDeTimes.Count);
+        //         var temp = listaDeTimes[i];
+        //         listaDeTimes[i] = listaDeTimes[a];
+        //         listaDeTimes[a] = temp;
 
-            }
-            return listaDeTimes;
-        }
+        //     }
+        //     return listaDeTimes;
+        // }
 
         // soment o usuario do tipo Cbf tem permissao para iniciar o Campeonato
         //caso contrario o metodo retorna o defaut da prop InicioCampeonato(false)
@@ -52,12 +61,13 @@ namespace Domain
             // Como é um objeto do tipo Usuario ele reconhece automaticamente
             // a herança
 
-            if (!(usuario is Cbf) || !InicioCampeonato)
+            if (!(usuario is Cbf) || InicioCampeonato)
             {
                 return false;
             }
 
             Times = times;
+            InicioCampeonato = true;
             return true;
 
         }
@@ -71,8 +81,7 @@ namespace Domain
 
             if (usuario is Cbf)
             {
-                Times.Find(time => time.Nome == nomeTime).Pontos++;
-            
+                Times.FirstOrDefault(time => time.Nome == nomeTime).Pontos++;
             }
 
         }
@@ -108,7 +117,7 @@ namespace Domain
                 var conflitos = Times.ToArray();
                 Time[] arrayTimes = conflitos;
 
-                for (int i = 0; i < arrayTimes.Length/2; i++)
+                for (int i = 0; i < arrayTimes.Length / 2; i++)
                 {
 
                     for (int j = 0; j < arrayTimes.Length; j++)
@@ -117,7 +126,7 @@ namespace Domain
                         {
                             tabelaRodadas.Add((arrayTimes[i], arrayTimes[j]));
                         }
-                        
+
                     }
                     //Descomenta caso queira que os times não joguem fora de casa
                     //var timeList = arrayTimes.ToList();
@@ -144,13 +153,13 @@ namespace Domain
 
         }
 
-         public List<((string,int),(string,int))> retornarTabelaDeResultados(Usuario usuario)
+        public List<((string, int), (string, int))> retornarTabelaDeResultados(Usuario usuario)
         {
             //todo arrumar a logica de times aleatorio 1 para todos
             Time[,] tabelaConflitos = new Time[4, 2];
             var rodadas = new List<Time[,]>();
 
-            var tabelaRodadas = new List<((string,int),(string,int))>{ };
+            var tabelaRodadas = new List<((string, int), (string, int))> { };
             if (usuario is Torcedor || usuario is Cbf)
             {
 
@@ -172,13 +181,13 @@ namespace Domain
                 var conflitos = Times.ToArray();
                 Time[] arrayTimes = conflitos;
 
-                for (int i = 0; i < arrayTimes.Length/2; i++)
+                for (int i = 0; i < arrayTimes.Length / 2; i++)
                 {
                     for (int j = 0; j < arrayTimes.Length; j++)
                     {
                         if (arrayTimes[i] != arrayTimes[j])
                         {
-                            tabelaRodadas.Add(((arrayTimes[i].Nome,arrayTimes[i].Pontos),(arrayTimes[j].Nome,arrayTimes[j].Pontos)));
+                            tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos)));
                         }
                     }
                     //Descomenta caso queira que os times não joguem fora de casa
