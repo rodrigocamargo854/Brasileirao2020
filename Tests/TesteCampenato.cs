@@ -91,7 +91,7 @@ namespace Tests
 
             // !cria o time
             //given
-            var assert = new List<List<((string, int), (string, int))>>();
+            var assert = new List<List<((string, int), (string, int),string)>>();
 
             var campeonato = new Campeonato();
             var time = GeradorListaDeTimes();

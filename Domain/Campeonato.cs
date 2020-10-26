@@ -155,15 +155,15 @@ namespace Domain
 
         }
 
-        public List<List<((string, int), (string, int),string)>> retornarTabelaDeResultados(Usuario usuario)
+        public List<List<((string, int), (string, int))>> retornarTabelaDeResultados(Usuario usuario)
         {
             //todo arrumar a logica de times aleatorio 1 para todos
             Time[,] tabelaConflitos = new Time[4, 2];
             var rodadas = new List<Time[,]>();
-            var ListaDosResultadosPorRodada = new List<List<((string, int), (string, int),string)>>();
+            var ListaDosResultadosPorRodada = new List<List<((string, int), (string, int))>>();
 
 
-            var tabelaRodadas = new List<((string, int), (string, int),string)> { };
+            var tabelaRodadas = new List<((string, int), (string, int))> { };
             if (usuario is Torcedor || usuario is Cbf)
             {
                 //descomenta se quiser gerar partidas randomicas
@@ -194,11 +194,30 @@ namespace Domain
                         {
                             if (arrayTimes[i].Pontos == arrayTimes[j].Pontos)
                             {
+                                //empate true , adiciona  pontos aos dois times
                                 Empate = true;
-                                tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos),"Empate"));
+                                tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos)));
+                                arrayTimes[i].Pontos++;
+                                arrayTimes[j].Pontos++;
                             }
 
-                            tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos),"vitoria"));
+                            if (arrayTimes[i].Pontos > arrayTimes[j].Pontos)
+                            {
+                                //empate false , adiciona  pontos ao time vencedor
+
+                                tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos)));
+                                arrayTimes[i].Pontos++;
+
+                            }
+                            if (arrayTimes[i].Pontos < arrayTimes[j].Pontos)
+                            {
+                                //empate false , adiciona  pontos ao time vencedor
+
+                                tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos)));
+                                arrayTimes[j].Pontos++;
+
+                            }
+
 
                         }
                     }
