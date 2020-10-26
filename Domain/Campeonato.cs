@@ -74,16 +74,18 @@ namespace Domain
 
         }
 
-        public void AdicionarPontosAoTime(Usuario usuario, string nomeTime)
+        public void AdicionarPontosAoTime(Usuario usuario, string nomeTime, Jogador jogador)
         {
             //como é uma variavel de referencia é preciso utilizar o is
             // se fosse variaveis normais, utilizaria ==
             // Como é um objeto do tipo Usuario ele reconhece automaticamente
             // a herança
-
+            
+            
             if (usuario is Cbf)
             {
                 Times.FirstOrDefault(time => time.Nome == nomeTime).Pontos++;
+                Times.FirstOrDefault(time => time.Nome == nomeTime).AddicionarPontosJogador(jogador);
             }
 
         }
@@ -197,8 +199,8 @@ namespace Domain
                                 //empate true , adiciona  pontos aos dois times
                                 Empate = true;
                                 tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos)));
-                                arrayTimes[i].Pontos++;
-                                arrayTimes[j].Pontos++;
+                                arrayTimes[i].Vitorias++;
+                                arrayTimes[j].Vitorias++;
                             }
 
                             if (arrayTimes[i].Pontos > arrayTimes[j].Pontos)
@@ -206,7 +208,12 @@ namespace Domain
                                 //empate false , adiciona  pontos ao time vencedor
 
                                 tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos)));
-                                arrayTimes[i].Pontos++;
+                                arrayTimes[i].Vitorias++;
+                                arrayTimes[j].Derrotas++;
+
+
+
+
 
                             }
                             if (arrayTimes[i].Pontos < arrayTimes[j].Pontos)
@@ -214,8 +221,8 @@ namespace Domain
                                 //empate false , adiciona  pontos ao time vencedor
 
                                 tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos)));
-                                arrayTimes[j].Pontos++;
-
+                                arrayTimes[i].Derrotas++;
+                                arrayTimes[j].Vitorias++;
                             }
 
 

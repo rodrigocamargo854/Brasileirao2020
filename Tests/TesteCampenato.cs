@@ -75,14 +75,14 @@ namespace Tests
             //Metodo criado no escopo gerador de jogadores
             campeonato.AdicionarTimes(Time, cbf);
 
-            campeonato.AdicionarPontosAoTime(cbf, "Santos");
+            campeonato.AdicionarPontosAoTime(cbf, "Santos",new Jogador("Max pe de Cana"));
             var result = campeonato.Times.FirstOrDefault(time => time.Nome == "Santos").Pontos;
 
             // AdicionarPontosAoTime(cbf,"Santos");
 
             //then
             //Cada time joga com todos times, em casa e fora de casa
-            // // Assert.Equal(1, result);
+            Assert.Equal(1, result);
 
         }
         [Fact]
@@ -107,25 +107,18 @@ namespace Tests
 
             //Adicionando pontos acbf
 
-            campeonato.AdicionarPontosAoTime(cbf, "Santos");
-            campeonato.AdicionarPontosAoTime(cbf, "Santos");
-            campeonato.AdicionarPontosAoTime(cbf, "Santos");
-            campeonato.AdicionarPontosAoTime(cbf, "Santos");
-            campeonato.AdicionarPontosAoTime(cbf, "Santos");
-            campeonato.AdicionarPontosAoTime(cbf, "Santos");
-            campeonato.AdicionarPontosAoTime(cbf, "Santos");
-            campeonato.AdicionarPontosAoTime(cbf, "Santos");
-            campeonato.AdicionarPontosAoTime(cbf, "Santos");
-            campeonato.AdicionarPontosAoTime(cbf, "Santos");
-            campeonato.AdicionarPontosAoTime(cbf, "Ituano");
-            campeonato.AdicionarPontosAoTime(cbf, "Corinthians");
-            campeonato.AdicionarPontosAoTime(cbf, "Corinthians");
-            campeonato.AdicionarPontosAoTime(cbf, "Corinthians");
-            campeonato.AdicionarPontosAoTime(cbf, "Santos");
-            campeonato.AdicionarPontosAoTime(cbf, "Flamengo");
-            campeonato.AdicionarPontosAoTime(cbf, "Flamengo");
-            campeonato.AdicionarPontosAoTime(cbf, "Atletico");
-            campeonato.AdicionarPontosAoTime(cbf, "Palmeiras");
+            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Max"));
+            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Luquinhas"));
+            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Luquinhas"));
+            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Luquinhas"));
+            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Luquinhas"));
+            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Luquinhas"));
+            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Jacinto"));
+            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Jacinto"));
+            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Jacinto"));
+            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Jacinto"));
+            campeonato.AdicionarPontosAoTime(cbf, "Ituano", new Jogador("Galvao"));
+            
 
             //then
 
@@ -192,7 +185,7 @@ namespace Tests
             });
             Time4.adicionarJogador(new List<Jogador>()
             {
-                new JogadorCampeonato ("Max pe de cana"),
+                new JogadorCampeonato ("Max"),
                 new JogadorCampeonato ("Tancredo neves"),
                 new JogadorCampeonato ("Afonso Pena"),
                 new JogadorCampeonato ("Collor"),
@@ -267,6 +260,25 @@ namespace Tests
                 new JogadorCampeonato ("Henrique Alves")
             });
             Time8.adicionarJogador(new List<Jogador>()
+            {
+                new JogadorCampeonato ("Galvao"),
+                new JogadorCampeonato ("Bruno"),
+                new JogadorCampeonato ("Jorge salvador"),
+                new JogadorCampeonato ("Vamputo"),
+                new JogadorCampeonato ("Jorginho satan"),
+                new JogadorCampeonato ("Dinamite"),
+                new JogadorCampeonato ("fogonorabo"),
+                new JogadorCampeonato ("ligeirinho"),
+                new JogadorCampeonato ("CaiCai"),
+                new JogadorCampeonato ("Banheirinha"),
+                new JogadorCampeonato ("deixaQeuEuChuto"),
+                new JogadorCampeonato ("PassaPMim"),
+                new JogadorCampeonato ("MarcaMarca"),
+                new JogadorCampeonato ("Michele"),
+                new JogadorCampeonato ("caixeta"),
+                new JogadorCampeonato ("Henrique Alves")
+            });
+            Time9.adicionarJogador(new List<Jogador>()
             {
                 new JogadorCampeonato ("Galvao"),
                 new JogadorCampeonato ("Bruno"),
