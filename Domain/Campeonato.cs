@@ -155,16 +155,15 @@ namespace Domain
 
         }
 
-        public List<List<((string, int), (string, int))>> retornarTabelaDeResultados(Usuario usuario)
+        public List<List<((string, int), (string, int),string)>> retornarTabelaDeResultados(Usuario usuario)
         {
             //todo arrumar a logica de times aleatorio 1 para todos
             Time[,] tabelaConflitos = new Time[4, 2];
             var rodadas = new List<Time[,]>();
-            var ListaDosResultadosPorRodada = new List<List<((string, int), (string, int))>>();
-            
+            var ListaDosResultadosPorRodada = new List<List<((string, int), (string, int),string)>>();
 
 
-            var tabelaRodadas = new List<((string, int), (string, int))> { };
+            var tabelaRodadas = new List<((string, int), (string, int),string)> { };
             if (usuario is Torcedor || usuario is Cbf)
             {
                 //descomenta se quiser gerar partidas randomicas
@@ -183,7 +182,7 @@ namespace Domain
                 //     rodadas.Add(tabelaConflitos);
                 // }
                 // Times = embaralhar(arrayTimes.ToList());
-
+                Empate = false;
                 var conflitos = Times.ToArray();
                 Time[] arrayTimes = conflitos;
 
@@ -193,7 +192,14 @@ namespace Domain
                     {
                         if (arrayTimes[i] != arrayTimes[j])
                         {
-                            tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos)));
+                            if (arrayTimes[i].Pontos == arrayTimes[j].Pontos)
+                            {
+                                Empate = true;
+                                tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos),"Empate"));
+                            }
+
+                            tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos),"vitoria"));
+
                         }
                     }
 
