@@ -10,7 +10,7 @@ namespace Domain {
         public Jogador(string nome)
         {
             Id = Guid.NewGuid();
-            Nome=nome;
+            Nome = nome;
             
         }
 

@@ -121,8 +121,8 @@ namespace Tests
             
 
             //then
-
-            Assert.NotNull(campeonato.retornarTabelaDeResultados(cbf));
+            //usar assert para listas
+            // Assert.Equal();
 
         }
 

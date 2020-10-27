@@ -85,7 +85,7 @@ namespace Domain
             if (usuario is Cbf)
             {
                 Times.FirstOrDefault(time => time.Nome == nomeTime).Pontos++;
-                Times.FirstOrDefault(time => time.Nome == nomeTime).AddicionarPontosJogador(jogador);
+                // Times.FirstOrDefault(time => time.Nome == nomeTime).AddicionarPontosJogador(jogador);
             }
 
         }
