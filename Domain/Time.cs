@@ -107,7 +107,7 @@ namespace Domain
 
          public void AdicionarDerrotas()
         {
-            GolsPro++;
+            Derrotas++;
         }
 
     }

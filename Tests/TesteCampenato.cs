@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Tests
 {
-    public class TesteCampeonato 
+    public class TesteCampeonato
     {
         [Fact]
         public void Deve_retornar_Verdadeiro_ao_adicionar_O_Time_No_Campeonato_se_O_Usuario_For_Cbf()
@@ -75,7 +75,7 @@ namespace Tests
             //Metodo criado no escopo gerador de jogadores
             campeonato.AdicionarTimes(Time, cbf);
 
-            campeonato.AdicionarGolsAoJogo("Santos",2,"Ituano",4);
+            campeonato.AdicionarGolsAoJogo("Santos", 2, "Ituano", 4);
             var result = campeonato.Times.FirstOrDefault(time => time.Nome == "Santos").Gols;
 
             // AdicionarPontosAoTime(cbf,"Santos");
@@ -91,7 +91,7 @@ namespace Tests
 
             // !cria o time
             //given
-            var assert = new List<List<((string, int), (string, int),string)>>();
+            var assert = new List<List<((string, int), (string, int), string)>>();
 
             var campeonato = new Campeonato();
             var time = GeradorListaDeTimes();
@@ -105,17 +105,20 @@ namespace Tests
             var times = campeonato.AdicionarTimes(time, cbf);
             var jogosGeradas = campeonato.GerarRodadas(cbf);
 
-         
+
 
         }
-         [Fact]
+
+        [Fact]
         public void Deve_Retornar_Tabela_De_Resultado()
         {
 
             // !cria o time
             //given
+            var assert = new List<List<((string, int), (string, int), string)>>();
+
             var campeonato = new Campeonato();
-            var Time = GeradorListaDeTimes();
+            var time = GeradorListaDeTimes();
 
             //criação de usuario para validacao da inserção de times
             var cbf = new Cbf("Admin");//usuario cbf para validar a inserção de dados
@@ -123,7 +126,11 @@ namespace Tests
 
             //when
             //Metodo criado no escopo gerador de jogadores
-            var rodadasGeradas = campeonato.registrarPontuacoesDasPartidas(cbf);
+            var times = campeonato.AdicionarTimes(time, cbf);
+            var jogosGeradas = campeonato.GerarRodadas(cbf);
+            
+            var tabelaDeResultadosGeradas = campeonato.registrarPontuacoesDasPartidas(cbf);
+
 
 
         }
@@ -143,7 +150,7 @@ namespace Tests
             var Time6 = new Time("Bahia");
             var Time7 = new Time("Ituano");
             var Time8 = new Time("Portuguesa");
-           
+
 
 
             Time2.adicionarJogador(new List<Jogador>()
@@ -280,7 +287,7 @@ namespace Tests
                 new JogadorCampeonato ("caixeta"),
                 new JogadorCampeonato ("Henrique Alves")
             });
-          
+
             Time1.adicionarJogador(new List<Jogador>()
             {
                 new JogadorCampeonato ("Galvao"),

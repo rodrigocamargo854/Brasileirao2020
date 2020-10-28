@@ -43,12 +43,9 @@ namespace Domain
         //caso contrario o metodo retorna o defaut da prop InicioCampeonato(false)
         public bool iniciarCampeonato(Usuario usuario)
         {
-
             if (usuario is Cbf)
             {
-
                 return !InicioCampeonato;
-
             }
 
             return InicioCampeonato;
@@ -71,17 +68,16 @@ namespace Domain
             Times = times;
             InicioCampeonato = true;
             return true;
-
         }
-
-        public void AdicionarGolsAoJogo(string nomeTimeAnfitrião, int numeroGolsAnf, string nomeTimeDeFora, int numeroGolsVis)
+        public void AdicionarGolsAoJogo(string nomeTimeAnfitriao, int numeroGolsAnf, string nomeTimeDeFora, int numeroGolsVis)
         {
             //como é uma variavel de referencia é preciso utilizar o is
             // se fosse variaveis normais, utilizaria ==
             // Como é um objeto do tipo Usuario ele reconhece automaticamente
             // a herança
 
-            Times.FirstOrDefault(time => time.Nome == nomeTimeAnfitrião).Gols += numeroGolsAnf;
+            Times.FirstOrDefault(time => time.Nome == nomeTimeAnfitriao).Gols += numeroGolsAnf;
+
             Times.FirstOrDefault(time => time.Nome == nomeTimeDeFora).Gols += numeroGolsVis;
 
             // Times.FirstOrDefault(time => time.Nome == nomeTime).AddicionarGolsJogador(nomeJogador);
@@ -101,8 +97,6 @@ namespace Domain
 
             if (usuario is Cbf)
             {
-
-
                 var conflitos = Times.ToArray();
                 Time[] arrayTimes = conflitos;
 
@@ -127,11 +121,16 @@ namespace Domain
 
         }
 
+        private void AdicionarResultadosParaOsJogos(string a, int i, string f, int j)
+        {
+            //Adicionando gols para partidas especificas
+            //por Rodada
+            AdicionarGolsAoJogo(a, i, f, j);
+        }
+
         public List<List<((string nomeTimeCasa, int golsJogo), (string nomeTimeVisitante, int golsJogo))>> registrarPontuacoesDasPartidas(Usuario usuario)
         {
             //todo arrumar a logica de times aleatorio 1 para todos
-            Time[,] tabelaConflitos = new Time[4, 2];
-            var rodadas = new List<Time[,]>();
             var ListaDosResultadosPorRodada = new List<List<((string, int), (string, int))>>();
 
 
@@ -142,69 +141,48 @@ namespace Domain
 
                 var conflitos = Times.ToArray();
                 Time[] arrayTimes = conflitos;
-                //Adicionando gols para partidas especificas
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
-                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
 
+                //Metodo para adicionar resultados mocados para os jogos
 
                 for (int i = 0; i < arrayTimes.Length / 2; i++)
                 {
-                    for (int j = 0; j < arrayTimes.Length; j++)
+
+
+                    for (int j = 1; j < arrayTimes.Length; j++)
                     {
-
                         //todo adicionar pontos ao time a cada
-                        if (arrayTimes[i] != arrayTimes[j])
+
+                        if (arrayTimes[i].Gols == arrayTimes[j].Gols)
                         {
-                            if (arrayTimes[i].Gols == arrayTimes[j].Gols)
-                            {
-                                //empate true , adiciona  Gols aos dois times
-                                tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
-                                arrayTimes[i].AdicionarEmpates();
-                                arrayTimes[j].AdicionarEmpates();
-                                //atualizar percentagem
+                            AdicionarResultadosParaOsJogos("Flamengo", 1, "Atletico", 1);
+                            AdicionarResultadosParaOsJogos("Flamengo", 1, "Palmeiras", 1);
+                            AdicionarResultadosParaOsJogos("Flamengo", 1, "Santos", 1);
+                            AdicionarResultadosParaOsJogos("Flamengo", 1, "Bahia", 1);
 
-                            }
+                            //empate true , adiciona  Gols aos dois times
+                            tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
+                            arrayTimes[i].AdicionarEmpates();
+                            arrayTimes[j].AdicionarEmpates();
 
-                            if (arrayTimes[i].Gols > arrayTimes[j].Gols)
-                            {
-                                //empate false , adiciona  Gols ao time vencedor
-
-                                tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
-                                arrayTimes[i].AdicionarVitoria();
-                                arrayTimes[j].AdicionarDerrotas();
-
-                            }
-                            if (arrayTimes[i].Gols < arrayTimes[j].Gols)
-                            {
-                                //empate false , adiciona  Gols ao time vencedor
-
-                                tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
-                                arrayTimes[i].AdicionarDerrotas();
-                                arrayTimes[j].AdicionarVitoria();
-                            }
+                            //atualizar percentagem
                         }
+                        if (arrayTimes[i].Gols > arrayTimes[j].Gols)
+                        {
+                            //empate false , adiciona  Gols ao time vencedor
+
+                            tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
+                            arrayTimes[i].AdicionarVitoria();
+                            arrayTimes[j].AdicionarDerrotas();
+                        }
+                        if (arrayTimes[i].Gols < arrayTimes[j].Gols)
+                        {
+                            //empate false , adiciona  Gols ao time vencedor
+
+                            tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
+                            arrayTimes[i].AdicionarDerrotas();
+                            arrayTimes[j].AdicionarVitoria();
+                        }
+
                     }
 
                     //Descomenta caso queira que os times não joguem fora de casa
@@ -218,7 +196,6 @@ namespace Domain
             }
 
             return ListaDosResultadosPorRodada = null;
-
         }
 
     }
