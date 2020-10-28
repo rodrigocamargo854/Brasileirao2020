@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Tests
 {
-    public class TesteCampeonato : Campeonato
+    public class TesteCampeonato 
     {
         [Fact]
         public void Deve_retornar_Verdadeiro_ao_adicionar_O_Time_No_Campeonato_se_O_Usuario_For_Cbf()
@@ -75,8 +75,8 @@ namespace Tests
             //Metodo criado no escopo gerador de jogadores
             campeonato.AdicionarTimes(Time, cbf);
 
-            campeonato.AdicionarPontosAoTime(cbf, "Santos",new Jogador("Max pe de Cana"));
-            var result = campeonato.Times.FirstOrDefault(time => time.Nome == "Santos").Pontos;
+            campeonato.AdicionarGolsAoJogo("Santos");
+            var result = campeonato.Times.FirstOrDefault(time => time.Nome == "Santos").Gols;
 
             // AdicionarPontosAoTime(cbf,"Santos");
 
@@ -86,7 +86,7 @@ namespace Tests
 
         }
         [Fact]
-        public void Deve_Retornar_Tabela_de_Resultados_de_Acordo_com_numero_de_times_e_Se_Usuario_for_Cbf_()
+        public void Deve_Retornar_Tabela_de_rodadas_geradas_se_o_usuario_for_cbf()
         {
 
             // !cria o time
@@ -103,26 +103,28 @@ namespace Tests
             //when
             //Metodo criado no escopo gerador de jogadores
             var times = campeonato.AdicionarTimes(time, cbf);
-            var rodadasGeradas = campeonato.GerarRodadas(cbf);
+            var jogosGeradas = campeonato.GerarRodadas(cbf);
 
-            //Adicionando pontos acbf
+         
 
-            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Max"));
-            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Luquinhas"));
-            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Luquinhas"));
-            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Luquinhas"));
-            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Luquinhas"));
-            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Luquinhas"));
-            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Jacinto"));
-            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Jacinto"));
-            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Jacinto"));
-            campeonato.AdicionarPontosAoTime(cbf, "Santos", new Jogador("Jacinto"));
-            campeonato.AdicionarPontosAoTime(cbf, "Ituano", new Jogador("Galvao"));
-            
+        }
+         [Fact]
+        public void Deve_Retornar_Tabela_De_Resultado()
+        {
 
-            //then
-            //usar assert para listas
-            // Assert.Equal();
+            // !cria o time
+            //given
+            var campeonato = new Campeonato();
+            var Time = GeradorListaDeTimes();
+
+            //criação de usuario para validacao da inserção de times
+            var cbf = new Cbf("Admin");//usuario cbf para validar a inserção de dados
+
+
+            //when
+            //Metodo criado no escopo gerador de jogadores
+            var rodadasGeradas = campeonato.registrarPontuacoesDasPartidas(cbf);
+
 
         }
 
@@ -141,7 +143,7 @@ namespace Tests
             var Time6 = new Time("Bahia");
             var Time7 = new Time("Ituano");
             var Time8 = new Time("Portuguesa");
-            var Time9 = new Time("Corinthians");
+           
 
 
             Time2.adicionarJogador(new List<Jogador>()
@@ -278,25 +280,7 @@ namespace Tests
                 new JogadorCampeonato ("caixeta"),
                 new JogadorCampeonato ("Henrique Alves")
             });
-            Time9.adicionarJogador(new List<Jogador>()
-            {
-                new JogadorCampeonato ("Galvao"),
-                new JogadorCampeonato ("Bruno"),
-                new JogadorCampeonato ("Jorge salvador"),
-                new JogadorCampeonato ("Vamputo"),
-                new JogadorCampeonato ("Jorginho satan"),
-                new JogadorCampeonato ("Dinamite"),
-                new JogadorCampeonato ("fogonorabo"),
-                new JogadorCampeonato ("ligeirinho"),
-                new JogadorCampeonato ("CaiCai"),
-                new JogadorCampeonato ("Banheirinha"),
-                new JogadorCampeonato ("deixaQeuEuChuto"),
-                new JogadorCampeonato ("PassaPMim"),
-                new JogadorCampeonato ("MarcaMarca"),
-                new JogadorCampeonato ("Michele"),
-                new JogadorCampeonato ("caixeta"),
-                new JogadorCampeonato ("Henrique Alves")
-            });
+          
             Time1.adicionarJogador(new List<Jogador>()
             {
                 new JogadorCampeonato ("Galvao"),
@@ -317,7 +301,7 @@ namespace Tests
                 new JogadorCampeonato ("Henrique Alves")
             });
 
-            var ListaDeTimes = new List<Time>() { Time1, Time2, Time3, Time4, Time5, Time6, Time7, Time8,Time9 };
+            var ListaDeTimes = new List<Time>() { Time1, Time2, Time3, Time4, Time5, Time6, Time7, Time8 };
 
             return ListaDeTimes;
 
