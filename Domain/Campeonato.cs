@@ -74,19 +74,18 @@ namespace Domain
 
         }
 
-        public void AdicionarPontosAoTime(Usuario usuario, string nomeTime, Jogador jogador)
+        public void AdicionarGolsAoJogo(string nomeTimeAnfitrião,string nomeTimeDeFora)
         {
             //como é uma variavel de referencia é preciso utilizar o is
             // se fosse variaveis normais, utilizaria ==
             // Como é um objeto do tipo Usuario ele reconhece automaticamente
             // a herança
+
+                Times.FirstOrDefault(time => time.Nome == nomeTimeAnfitrião).Gols++;
+                Times.FirstOrDefault(time => time.Nome == nomeTimeDeFora).Gols++;
+
+                // Times.FirstOrDefault(time => time.Nome == nomeTime).AddicionarGolsJogador(nomeJogador);
             
-            
-            if (usuario is Cbf)
-            {
-                Times.FirstOrDefault(time => time.Nome == nomeTime).Pontos++;
-                // Times.FirstOrDefault(time => time.Nome == nomeTime).AddicionarPontosJogador(jogador);
-            }
 
         }
         // public List<Time[,]> GerarRodadas(Usuario usuario)
@@ -104,7 +103,7 @@ namespace Domain
             {
 
                 // var timesRandomicos = Times.OrderByDescending(time => time.Pontos).ToArray();
-                //memdoto gerar partidas precisa gerar partidas diferentes
+                //metodo gerar partidas precisa gerar partidas diferentes
 
                 // Time[] arrayTimes = conflitos;
 
@@ -136,9 +135,6 @@ namespace Domain
                     //var timeList = arrayTimes.ToList();
                     //timeList.RemoveAt(i);
                     //arrayTimes = timeList.ToArray();
-
-
-
                 }
 
                 // int s = -1;
@@ -157,7 +153,7 @@ namespace Domain
 
         }
 
-        public List<List<((string, int), (string, int))>> retornarTabelaDeResultados(Usuario usuario)
+        public List<List<((string nomeTimeCasa, int golsJogo), (string nomeTimeVisitante, int golsJogo))>> registrarPontuacoesDasPartidas(Usuario usuario)
         {
             //todo arrumar a logica de times aleatorio 1 para todos
             Time[,] tabelaConflitos = new Time[4, 2];
@@ -168,6 +164,7 @@ namespace Domain
             var tabelaRodadas = new List<((string, int), (string, int))> { };
             if (usuario is Torcedor || usuario is Cbf)
             {
+                //todo chamar metodo que: adiciona gol ao jogador, adiciona gol contra, adiciona, gols para cada jogo
                 //descomenta se quiser gerar partidas randomicas
                 // var timesRandomicos = Times.OrderByDescending(time => time.Pontos).ToArray();
                 //memdoto gerar partidas precisa gerar partidas diferentes
@@ -184,48 +181,45 @@ namespace Domain
                 //     rodadas.Add(tabelaConflitos);
                 // }
                 // Times = embaralhar(arrayTimes.ToList());
-                Empate = false;
+                //criar var e tirar da classe
                 var conflitos = Times.ToArray();
                 Time[] arrayTimes = conflitos;
-
+                
                 for (int i = 0; i < arrayTimes.Length / 2; i++)
                 {
                     for (int j = 0; j < arrayTimes.Length; j++)
                     {
+
+                        //todo adicionar pontos ao time a cada
                         if (arrayTimes[i] != arrayTimes[j])
                         {
-                            if (arrayTimes[i].Pontos == arrayTimes[j].Pontos)
+                            if (arrayTimes[i].Gols == arrayTimes[j].Gols)
                             {
-                                //empate true , adiciona  pontos aos dois times
-                                Empate = true;
-                                tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos)));
-                                arrayTimes[i].Vitorias++;
-                                arrayTimes[j].Vitorias++;
+                                //empate true , adiciona  Gols aos dois times
+                                tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
+                                arrayTimes[i].AdicionarEmpates();
+                                arrayTimes[j].AdicionarEmpates();
+                                //atualizar percentagem
+                                
                             }
 
-                            if (arrayTimes[i].Pontos > arrayTimes[j].Pontos)
+                            if (arrayTimes[i].Gols > arrayTimes[j].Gols)
                             {
-                                //empate false , adiciona  pontos ao time vencedor
+                                //empate false , adiciona  Gols ao time vencedor
 
-                                tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos)));
-                                arrayTimes[i].Vitorias++;
-                                arrayTimes[j].Derrotas++;
-
-
-
-
+                                tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
+                                arrayTimes[i].AdicionarVitoria();
+                                arrayTimes[j].AdicionarDerrotas();
 
                             }
-                            if (arrayTimes[i].Pontos < arrayTimes[j].Pontos)
+                            if (arrayTimes[i].Gols < arrayTimes[j].Gols)
                             {
-                                //empate false , adiciona  pontos ao time vencedor
+                                //empate false , adiciona  Gols ao time vencedor
 
-                                tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Pontos), (arrayTimes[j].Nome, arrayTimes[j].Pontos)));
-                                arrayTimes[i].Derrotas++;
-                                arrayTimes[j].Vitorias++;
+                                tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
+                                arrayTimes[i].AdicionarDerrotas();
+                                arrayTimes[j].AdicionarVitoria();
                             }
-
-
                         }
                     }
 
@@ -235,9 +229,10 @@ namespace Domain
                     //arrayTimes = timeList.ToArray();
                     ListaDosResultadosPorRodada.Add(tabelaRodadas);
                 }
-
+                
                 return ListaDosResultadosPorRodada;
             }
+
             return ListaDosResultadosPorRodada = null;
 
         }

@@ -69,7 +69,7 @@ namespace Tests
             var jogadores = atletico.adicionarJogador(GeradorListaJogadores());
 
             var jogadorQueMarcouGol = new Jogador("SpiderMan");
-            atletico.AddicionarPontosJogador(jogadorQueMarcouGol);
+            // atletico.AddicionarPontosJogador(jogadorQueMarcouGol);
             var result = atletico.adicionarArtilheiro();
 
             //then

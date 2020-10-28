@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Domain
@@ -9,13 +10,17 @@ namespace Domain
         public Jogador Artilheiro { get; private set; }
 
         public string Nome { get; private set; }
-        public int Pontos { get;  set; }
+        public int Gols { get; set; }
 
         public Jogador JogadorComMaisGols { get; set; }
-        public int Vitorias { get;  set; }
-        public int Derrotas { get;  set; }
-        
-        public Time(string nome )
+        public int Vitorias { get; private set; }
+        public int Derrotas { get; private set; }
+        public int Empates { get; private set; }
+        public int GolsContra { get; private set; }
+        public int GolsPro { get; private set; }
+
+        public int Pontos { get; set; }
+        public Time(string nome)
         {
             Nome = nome;
         }
@@ -43,17 +48,17 @@ namespace Domain
             }
         }
 
-        public void AddicionarPontosJogador(Jogador nome)
+        public void AddicionarGolsJogador(string nome)
         {
-            foreach (Jogador jogador in Jogadores)
-            {
-                if (jogador == nome)
-                {
-                    jogador.MarcarGols();
-                }
-            }
 
-            //todo adicionar em uma variavel artilheiro para adicionar na lista
+            var jogador = Jogadores.FirstOrDefault(j => j.Nome == nome);
+            // jogador?.MarcarGols(); garante que o jogador so ira marcar gols se nao for null
+
+            if (jogador != null)
+            {
+                jogador.MarcarGols();
+
+            }
 
         }
 
@@ -79,28 +84,31 @@ namespace Domain
 
         // }
 
-        // public void AddVitoria()
-        // {
-        //     Vitorias ++;
-        //     return true;
-        // }
+        public void AdicionarVitoria()
+        {
+            Vitorias++;
+            Pontos+= 3;
+        }
 
-        // public void AddEmpates()
-        // {
-        //     Empates ++;
-        //     return true;
-        // }
+        public void AdicionarEmpates()
+        {
+            Empates++;
+            Pontos++;
+        }
 
-        // public void Goldcontra()
-        // {
-        //     GolsContra ++;
-        //     return true;
-        // }
-        // public void Golspro()
-        // {
-        //     GolsPro ++;
-        //     return true;
-        // }
+        public void AdicionarGolscontra()
+        {
+            GolsContra++;
+        }
+        public void AdicionarGolspro()
+        {
+            GolsPro++;
+        }
+
+         public void AdicionarDerrotas()
+        {
+            GolsPro++;
+        }
 
     }
 }
