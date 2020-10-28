@@ -74,18 +74,18 @@ namespace Domain
 
         }
 
-        public void AdicionarGolsAoJogo(string nomeTimeAnfitrião,string nomeTimeDeFora)
+        public void AdicionarGolsAoJogo(string nomeTimeAnfitrião, int numeroGolsAnf, string nomeTimeDeFora, int numeroGolsVis)
         {
             //como é uma variavel de referencia é preciso utilizar o is
             // se fosse variaveis normais, utilizaria ==
             // Como é um objeto do tipo Usuario ele reconhece automaticamente
             // a herança
 
-                Times.FirstOrDefault(time => time.Nome == nomeTimeAnfitrião).Gols++;
-                Times.FirstOrDefault(time => time.Nome == nomeTimeDeFora).Gols++;
+            Times.FirstOrDefault(time => time.Nome == nomeTimeAnfitrião).Gols += numeroGolsAnf;
+            Times.FirstOrDefault(time => time.Nome == nomeTimeDeFora).Gols += numeroGolsVis;
 
-                // Times.FirstOrDefault(time => time.Nome == nomeTime).AddicionarGolsJogador(nomeJogador);
-            
+            // Times.FirstOrDefault(time => time.Nome == nomeTime).AddicionarGolsJogador(nomeJogador);
+
 
         }
         // public List<Time[,]> GerarRodadas(Usuario usuario)
@@ -102,21 +102,7 @@ namespace Domain
             if (usuario is Cbf)
             {
 
-                // var timesRandomicos = Times.OrderByDescending(time => time.Pontos).ToArray();
-                //metodo gerar partidas precisa gerar partidas diferentes
 
-                // Time[] arrayTimes = conflitos;
-
-                // int s = 0;
-                // for (int i = 0; i < arrayTimes.Length / 2; i++)
-                // {
-                //     for (int j = 0; j < 2; j++)
-                //     {
-                //         tabelaConflitos[i, j] = arrayTimes[s++];
-                //     }
-                //     rodadas.Add(tabelaConflitos);
-                // }
-                // Times = embaralhar(arrayTimes.ToList());
                 var conflitos = Times.ToArray();
                 Time[] arrayTimes = conflitos;
 
@@ -131,21 +117,9 @@ namespace Domain
                         }
 
                     }
-                    //Descomenta caso queira que os times não joguem fora de casa
-                    //var timeList = arrayTimes.ToList();
-                    //timeList.RemoveAt(i);
-                    //arrayTimes = timeList.ToArray();
+
                 }
 
-                // int s = -1;
-                // for (int i = 0; i < 11; i++)
-                // {
-                //     for (int j = 0; j < 2; j++)
-                //     {
-                //         tabelaConflitos[i, j] = arrayTimes[++s];
-                //     }
-                //     rodadas.Add(tabelaConflitos);
-                // }
 
                 return tabelaRodadas;
             }
@@ -165,26 +139,36 @@ namespace Domain
             if (usuario is Torcedor || usuario is Cbf)
             {
                 //todo chamar metodo que: adiciona gol ao jogador, adiciona gol contra, adiciona, gols para cada jogo
-                //descomenta se quiser gerar partidas randomicas
-                // var timesRandomicos = Times.OrderByDescending(time => time.Pontos).ToArray();
-                //memdoto gerar partidas precisa gerar partidas diferentes
 
-                // Time[] arrayTimes = conflitos;
-
-                // int s = 0;
-                // for (int i = 0; i < arrayTimes.Length / 2; i++)
-                // {
-                //     for (int j = 0; j < 2; j++)
-                //     {
-                //         tabelaConflitos[i, j] = arrayTimes[s++];
-                //     }
-                //     rodadas.Add(tabelaConflitos);
-                // }
-                // Times = embaralhar(arrayTimes.ToList());
-                //criar var e tirar da classe
                 var conflitos = Times.ToArray();
                 Time[] arrayTimes = conflitos;
-                
+                //Adicionando gols para partidas especificas
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+                AdicionarGolsAoJogo("Santos", 2, "Ituano", 1);
+
+
                 for (int i = 0; i < arrayTimes.Length / 2; i++)
                 {
                     for (int j = 0; j < arrayTimes.Length; j++)
@@ -200,7 +184,7 @@ namespace Domain
                                 arrayTimes[i].AdicionarEmpates();
                                 arrayTimes[j].AdicionarEmpates();
                                 //atualizar percentagem
-                                
+
                             }
 
                             if (arrayTimes[i].Gols > arrayTimes[j].Gols)
@@ -229,7 +213,7 @@ namespace Domain
                     //arrayTimes = timeList.ToArray();
                     ListaDosResultadosPorRodada.Add(tabelaRodadas);
                 }
-                
+
                 return ListaDosResultadosPorRodada;
             }
 
@@ -242,3 +226,41 @@ namespace Domain
 
 //!Todo  Regra de negocio usuario torcedor
 //!Todo Metodos
+
+
+
+// var timesRandomicos = Times.OrderByDescending(time => time.Pontos).ToArray();
+//metodo gerar partidas precisa gerar partidas diferentes
+
+// Time[] arrayTimes = conflitos;
+
+// int s = 0;
+// for (int i = 0; i < arrayTimes.Length / 2; i++)
+// {
+//     for (int j = 0; j < 2; j++)
+//     {
+//         tabelaConflitos[i, j] = arrayTimes[s++];
+//     }
+//     rodadas.Add(tabelaConflitos);
+// }
+// Times = embaralhar(arrayTimes.ToList());
+
+
+
+//descomenta se quiser gerar partidas randomicas
+// var timesRandomicos = Times.OrderByDescending(time => time.Pontos).ToArray();
+//memdoto gerar partidas precisa gerar partidas diferentes
+
+// Time[] arrayTimes = conflitos;
+
+// int s = 0;
+// for (int i = 0; i < arrayTimes.Length / 2; i++)
+// {
+//     for (int j = 0; j < 2; j++)
+//     {
+//         tabelaConflitos[i, j] = arrayTimes[s++];
+//     }
+//     rodadas.Add(tabelaConflitos);
+// }
+// Times = embaralhar(arrayTimes.ToList());
+//criar var e tirar da classe

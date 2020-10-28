@@ -75,7 +75,7 @@ namespace Tests
             //Metodo criado no escopo gerador de jogadores
             campeonato.AdicionarTimes(Time, cbf);
 
-            campeonato.AdicionarGolsAoJogo("Santos");
+            campeonato.AdicionarGolsAoJogo("Santos",2,"Ituano",4);
             var result = campeonato.Times.FirstOrDefault(time => time.Nome == "Santos").Gols;
 
             // AdicionarPontosAoTime(cbf,"Santos");
