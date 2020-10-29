@@ -19,25 +19,30 @@ namespace Domain
 
         }
 
+        private int golsAleatorios(int gols)
+        {
+            Random numAleatorio = new Random();
+            gols = numAleatorio.Next(1,10);
+
+            return gols;
+        }
 
 
-        //Metodo para misturar os times dentro de uma lista
-        // private List<Time> embaralhar(List<Time> listaDeTimes)
-        // {
-        //     // cria um objeto da classe Random
-        //     Random rnd = new Random();
 
-        //     // a lista de times
-        //     for (int i = 0; i < listaDeTimes.Count; i++)
-        //     {
-        //         int a = rnd.Next(listaDeTimes.Count);
-        //         var temp = listaDeTimes[i];
-        //         listaDeTimes[i] = listaDeTimes[a];
-        //         listaDeTimes[a] = temp;
+        private string jogadorAleatorio(Jogador[] listaDeJogadores)
+        {
+            Random rnd = new Random();
 
-        //     }
-        //     return listaDeTimes;
-        // }
+            for (int i = 0; i < listaDeJogadores.Length; i++)
+            {
+                int a = rnd.Next(listaDeJogadores.Length);
+                var temp = listaDeJogadores[i];
+                listaDeJogadores[i] = listaDeJogadores[a];
+                listaDeJogadores[a] = temp;
+
+            }
+            return listaDeJogadores[0].ToString();
+        }
 
         // soment o usuario do tipo Cbf tem permissao para iniciar o Campeonato
         //caso contrario o metodo retorna o defaut da prop InicioCampeonato(false)
@@ -146,31 +151,24 @@ namespace Domain
 
                 var conflitos = Times.ToArray();
                 Time[] arrayTimes = conflitos;
-
                 //Metodo para adicionar resultados mocados para os jogos
 
                 for (int i = 0; i < arrayTimes.Length / 2; i++)
                 {
 
 
+
                     for (int j = 1; j < arrayTimes.Length; j++)
                     {
                         //todo adicionar pontos ao time a cada
+                        AdicionarResultadosParaOsJogos(arrayTimes[i].Nome, golsAleatorios(10), arrayTimes[j].Nome, golsAleatorios(10));
+                        arrayTimes[i].AdicionarGolsJogador(jogadorAleatorio(arrayTimes[i].Jogadores.ToArray()));
+                        arrayTimes[j].AdicionarGolsJogador(jogadorAleatorio(arrayTimes[j].Jogadores.ToArray()));
 
                         if (arrayTimes[i].Gols == arrayTimes[j].Gols)
                         {
-                            AdicionarResultadosParaOsJogos("Flamengo", 1, "Atletico", 1);
-                            arrayTimes[i].AdicionarGolsJogador("Max");
-                            arrayTimes[i].AdicionarGolsJogador("Galvao");
-                            AdicionarResultadosParaOsJogos("Flamengo", 1, "Palmeiras", 1);
-                            arrayTimes[i].AdicionarGolsJogador("Max");
-                            arrayTimes[i].AdicionarGolsJogador("Sarrafo");
-                            AdicionarResultadosParaOsJogos("Flamengo", 1, "Santos", 1);
-                            arrayTimes[i].AdicionarGolsJogador("Max");
-                            arrayTimes[i].AdicionarGolsJogador("Collor");
-                            AdicionarResultadosParaOsJogos("Flamengo", 1, "Bahia", 1);
-                            arrayTimes[i].AdicionarGolsJogador("Max");
-                            arrayTimes[i].AdicionarGolsJogador("Dinamite");
+                            //chama o metodo AdicionarResultadosParaOsJogos onde recebera nome time, metodo numero de gols aleatorios de 1 a 10
+
 
                             //empate true , adiciona  Gols aos dois times
                             tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
@@ -186,6 +184,7 @@ namespace Domain
                             tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
                             arrayTimes[i].AdicionarVitoria();
                             arrayTimes[j].AdicionarDerrotas();
+
                         }
                         if (arrayTimes[i].Gols < arrayTimes[j].Gols)
                         {
@@ -197,13 +196,13 @@ namespace Domain
                         }
 
                     }
+                    ListaDosResultadosPorRodada.Add(tabelaRodadas);
 
                     //Descomenta caso queira que os times não joguem fora de casa
                     //var timeList = arrayTimes.ToList();
                     //timeList.RemoveAt(i);
                     //arrayTimes = timeList.ToArray();
                 }
-                ListaDosResultadosPorRodada.Add(tabelaRodadas);
 
 
                 return ListaDosResultadosPorRodada;
