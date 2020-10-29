@@ -127,9 +127,9 @@ namespace Tests
             //when
             //Metodo criado no escopo gerador de jogadores
             var times = campeonato.AdicionarTimes(time, cbf);
-            var jogosGeradas = campeonato.GerarRodadas(cbf);
-            
-            var tabelaDeResultadosGeradas = campeonato.registrarPontuacoesDasPartidas(cbf);
+            var tabelaResultadodasPartidas = campeonato.registrarPontuacoesDasPartidas(cbf);
+
+
 
 
 

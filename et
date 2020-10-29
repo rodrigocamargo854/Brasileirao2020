@@ -1,0 +1,244 @@
+[33mcommit 01033ed0e0a72e56985ea035b8d67863749a488c[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Thu Oct 29 07:11:35 2020 -0300
+
+    TAbela de resultados completa, faltando apenas classe estatistica para finalizar
+
+[33mcommit f7e500390a07ac010ef3593868a9ad3936a833c2[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Thu Oct 29 06:17:27 2020 -0300
+
+    Gerando rodadas com adicionar gols sem copiar dos colegas
+
+[33mcommit 8e5c1bc181bffe0a2502ea2284c4b3629a4952ed[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Thu Oct 29 05:58:31 2020 -0300
+
+    Gerando rodadas com adicionar gols sem copiar dos colegas
+
+[33mcommit ce26f17a7b78a3d9d7c4d5e3136b7827690419fd[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Wed Oct 28 16:17:50 2020 -0300
+
+    Refatorado metodo de gerar resultados
+
+[33mcommit 9f1d77ea28db730121a805ac6a68d7dc9253f79e[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Wed Oct 28 09:19:53 2020 -0300
+
+    Adicionando gols aos jogos manualmente
+
+[33mcommit a0cd9cdc3bd935f685ffa037444a225816c479f4[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Wed Oct 28 08:18:17 2020 -0300
+
+    a
+
+[33mcommit 341a969405809277984f28d61919ba8472558cb0[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Wed Oct 28 08:16:58 2020 -0300
+
+    a
+
+[33mcommit 442a708024112de0c466003b0c509c684299cca0[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Tue Oct 27 18:24:22 2020 -0300
+
+    Novo metodo
+
+[33mcommit 54519d6a5dc0b3654be30f3b7f6da80786e170e2[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Mon Oct 26 20:40:25 2020 -0300
+
+    AdicionarPontosAoTime nao esta adicionando ponto ao jogador parametro
+
+[33mcommit 755a869c6dda391dcc7163057f0757691e7b2689[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Mon Oct 26 19:14:28 2020 -0300
+
+    Metodo gerar tabela resultados com add pontos para times vencedores
+
+[33mcommit ed1e7a9b457d4bb3bc244e68bbf08885f3d1fdb3[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Mon Oct 26 05:47:22 2020 -0300
+
+    Metodo mostra tabela de resultados adicionado resultado de cada jogo
+
+[33mcommit 915aa8e86c5425c616fab86f77e0a7e9a452e554[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Sun Oct 25 18:57:43 2020 -0300
+
+    Adicionado metodo para exibir resultado por rodada
+
+[33mcommit 21da59ecbeaea3c0db3702b932c4e3746bb54397[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Sun Oct 25 16:46:51 2020 -0300
+
+    Metodos adiconar pontos ao time e testes ok
+
+[33mcommit 172e69de483fb4d1e9f8d32a8128600de3978049[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Sat Oct 24 18:37:09 2020 -0300
+
+    Adicionado teste para adicionar pontos a um time na classe campeonato
+
+[33mcommit df01a21c9ad52b18876babed97a23e2406f09f0b[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Sat Oct 24 10:11:22 2020 -0300
+
+    Metodo adicionar pontos aos times adicionado a classe campeonato juntamente com teste
+
+[33mcommit a0658c72d72cf4bec4590a00cd2c7f02d116a7b2[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Sat Oct 24 09:48:28 2020 -0300
+
+    Metodo gerar conflitos adicionado 28 partidas
+
+[33mcommit 1bcb06bf6bc4d151a66fa973e6e8d9654aba667c[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Sat Oct 24 08:46:54 2020 -0300
+
+    Adicionado metodo RetornarTabelaResultados e Teste para este metodo com a pontuaçao dos times mocadas
+
+[33mcommit eac7451cd784c1a4bbb55fe6d120d56973cefffa[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Sat Oct 24 08:06:08 2020 -0300
+
+    Metodo gerarConflitos modificado
+
+[33mcommit b8d50471df748afbb8e2323a8257af01a7b32a3e[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Sat Oct 24 07:58:17 2020 -0300
+
+    alterado teste campeonato gerar conflitos
+
+[33mcommit 4da1871836ee30b13cc71e920956abc29ca81a4a[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Sat Oct 24 07:58:01 2020 -0300
+
+    alterado metodo gerarconflitos
+
+[33mcommit ff79ada26203f52bfaa391eeb2733288910a9236[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Sat Oct 24 05:26:06 2020 -0300
+
+    a
+
+[33mcommit d0c745bac0d120b5c14a13e1053b1a7602cc2605[m
+Merge: 156275a a86b5c3
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Fri Oct 23 07:33:32 2020 -0300
+
+    Merge branch 'main' of https://github.com/rodrigocamargo854/Brasileirao2020 into main
+
+[33mcommit 156275ae5e771470f0eb4e75d6a43aebe2b312d3[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Fri Oct 23 07:31:48 2020 -0300
+
+    arrumar metodo gerar partidas
+
+[33mcommit 8e7d6e1d971fbf6899ee4d3bc37170134e444a68[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Fri Oct 23 07:30:40 2020 -0300
+
+    Metodo gerarConflitos nao gera partidas diferentes
+
+[33mcommit a86b5c39e99f785af9617a9ff8637273d3b34143[m
+Author: Alan-Weber <alann.weber@gmail.com>
+Date:   Thu Oct 22 20:49:21 2020 -0300
+
+    tentanto arrumar artilheiro
+
+[33mcommit e6c257f04cb0db48c37361ec8433d40dd86a89d2[m
+Merge: 45bb3f0 4b8323c
+Author: Alan-Weber <alann.weber@gmail.com>
+Date:   Thu Oct 22 18:58:29 2020 -0300
+
+    Merge branch 'main' of https://github.com/rodrigocamargo854/Brasileirao2020 into main
+
+[33mcommit 45bb3f0098caae08910bab5519605baf86b143bf[m
+Merge: e186ae8 4a2bf95
+Author: Alan-Weber <alann.weber@gmail.com>
+Date:   Thu Oct 22 18:58:01 2020 -0300
+
+    conflito resolvido
+
+[33mcommit 4b8323c57d0f7797143b61b0696018be42cc7ed2[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Thu Oct 22 18:55:43 2020 -0300
+
+    Teste Time adicionar pontos ao jogador
+
+[33mcommit e186ae8e75a429dec5e59f617db400c1e752d15d[m
+Author: Alan-Weber <alann.weber@gmail.com>
+Date:   Thu Oct 22 18:40:28 2020 -0300
+
+    adicionado test de criação de camp se usuario for CBF
+
+[33mcommit 4a2bf95975280bf5e569e250bdea9337a85bbeb0[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Thu Oct 22 13:51:16 2020 -0300
+
+    Adicionado teste para o metodo Adicionar artilheiro da classe Time
+
+[33mcommit 3f0e04be898fd8f3bb564f94b78d967e4247520e[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Wed Oct 21 16:14:41 2020 -0300
+
+    Adicionado teste Artilheiro time
+
+[33mcommit d5d0cf69b824108a0b3db6d43d48ba6f322aa49b[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Wed Oct 21 13:51:50 2020 -0300
+
+    Inserido opçao de numero de rodadas no metodo gerarRodadas da clase Campeonato
+
+[33mcommit a52bfc3427ca3d0043159759006513c060965c95[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Tue Oct 20 10:26:58 2020 -0300
+
+    Adicionando metodo para encontrar artilheiro time
+
+[33mcommit dad20355034c3ab39127f0d7b964d3f2bfc58628[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Tue Oct 20 09:45:34 2020 -0300
+
+     Criado program
+
+[33mcommit f2f6bca881a274c80c2e6a6dc429c9ef254cd4b2[m
+Merge: db2abc3 c27e928
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Tue Oct 20 07:31:28 2020 -0300
+
+    Tentativa de colocar o Time como abstract
+
+[33mcommit db2abc3d14fcc766cc28b422b5a5f7aba06502de[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Tue Oct 20 07:01:32 2020 -0300
+
+    metodos renomeados
+
+[33mcommit 105a793f2d9ce3a4ddc04cdfa1fc2947c9f866ea[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Tue Oct 20 06:57:50 2020 -0300
+
+    .
+
+[33mcommit ecd938294a1d5c85f246a3fc886100d75d3d191e[m
+Merge: 3066b6b a4004d8
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Tue Oct 20 06:57:40 2020 -0300
+
+    Merge branch 'main' of https://github.com/rodrigocamargo854/Brasileirao2020 into main
+
+[33mcommit c27e928898530b2f134ccc72d452d9b26ae4e1a7[m
+Author: Entra21 <entra21@proway.treina>
+Date:   Mon Oct 19 21:11:18 2020 -0300
+
+    adicionado teste falso e verdadeiro de adicionar times no camp
+
+[33mcommit 3066b6b14651d70cc150f00c68bf7f8c58211490[m
+Author: rodrigocamargo <rodrigocamargo854@gmail.com>
+Date:   Mon Oct 19 21:01:52 2020 -0300
+
+    

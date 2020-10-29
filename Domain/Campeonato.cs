@@ -19,10 +19,10 @@ namespace Domain
 
         }
 
-        private int golsAleatorios(int gols)
+        private int golsAleatorios(int limite)
         {
             Random numAleatorio = new Random();
-            gols = numAleatorio.Next(1,10);
+            int gols = numAleatorio.Next(0, limite);
 
             return gols;
         }
@@ -119,7 +119,6 @@ namespace Domain
 
                 }
 
-
                 return tabelaRodadas;
             }
             return tabelaRodadas = null;
@@ -138,77 +137,67 @@ namespace Domain
             Times.FirstOrDefault(time => time.Nome == nome).AdicionarGolsJogador(nome);
         }
 
-        public List<List<((string nomeTimeCasa, int golsJogo), (string nomeTimeVisitante, int golsJogo))>> registrarPontuacoesDasPartidas(Usuario usuario)
+        public List<((string, int), (string, int))> registrarPontuacoesDasPartidas(Usuario usuario)
         {
             //todo arrumar a logica de times aleatorio 1 para todos
             var ListaDosResultadosPorRodada = new List<List<((string, int), (string, int))>>();
-
+            var conflitos = Times.ToArray();
+            Time[] arrayTimes = conflitos;
 
             var tabelaRodadas = new List<((string, int), (string, int))> { };
-            if (usuario is Torcedor || usuario is Cbf)
+            if (usuario is Cbf)
             {
-                //todo chamar metodo que: adiciona gol ao jogador, adiciona gol contra, adiciona, gols para cada jogo
-
-                var conflitos = Times.ToArray();
-                Time[] arrayTimes = conflitos;
-                //Metodo para adicionar resultados mocados para os jogos
 
                 for (int i = 0; i < arrayTimes.Length / 2; i++)
                 {
-
-
-
                     for (int j = 1; j < arrayTimes.Length; j++)
                     {
-                        //todo adicionar pontos ao time a cada
-                        AdicionarResultadosParaOsJogos(arrayTimes[i].Nome, golsAleatorios(10), arrayTimes[j].Nome, golsAleatorios(10));
-                        arrayTimes[i].AdicionarGolsJogador(jogadorAleatorio(arrayTimes[i].Jogadores.ToArray()));
-                        arrayTimes[j].AdicionarGolsJogador(jogadorAleatorio(arrayTimes[j].Jogadores.ToArray()));
-
-                        if (arrayTimes[i].Gols == arrayTimes[j].Gols)
+                        if (arrayTimes[i].Nome != arrayTimes[j].Nome)
                         {
+
+                            // todo adicionar pontos ao time a cada
+                            AdicionarResultadosParaOsJogos(arrayTimes[i].Nome, golsAleatorios(2), arrayTimes[j].Nome, golsAleatorios(2));
+                            arrayTimes[i].AdicionarGolsJogador(jogadorAleatorio(arrayTimes[i].Jogadores.ToArray()));
+                            arrayTimes[j].AdicionarGolsJogador(jogadorAleatorio(arrayTimes[j].Jogadores.ToArray()));
+
+                            if (arrayTimes[i].Gols == arrayTimes[j].Gols)
+                            {
+                                //empate true , adiciona  Gols aos dois times
+                                arrayTimes[i].AdicionarEmpates();
+                                arrayTimes[j].AdicionarEmpates();
+
+                                //atualizar percentagem
+                            }
+                            if (arrayTimes[i].Gols > arrayTimes[j].Gols)
+                            {
+                                //empate false , adiciona  Gols ao time vencedor
+                                arrayTimes[i].AdicionarVitoria();
+                                arrayTimes[j].AdicionarDerrotas();
+
+                            }
+                            if (arrayTimes[i].Gols < arrayTimes[j].Gols)
+                            {
+                                //empate false , adiciona  Gols ao time vencedor
+                                arrayTimes[i].AdicionarDerrotas();
+                                arrayTimes[j].AdicionarVitoria();
+                            }
+
                             //chama o metodo AdicionarResultadosParaOsJogos onde recebera nome time, metodo numero de gols aleatorios de 1 a 10
-
-
-                            //empate true , adiciona  Gols aos dois times
-                            tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
-                            arrayTimes[i].AdicionarEmpates();
-                            arrayTimes[j].AdicionarEmpates();
-
-                            //atualizar percentagem
                         }
-                        if (arrayTimes[i].Gols > arrayTimes[j].Gols)
-                        {
-                            //empate false , adiciona  Gols ao time vencedor
-
-                            tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
-                            arrayTimes[i].AdicionarVitoria();
-                            arrayTimes[j].AdicionarDerrotas();
-
-                        }
-                        if (arrayTimes[i].Gols < arrayTimes[j].Gols)
-                        {
-                            //empate false , adiciona  Gols ao time vencedor
-
-                            tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
-                            arrayTimes[i].AdicionarDerrotas();
-                            arrayTimes[j].AdicionarVitoria();
-                        }
-
+                        tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
                     }
-                    ListaDosResultadosPorRodada.Add(tabelaRodadas);
 
-                    //Descomenta caso queira que os times não joguem fora de casa
-                    //var timeList = arrayTimes.ToList();
-                    //timeList.RemoveAt(i);
-                    //arrayTimes = timeList.ToArray();
                 }
 
+                foreach (var item in tabelaRodadas)
+                {
+                    ListaDosResultadosPorRodada.Add(item);
+                }
 
-                return ListaDosResultadosPorRodada;
+                return tabelaRodadas;
             }
 
-            return ListaDosResultadosPorRodada = null;
+            return tabelaRodadas = null;
         }
 
     }
