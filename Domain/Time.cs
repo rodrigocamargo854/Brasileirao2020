@@ -48,7 +48,7 @@ namespace Domain
             }
         }
 
-        public void AddicionarGolsJogador(string nome)
+        public void AdicionarGolsJogador(string nome)
         {
 
             var jogador = Jogadores.FirstOrDefault(j => j.Nome == nome);

@@ -128,6 +128,11 @@ namespace Domain
             AdicionarGolsAoJogo(a, i, f, j);
         }
 
+        private void AdicionarGolsDaPartidaAUmJogador(string time, string nome)
+        {
+            Times.FirstOrDefault(time => time.Nome == nome).AdicionarGolsJogador(nome);
+        }
+
         public List<List<((string nomeTimeCasa, int golsJogo), (string nomeTimeVisitante, int golsJogo))>> registrarPontuacoesDasPartidas(Usuario usuario)
         {
             //todo arrumar a logica de times aleatorio 1 para todos
@@ -155,9 +160,17 @@ namespace Domain
                         if (arrayTimes[i].Gols == arrayTimes[j].Gols)
                         {
                             AdicionarResultadosParaOsJogos("Flamengo", 1, "Atletico", 1);
+                            arrayTimes[i].AdicionarGolsJogador("Max");
+                            arrayTimes[i].AdicionarGolsJogador("Galvao");
                             AdicionarResultadosParaOsJogos("Flamengo", 1, "Palmeiras", 1);
+                            arrayTimes[i].AdicionarGolsJogador("Max");
+                            arrayTimes[i].AdicionarGolsJogador("Sarrafo");
                             AdicionarResultadosParaOsJogos("Flamengo", 1, "Santos", 1);
+                            arrayTimes[i].AdicionarGolsJogador("Max");
+                            arrayTimes[i].AdicionarGolsJogador("Collor");
                             AdicionarResultadosParaOsJogos("Flamengo", 1, "Bahia", 1);
+                            arrayTimes[i].AdicionarGolsJogador("Max");
+                            arrayTimes[i].AdicionarGolsJogador("Dinamite");
 
                             //empate true , adiciona  Gols aos dois times
                             tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
