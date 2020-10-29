@@ -27,8 +27,6 @@ namespace Domain
             return gols;
         }
 
-
-
         private string jogadorAleatorio(Jogador[] listaDeJogadores)
         {
             Random rnd = new Random();
@@ -87,7 +85,6 @@ namespace Domain
 
             // Times.FirstOrDefault(time => time.Nome == nomeTime).AddicionarGolsJogador(nomeJogador);
 
-
         }
         // public List<Time[,]> GerarRodadas(Usuario usuario)
         public List<(Time, Time)> GerarRodadas(Usuario usuario)
@@ -98,7 +95,6 @@ namespace Domain
 
             var tabelaRodadas = new List<(Time, Time)> { };
             var testeRodadas = new Time[] { };
-
 
             if (usuario is Cbf)
             {
@@ -125,17 +121,57 @@ namespace Domain
 
         }
 
-        private void AdicionarResultadosParaOsJogos(string a, int i, string f, int j)
-        {
-            //Adicionando gols para partidas especificas
-            //por Rodada
-            AdicionarGolsAoJogo(a, i, f, j);
-        }
+
 
         private void AdicionarGolsDaPartidaAUmJogador(string time, string nome)
         {
             Times.FirstOrDefault(time => time.Nome == nome).AdicionarGolsJogador(nome);
         }
+
+        public List<((string, int), (string, int))> exibeResultadoPorRodada(Usuario usuario)
+        {
+            var conflitos = Times.ToArray();
+            Time[] arrayTimes = conflitos;
+            var tabelaRodadas = new List<((string, int), (string, int))> { };
+
+            if (usuario is Cbf)
+            {
+
+                for (int i = 0; i < 1; i++)
+                {
+                    for (int j = 1; j < arrayTimes.Length; j++)
+                    {
+                        if (arrayTimes[i].Gols == arrayTimes[j].Gols)
+                        {
+                            //empate true , adiciona  Gols aos dois times
+                            arrayTimes[i].AdicionarEmpates();
+                            arrayTimes[j].AdicionarEmpates();
+
+                            //atualizar percentagem
+                        }
+                        if (arrayTimes[i].Gols > arrayTimes[j].Gols)
+                        {
+                            //empate false , adiciona  Gols ao time vencedor
+                            arrayTimes[i].AdicionarVitoria();
+                            arrayTimes[j].AdicionarDerrotas();
+
+                        }
+                        if (arrayTimes[i].Gols < arrayTimes[j].Gols)
+                        {
+                            //empate false , adiciona  Gols ao time vencedor
+                            arrayTimes[i].AdicionarDerrotas();
+                            arrayTimes[j].AdicionarVitoria();
+                        }
+
+                        tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
+                    }
+                }
+                return tabelaRodadas;
+            }
+            return  tabelaRodadas = null;
+        }
+
+
 
         public List<((string, int), (string, int))> registrarPontuacoesDasPartidas(Usuario usuario)
         {
@@ -156,7 +192,7 @@ namespace Domain
                         {
 
                             // todo adicionar pontos ao time a cada
-                            AdicionarResultadosParaOsJogos(arrayTimes[i].Nome, golsAleatorios(2), arrayTimes[j].Nome, golsAleatorios(2));
+                            AdicionarGolsAoJogo(arrayTimes[i].Nome, golsAleatorios(2), arrayTimes[j].Nome, golsAleatorios(2));
                             arrayTimes[i].AdicionarGolsJogador(jogadorAleatorio(arrayTimes[i].Jogadores.ToArray()));
                             arrayTimes[j].AdicionarGolsJogador(jogadorAleatorio(arrayTimes[j].Jogadores.ToArray()));
 
@@ -188,54 +224,15 @@ namespace Domain
                     }
 
                 }
-                //fazer uma lista que armazene de 4 em 4 jogos 
-                
+
+
+
                 return tabelaRodadas;
             }
 
             return tabelaRodadas = null;
+
         }
 
     }
 }
-
-//!Todo  Regra de negocio usuario torcedor
-//!Todo Metodos
-
-
-
-// var timesRandomicos = Times.OrderByDescending(time => time.Pontos).ToArray();
-//metodo gerar partidas precisa gerar partidas diferentes
-
-// Time[] arrayTimes = conflitos;
-
-// int s = 0;
-// for (int i = 0; i < arrayTimes.Length / 2; i++)
-// {
-//     for (int j = 0; j < 2; j++)
-//     {
-//         tabelaConflitos[i, j] = arrayTimes[s++];
-//     }
-//     rodadas.Add(tabelaConflitos);
-// }
-// Times = embaralhar(arrayTimes.ToList());
-
-
-
-//descomenta se quiser gerar partidas randomicas
-// var timesRandomicos = Times.OrderByDescending(time => time.Pontos).ToArray();
-//memdoto gerar partidas precisa gerar partidas diferentes
-
-// Time[] arrayTimes = conflitos;
-
-// int s = 0;
-// for (int i = 0; i < arrayTimes.Length / 2; i++)
-// {
-//     for (int j = 0; j < 2; j++)
-//     {
-//         tabelaConflitos[i, j] = arrayTimes[s++];
-//     }
-//     rodadas.Add(tabelaConflitos);
-// }
-// Times = embaralhar(arrayTimes.ToList());
-//criar var e tirar da classe

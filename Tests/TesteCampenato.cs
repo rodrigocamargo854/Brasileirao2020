@@ -130,7 +130,20 @@ namespace Tests
             var tabelaResultadodasPartidas = campeonato.registrarPontuacoesDasPartidas(cbf);
 
 
+        }
+        public void Deve_Retornar_Resultado_Por_Rodada()
+        {
 
+            var campeonato = new Campeonato();
+            var time = GeradorListaDeTimes();
+
+            //criação de usuario para validacao da inserção de times
+            var cbf = new Cbf("Admin");//usuario cbf para validar a inserção de dados
+
+
+            //when
+            //Metodo criado no escopo gerador de jogadores
+            var times = campeonato.exibeResultadoPorRodada(cbf);
 
 
         }
