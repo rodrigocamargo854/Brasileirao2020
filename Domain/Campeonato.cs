@@ -189,8 +189,9 @@ namespace Domain
                     //var timeList = arrayTimes.ToList();
                     //timeList.RemoveAt(i);
                     //arrayTimes = timeList.ToArray();
-                    ListaDosResultadosPorRodada.Add(tabelaRodadas);
                 }
+                ListaDosResultadosPorRodada.Add(tabelaRodadas);
+
 
                 return ListaDosResultadosPorRodada;
             }
