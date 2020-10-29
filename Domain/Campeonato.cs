@@ -188,12 +188,8 @@ namespace Domain
                     }
 
                 }
-
-                foreach (var item in tabelaRodadas)
-                {
-                    ListaDosResultadosPorRodada.Add(item);
-                }
-
+                //fazer uma lista que armazene de 4 em 4 jogos 
+                
                 return tabelaRodadas;
             }
 
