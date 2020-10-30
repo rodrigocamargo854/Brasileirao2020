@@ -1,6 +1,6 @@
 using System;
 
-namespace webAPI
+namespace Brasileirao2020
 {
     public class WeatherForecast
     {

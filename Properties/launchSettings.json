@@ -4,8 +4,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:9338",
-      "sslPort": 44320
+      "applicationUrl": "http://localhost:6456",
+      "sslPort": 44373
     }
   },
   "profiles": {
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "webAPI": {
+    "Brasileirao2020": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",

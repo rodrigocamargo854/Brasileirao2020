@@ -131,6 +131,8 @@ namespace Tests
 
 
         }
+        [Fact]
+
         public void Deve_Retornar_Resultado_Por_Rodada()
         {
 
@@ -139,12 +141,23 @@ namespace Tests
 
             //criação de usuario para validacao da inserção de times
             var cbf = new Cbf("Admin");//usuario cbf para validar a inserção de dados
+            campeonato.AdicionarTimes(time, cbf);
+            campeonato.GerarRodadas(cbf);
+            campeonato.AdicionarGolsAoJogo("Atletico", 2, "Palmeiras", 1);
+            campeonato.AdicionarGolsAoJogo("Atletico", 2, "Flamengo", 1);
+            campeonato.AdicionarGolsAoJogo("Atletico", 3, "Santos", 1);
+            campeonato.AdicionarGolsAoJogo("Atletico", 1, "Jabaquara", 1);
+            campeonato.AdicionarGolsAoJogo("Atletico", 4, "Bahia", 1);
+            campeonato.AdicionarGolsAoJogo("Atletico", 3, "Ituano", 1);
+            campeonato.AdicionarGolsAoJogo("Atletico", 0, "Portuguesa", 1);
+
+
 
 
             //when
             //Metodo criado no escopo gerador de jogadores
-            var times = campeonato.exibeResultadoPorRodada(cbf);
-
+            campeonato.exibeResultadoPorRodada(cbf);
+           
 
         }
 
