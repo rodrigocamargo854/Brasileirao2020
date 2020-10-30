@@ -1,13 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 
-
-  <ItemGroup>
-    <ProjectReference Include="..\Tests\Tests.csproj" />
-  </ItemGroup>
-
-
-
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>

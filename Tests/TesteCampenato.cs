@@ -143,21 +143,16 @@ namespace Tests
             var cbf = new Cbf("Admin");//usuario cbf para validar a inserção de dados
             campeonato.AdicionarTimes(time, cbf);
             campeonato.GerarRodadas(cbf);
-            campeonato.AdicionarGolsAoJogo("Atletico", 2, "Palmeiras", 1);
-            campeonato.AdicionarGolsAoJogo("Atletico", 2, "Flamengo", 1);
-            campeonato.AdicionarGolsAoJogo("Atletico", 3, "Santos", 1);
-            campeonato.AdicionarGolsAoJogo("Atletico", 1, "Jabaquara", 1);
-            campeonato.AdicionarGolsAoJogo("Atletico", 4, "Bahia", 1);
-            campeonato.AdicionarGolsAoJogo("Atletico", 3, "Ituano", 1);
-            campeonato.AdicionarGolsAoJogo("Atletico", 0, "Portuguesa", 1);
+            campeonato.AdicionarGolsAoJogo("Flamengo", 2, "Atletico", 1);
+            campeonato.AdicionarGolsAoJogo("Flamengo", 2, "Palmeiras", 1);
+            campeonato.AdicionarGolsAoJogo("Flamengo", 3, "Santos", 1);
+            campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Jabaquara", 1);
+            campeonato.AdicionarGolsAoJogo("Flamengo", 4, "Bahia", 1);
+            campeonato.AdicionarGolsAoJogo("Flamengo", 3, "Ituano", 1);
+            campeonato.AdicionarGolsAoJogo("Flamengo", 0, "Portuguesa", 1);
 
 
-
-
-            //when
-            //Metodo criado no escopo gerador de jogadores
-            campeonato.exibeResultadoPorRodada(cbf);
-           
+            var resultadoFinal = campeonato.exibeResultadoPorRodada(cbf);
 
         }
 
@@ -168,9 +163,9 @@ namespace Tests
         private List<Time> GeradorListaDeTimes()
         {
 
+            var Time1 = new Time("Flamengo");
             var Time2 = new Time("Atletico");
             var Time3 = new Time("Palmeiras");
-            var Time1 = new Time("Flamengo");
             var Time4 = new Time("Santos");
             var Time5 = new Time("Jabaquara");
             var Time6 = new Time("Bahia");
