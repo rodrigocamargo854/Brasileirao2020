@@ -16,15 +16,28 @@ namespace WebApi.Controller
         public IList<GameResponse> Get()
         {
             //objeto do tipo gameresponse
-            var game = new GameResponse
+            var jogo1 = new GameResponse
             {
                 Name = "Dark Souls",
                 Plataforma = "Multiplaforma",
                 Price = 150
             };
+             var jogo2 = new GameResponse
+            {
+                Name = "Blood Bourne",
+                Plataforma = "Multiplaforma",
+                Price = 195
+            };
+             var jogo3 = new GameResponse
+            {
+                Name = "Minecraft",
+                Plataforma = "Multiplaforma",
+                Price = 200
+            };
+
             
             //retorna Lista
-            return new List<GameResponse>{game};
+            return new List<GameResponse>{jogo1,jogo2,jogo3};
         }
     }
 }

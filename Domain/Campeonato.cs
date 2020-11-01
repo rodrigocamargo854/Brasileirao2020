@@ -72,56 +72,83 @@ namespace Domain
             InicioCampeonato = true;
             return true;
         }
-        public void AdicionarGolsAoJogo(string nomeTimeAnfitriao, int numeroGolsAnf, string nomeTimeDeFora, int numeroGolsVis)
+        public void AdicionarGolsAoJogo(string nomeTime, int numeroGols )
         {
             //como é uma variavel de referencia é preciso utilizar o is
             // se fosse variaveis normais, utilizaria ==
             // Como é um objeto do tipo Usuario ele reconhece automaticamente
             // a herança
 
-            Times.FirstOrDefault(time => time.Nome == nomeTimeAnfitriao).Gols += numeroGolsAnf;
+            Times.FirstOrDefault(time => time.Nome == nomeTime).Gols += numeroGols;
 
-            Times.FirstOrDefault(time => time.Nome == nomeTimeDeFora).Gols += numeroGolsVis;
+           
 
             // Times.FirstOrDefault(time => time.Nome == nomeTime).AddicionarGolsJogador(nomeJogador);
 
         }
         // public List<Time[,]> GerarRodadas(Usuario usuario)
-        public List<(Time, Time)> GerarRodadas(Usuario usuario)
+        public List<(Time, Time)> gerarPrimeiraRodada(Usuario usuario)
         {
             //todo arrumar a logica de times aleatorio 1 para todos
             Time[,] tabelaConflitos = new Time[4, 2];
             var rodadas = new List<Time[,]>();
 
             var tabelaRodadas = new List<(Time, Time)> { };
-            var testeRodadas = new Time[] { };
+            var primeiraRodada = new List<(Time, Time)> { };
+
 
             if (usuario is Cbf)
             {
                 var conflitos = Times.ToArray();
                 Time[] arrayTimes = conflitos;
 
-                for (int i = 0; i < arrayTimes.Length / 2; i++)
-                {
 
-                    for (int j = 0; j < arrayTimes.Length; j++)
+                for (int i = 0; i < arrayTimes.Length; i++)
+                {
+                    primeiraRodada.Add((arrayTimes[0], arrayTimes[arrayTimes.Length - 1]));
+                    var temp = arrayTimes.ToList();
+                    temp.RemoveAt(0);
+                    temp.Reverse();
+                    temp.RemoveAt(0);
+                    temp.Reverse();
+
+                    arrayTimes = temp.ToArray();
+                    
+                    if (arrayTimes.Length == 2)
                     {
-                        if (arrayTimes[i] != arrayTimes[j])
-                        {
-                            tabelaRodadas.Add((arrayTimes[i], arrayTimes[j]));
-                        }
+                        primeiraRodada.Add((arrayTimes[0], arrayTimes[1]));
 
                     }
 
                 }
 
-                return tabelaRodadas;
+                return primeiraRodada;
             }
-            return tabelaRodadas = null;
+            return primeiraRodada = null;
 
         }
 
 
+
+        //         for (int i = 0; i < arrayTimes.Length / 2; i++)
+        //         {
+
+        //             for (int j = 1; j < arrayTimes.Length; j++)
+        //             {
+        //                 if (arrayTimes[i] != arrayTimes[j])
+        //                 {
+        //                     tabelaRodadas.Add((arrayTimes[i], arrayTimes[j]));
+        //                 }
+        //             }
+
+        //             tabelaPorRodada.Add(tabelaRodadas[i*7]);
+        //         }
+
+        //         return tabelaPorRodada;
+        //     }
+        //     return tabelaPorRodada = null;
+
+        // }
 
         private void AdicionarGolsDaPartidaAUmJogador(string time, string nome)
         {
@@ -130,53 +157,50 @@ namespace Domain
 
         public List<((string, int), (string, int))> exibeResultadoPorRodada(Usuario usuario)
         {
-            var conflitos = Times.ToArray();
-            Time[] arrayTimes = conflitos;
-            var tabelaRodadas = new List<((string, int), (string, int))> { };
+            var partida = gerarPrimeiraRodada(new Cbf("Admin")).ToArray();
+         
+            var resultadoJogos = new List<((string, int), (string, int))> { };
+            // var listaResultadosPorRodada = new List<List<((string, int), (string, int))>>();
 
             if (usuario is Cbf)
             {
-
-                for (int i = 0; i < 1; i++)
+                for (int i = 0; i < partida.Length; i++)
                 {
-                    for (int j = 1; j < arrayTimes.Length; j++)
-                    {
-                        if (arrayTimes[i].Gols == arrayTimes[j].Gols)
+
+                        if (partida[i].Item1.Gols == partida[i].Item2.Gols)
                         {
                             //empate true , adiciona  Gols aos dois times
-                            arrayTimes[i].AdicionarEmpates();
-                            arrayTimes[j].AdicionarEmpates();
+                            partida[i].Item1.AdicionarEmpates();
+                            partida[i].Item2.AdicionarEmpates();
 
                             //atualizar percentagem
                         }
-                        if (arrayTimes[i].Gols > arrayTimes[j].Gols)
+                        if (partida[i].Item1.Gols > partida[i].Item2.Gols)
                         {
                             //empate false , adiciona  Gols ao time vencedor
-                            arrayTimes[i].AdicionarVitoria();
-                            arrayTimes[j].AdicionarDerrotas();
+                            partida[i].Item1.AdicionarVitoria();
+                            partida[i].Item2.AdicionarDerrotas();
 
                         }
-                        if (arrayTimes[i].Gols < arrayTimes[j].Gols)
+                        if (partida[i].Item1.Gols < partida[i].Item2.Gols)
                         {
                             //empate false , adiciona  Gols ao time vencedor
-                            arrayTimes[i].AdicionarDerrotas();
-                            arrayTimes[j].AdicionarVitoria();
+                            partida[i].Item1.AdicionarDerrotas();
+                            partida[i].Item2.AdicionarVitoria();
                         }
+                        resultadoJogos.Add(((partida[i].Item1.Nome, partida[i].Item2.Gols), (partida[i].Item2.Nome, partida[i].Item2.Gols)));
+                    
 
-                        tabelaRodadas.Add(((arrayTimes[i].Nome, arrayTimes[i].Gols), (arrayTimes[j].Nome, arrayTimes[j].Gols)));
-                    }
                 }
-                return tabelaRodadas;
+                return resultadoJogos;
             }
-            return  tabelaRodadas = null;
+            return resultadoJogos = null;
         }
 
-
-
-        public List<((string, int), (string, int))> registrarPontuacoesDasPartidas(Usuario usuario)
+        public List<((string, int), (string, int))> registrarPontuacoesDasPartidasAutomaticamente(Usuario usuario)
         {
             //todo arrumar a logica de times aleatorio 1 para todos
-            var ListaDosResultadosPorRodada = new List<List<((string, int), (string, int))>>();
+            var listaResultadosPorRodada = new List<List<((string, int), (string, int))>>();
             var conflitos = Times.ToArray();
             Time[] arrayTimes = conflitos;
 
@@ -186,13 +210,13 @@ namespace Domain
 
                 for (int i = 0; i < arrayTimes.Length / 2; i++)
                 {
-                    for (int j = 1; j < arrayTimes.Length; j++)
+                    for (int j = 0; j < arrayTimes.Length; j++)
                     {
                         if (arrayTimes[i].Nome != arrayTimes[j].Nome)
                         {
 
                             // todo adicionar pontos ao time a cada
-                            AdicionarGolsAoJogo(arrayTimes[i].Nome, golsAleatorios(2), arrayTimes[j].Nome, golsAleatorios(2));
+                            // AdicionarGolsAoJogo(arrayTimes[i].Nome, golsAleatorios(2), arrayTimes[j].Nome, golsAleatorios(2));
                             arrayTimes[i].AdicionarGolsJogador(jogadorAleatorio(arrayTimes[i].Jogadores.ToArray()));
                             arrayTimes[j].AdicionarGolsJogador(jogadorAleatorio(arrayTimes[j].Jogadores.ToArray()));
 
@@ -224,8 +248,6 @@ namespace Domain
                     }
 
                 }
-
-
 
                 return tabelaRodadas;
             }
