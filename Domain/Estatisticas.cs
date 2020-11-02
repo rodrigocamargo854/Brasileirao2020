@@ -18,16 +18,25 @@ namespace Domain
         public int GolsContra { get; set; }
 
 
-        public List<((string,int), (string,int))> ExibirVitoriaCampeonato()
+        public List<(string, int)> ExibirVitoriasCampeonato(List<Time> timesDaRodada)
         {
-            var resultadoPorRodada = new List<((string,int), (string,int))>();
+            var vitoriasPorTime = new List<(string nomeTime, int vitorias)>();
 
-            return resultadoPorRodada;
+            for (int i = 0; i < timesDaRodada.Count; i++)
+            {
+                if (timesDaRodada[i].Vitorias > 0)
+                {
+                    vitoriasPorTime.Add((timesDaRodada[i].Nome,timesDaRodada[i].Vitorias));
+                }
+
+            }
+            return vitoriasPorTime;
+
         }
 
         public List<Time> ExibirDerrotasCampeonato()
         {
-             var listaDeDerrotas = new List<Time> ();
+            var listaDeDerrotas = new List<Time>();
 
             return listaDeDerrotas;
         }

@@ -456,7 +456,9 @@ namespace Domain
 
         public void AdicionarGolsDaPartidaAUmJogador(string nome, Guid id)
         {
+            
             Times.FirstOrDefault(time => time.Nome == nome).AdicionarGolsJogador(id);
+
         }
 
         public List<((string, int), (string, int))> exibeResultadoPorRodada(Usuario usuario)

@@ -101,6 +101,7 @@ namespace Tests
             var times = campeonato.AdicionarTimes(time, cbf);
             var primeiraRodada = campeonato.GerarPrimeiraRodada(cbf);
 
+
         }
 
         [Fact]
@@ -110,13 +111,15 @@ namespace Tests
 
             var campeonato = new Campeonato();
             var time = GeradorListaDeTimes();
+            var vitoriasDaRodada = new Estatisticas();
+
+
             // inserir uma forma que apos o campeonato começar nao registrar novamente resultados do mesmo confronto
             //inserir Id nos confrontos
             //
             //criação de usuario para validacao da inserção de times
             var cbf = new Cbf("Admin"); //usuario cbf para validar a inserção de dados
             campeonato.AdicionarTimes(time, cbf);
-            var partida = campeonato.GerarPrimeiraRodada(new Cbf("Admin")).ToArray();
             var primeiraRodada = campeonato.GerarPrimeiraRodada(cbf);
 
             campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Portuguesa", 0);
@@ -131,9 +134,10 @@ namespace Tests
             campeonato.AdicionarGolsAoJogo("Santos", 2, "Jabaquara", 0);
             campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
             campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.exibeResultadoPorRodada(cbf);
 
+            var vitoriasPrimeiraRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(campeonato.Times);
 
-            var resultadoFinal = campeonato.exibeResultadoPorRodada(cbf);
 
             Assert.Equal(1, primeiraRodada[0].Item1.Gols);
             Assert.Equal(0, primeiraRodada[0].Item2.Gols);
@@ -182,6 +186,7 @@ namespace Tests
             //criação de usuario para validacao da inserção de times
             var cbf = new Cbf("Admin"); //usuario cbf para validar a inserção de dados
             campeonato.AdicionarTimes(time, cbf);
+            var vitoriasDaRodada = new Estatisticas();
 
             var segundaRodada = campeonato.GerarSegundaRodada(cbf);
 
@@ -208,8 +213,9 @@ namespace Tests
             campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
             campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
 
+            campeonato.exibeResultadoPorRodada(cbf);
+            var vitoriasSegundaRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(campeonato.Times);
 
-            var resultadoFinal = campeonato.exibeResultadoPorRodada(cbf);
 
             Assert.Equal(1, segundaRodada[0].Item1.Gols);
             Assert.Equal(1, segundaRodada[0].Item2.Gols);
@@ -219,6 +225,7 @@ namespace Tests
             Assert.Equal(1, segundaRodada[2].Item2.Gols);
             Assert.Equal(1, segundaRodada[3].Item1.Gols);
             Assert.Equal(5, segundaRodada[3].Item2.Gols);
+            Assert.Equal(2, vitoriasSegundaRodada.Count());
 
         }
 
@@ -252,6 +259,8 @@ namespace Tests
 
             var campeonato = new Campeonato();
             var time = GeradorListaDeTimes();
+            var vitoriasDaRodada = new Estatisticas();
+
             // inserir uma forma que apos o campeonato começar nao registrar novamente resultados do mesmo confronto
             //inserir Id nos confrontos
             //
@@ -277,7 +286,11 @@ namespace Tests
             campeonato.AdicionarGolsAoJogo("Portuguesa", 1, "Palmeiras", 0);
             campeonato.AdicionarGolsDaPartidaAUmJogador("Portuguesa", campeonato.Times[7].Jogadores[1].Id);
 
-            var resultadoFinal = campeonato.exibeResultadoPorRodada(cbf);
+
+            campeonato.exibeResultadoPorRodada(cbf);
+            var vitoriasTerceiraRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(campeonato.Times);
+
+
 
             Assert.Equal(1, terceiraRodada[0].Item1.Gols);
             Assert.Equal(0, terceiraRodada[0].Item2.Gols);
@@ -287,6 +300,7 @@ namespace Tests
             Assert.Equal(4, terceiraRodada[2].Item2.Gols);
             Assert.Equal(1, terceiraRodada[3].Item1.Gols);
             Assert.Equal(0, terceiraRodada[3].Item2.Gols);
+            Assert.Equal(2, vitoriasTerceiraRodada.Count());
 
 
         }
@@ -297,10 +311,11 @@ namespace Tests
 
             // !cria o time
             //given
-            var assert = new List<List<((string, int), (string, int), string)>>();
+
 
             var campeonato = new Campeonato();
             var time = GeradorListaDeTimes();
+
 
             //criação de usuario para validacao da inserção de times
             var cbf = new Cbf("Admin"); //usuario cbf para validar a inserção de dados
@@ -327,6 +342,8 @@ namespace Tests
             //criação de usuario para validacao da inserção de times
             var cbf = new Cbf("Admin"); //usuario cbf para validar a inserção de dados
             campeonato.AdicionarTimes(time, cbf);
+            var vitoriasDaRodada = new Estatisticas();
+
 
             var quartaRodada = campeonato.GerarQuartaRodada(cbf);
 
@@ -354,7 +371,11 @@ namespace Tests
             Assert.Equal(1, quartaRodada[3].Item1.Gols);
             Assert.Equal(0, quartaRodada[3].Item2.Gols);
 
-            var resultadoFinal = campeonato.exibeResultadoPorRodada(cbf);
+            campeonato.exibeResultadoPorRodada(cbf);
+            var vitoriasQuartaRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(campeonato.Times);
+
+
+
 
 
         }
@@ -395,6 +416,8 @@ namespace Tests
             //criação de usuario para validacao da inserção de times
             var cbf = new Cbf("Admin"); //usuario cbf para validar a inserção de dados
             campeonato.AdicionarTimes(time, cbf);
+            var vitoriasDaRodada = new Estatisticas();
+
 
             var quartaRodada = campeonato.GerarQuintaRodada(cbf);
 
@@ -410,6 +433,10 @@ namespace Tests
             campeonato.AdicionarGolsAoJogo("Santos", 1, "Jabaquara", 0);
             campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
 
+            campeonato.exibeResultadoPorRodada(cbf);
+            var vitoriasQuintaRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(campeonato.Times);
+
+
 
             Assert.Equal(1, quartaRodada[0].Item1.Gols);
             Assert.Equal(0, quartaRodada[0].Item2.Gols);
@@ -423,10 +450,11 @@ namespace Tests
             Assert.Equal(1, campeonato.Times[2].Jogadores[1].Gols);
             Assert.Equal(1, campeonato.Times[1].Jogadores[1].Gols);
             Assert.Equal(1, campeonato.Times[0].Jogadores[1].Gols);
+            Assert.Equal(4, vitoriasQuintaRodada.Count());
 
 
 
-            var resultadoFinal = campeonato.exibeResultadoPorRodada(cbf);
+
 
         }
 
