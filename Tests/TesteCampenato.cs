@@ -184,12 +184,12 @@ namespace Tests
             var resultadoFinal = campeonato.exibeResultadoPorRodada(cbf);
 
             Assert.Equal(1, segundaRodada[0].Item1.Gols);
-            Assert.Equal(0, segundaRodada[0].Item2.Gols);
+            Assert.Equal(1, segundaRodada[0].Item2.Gols);
             Assert.Equal(1, segundaRodada[1].Item1.Gols);
             Assert.Equal(2, segundaRodada[1].Item2.Gols);
             Assert.Equal(1, segundaRodada[2].Item1.Gols);
-            Assert.Equal(2, segundaRodada[2].Item2.Gols);
-            Assert.Equal(2, segundaRodada[3].Item1.Gols);
+            Assert.Equal(1, segundaRodada[2].Item2.Gols);
+            Assert.Equal(1, segundaRodada[3].Item1.Gols);
             Assert.Equal(5, segundaRodada[3].Item2.Gols);
 
         }
@@ -214,7 +214,7 @@ namespace Tests
             var terceiraRodada = campeonato.GerarTerceiraRodada(cbf);
 
             Assert.Equal("Flamengo", terceiraRodada[0].Item1.Nome);
-            Assert.Equal("Portuguesa", terceiraRodada[0].Item2.Nome);
+            Assert.Equal("Bahia", terceiraRodada[0].Item2.Nome);
 
         }
 
@@ -233,10 +233,10 @@ namespace Tests
 
             var terceiraRodada = campeonato.GerarTerceiraRodada(cbf);
 
-            campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Portuguesa", 0);
-            campeonato.AdicionarGolsAoJogo("Atletico", 1, "Ituano", 0);
-            campeonato.AdicionarGolsAoJogo("Palmeiras", 1, "Bahia", 4);
-            campeonato.AdicionarGolsAoJogo("Santos", 1, "Jabaquara", 0);
+            campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Bahia", 0);
+            campeonato.AdicionarGolsAoJogo("Atletico", 1, "Jabaquara", 0);
+            campeonato.AdicionarGolsAoJogo("Ituano", 1, "Santos", 4);
+            campeonato.AdicionarGolsAoJogo("Portuguesa", 1, "Palmeiras", 0);
 
             var resultadoFinal = campeonato.exibeResultadoPorRodada(cbf);
 
@@ -276,8 +276,6 @@ namespace Tests
 
         }
 
-
-
         [Fact]
         public void Deve_Retornar_Resultado_Quarta_Rodada()
         {
@@ -294,23 +292,81 @@ namespace Tests
             var quartaRodada = campeonato.GerarQuartaRodada(cbf);
 
             campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Jabaquara", 0);
-            campeonato.AdicionarGolsAoJogo("Ituano", 1, "Jabaquara", 0);
-            campeonato.AdicionarGolsAoJogo("Portuguesa", 1, "Santos", 0);
-            campeonato.AdicionarGolsAoJogo("Atletico", 1, "Palmeiras", 0);
+            campeonato.AdicionarGolsAoJogo("Atletico", 1, "Santos", 0);
+            campeonato.AdicionarGolsAoJogo("Palmeiras", 1, "Portuguesa", 0);
+            campeonato.AdicionarGolsAoJogo("Bahia", 1, "Ituano", 0);
+
+            Assert.Equal(1, quartaRodada[0].Item1.Gols);
+            Assert.Equal(0, quartaRodada[0].Item2.Gols);
+            Assert.Equal(1, quartaRodada[1].Item1.Gols);
+            Assert.Equal(0, quartaRodada[1].Item2.Gols);
+            Assert.Equal(1, quartaRodada[2].Item1.Gols);
+            Assert.Equal(0, quartaRodada[2].Item2.Gols);
+            Assert.Equal(1, quartaRodada[3].Item1.Gols);
+            Assert.Equal(0, quartaRodada[3].Item2.Gols);
 
             var resultadoFinal = campeonato.exibeResultadoPorRodada(cbf);
 
-            Assert.Equal(1, quartaRodada[1].Item1.Gols);
-            Assert.Equal(0, quartaRodada[0].Item2.Gols);
-            Assert.Equal(1, quartaRodada[1].Item1.Gols);
-            Assert.Equal(0, quartaRodada[0].Item2.Gols);
-            Assert.Equal(1, quartaRodada[1].Item1.Gols);
-            Assert.Equal(0, quartaRodada[0].Item2.Gols);
-            Assert.Equal(2, quartaRodada[1].Item1.Gols);
-            Assert.Equal(0, quartaRodada[0].Item2.Gols);
+        
+        }
 
+        [Fact]
+        public void Deve_Retornar_QuintaRodada_se_o_usuario_for_cbf()
+        {
+
+            // !cria o time
+            //given
+            var assert = new List<List<((string, int), (string, int), string)>>();
+
+            var campeonato = new Campeonato();
+            var time = GeradorListaDeTimes();
+
+            //criação de usuario para validacao da inserção de times
+            var cbf = new Cbf("Admin"); //usuario cbf para validar a inserção de dados
+
+            //when
+            //Metodo criado no escopo gerador de jogadores
+            var times = campeonato.AdicionarTimes(time, cbf);
+            var quintaRodada = campeonato.GerarQuintaRodada(cbf);
+
+            Assert.Equal("Flamengo", quintaRodada[0].Item1.Nome);
+            Assert.Equal("Portuguesa", quintaRodada[0].Item2.Nome);
 
         }
+
+        [Fact]
+        public void Deve_Retornar_Resultado_Quinta_Rodada()
+        {
+
+            var campeonato = new Campeonato();
+            var time = GeradorListaDeTimes();
+            // inserir uma forma que apos o campeonato começar nao registrar novamente resultados do mesmo confronto
+            //inserir Id nos confrontos
+            //
+            //criação de usuario para validacao da inserção de times
+            var cbf = new Cbf("Admin"); //usuario cbf para validar a inserção de dados
+            campeonato.AdicionarTimes(time, cbf);
+
+            var quartaRodada = campeonato.GerarQuintaRodada(cbf);
+
+            campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Portuguesa", 0);
+            campeonato.AdicionarGolsAoJogo("Atletico", 1, "Ituano", 0);
+            campeonato.AdicionarGolsAoJogo("Palmeiras", 1, "Bahia", 0);
+            campeonato.AdicionarGolsAoJogo("Santos", 1, "Jabaquara", 0);
+
+            Assert.Equal(1, quartaRodada[0].Item1.Gols);
+            Assert.Equal(0, quartaRodada[0].Item2.Gols);
+            Assert.Equal(1, quartaRodada[1].Item1.Gols);
+            Assert.Equal(0, quartaRodada[1].Item2.Gols);
+            Assert.Equal(1, quartaRodada[2].Item1.Gols);
+            Assert.Equal(0, quartaRodada[2].Item2.Gols);
+            Assert.Equal(1, quartaRodada[3].Item1.Gols);
+            Assert.Equal(0, quartaRodada[3].Item2.Gols);
+
+            var resultadoFinal = campeonato.exibeResultadoPorRodada(cbf);
+
+        }
+
         [Fact]
         public void Deve_Retornar_Tabela_De_Resultado_Com_Pontuações_Geradas_Automaticamente()
         {

@@ -160,7 +160,7 @@ namespace Domain
                 for (int j = 0; j < arrayTimes.Length; j++)
                 {
 
-                    for (int k = 1; k < arrayTimes.Length - 1; k++)
+                    for (int k = 1; k < arrayTimes.Length; k++)
                     {
                         var temp2 = arrayTimes[k];
                         arrayTimes[k] = arrayTimes[arrayTimes.Length - 1];
@@ -214,7 +214,7 @@ namespace Domain
                 for (int j = 0; j < arrayTimes.Length; j++)
                 {
 
-                    for (int k = 2; k < arrayTimes.Length - 1; k++)
+                    for (int k = 2; k < arrayTimes.Length ; k++)
                     {
                         var temp2 = arrayTimes[k];
                         arrayTimes[k] = arrayTimes[arrayTimes.Length - 1];
@@ -268,7 +268,7 @@ namespace Domain
                 for (int j = 0; j < arrayTimes.Length; j++)
                 {
 
-                    for (int k = 3; k < arrayTimes.Length - 1; k++)
+                    for (int k = 3; k < arrayTimes.Length ; k++)
                     {
                         var temp2 = arrayTimes[k];
                         arrayTimes[k] = arrayTimes[arrayTimes.Length - 1];
@@ -302,6 +302,60 @@ namespace Domain
                 return quartaRodada;
             }
             return quartaRodada = null;
+
+        }
+
+         public List<(Time, Time)> GerarQuintaRodada(Usuario usuario)
+        {
+            //todo arrumar a logica de times aleatorio 1 para todos
+            Time[,] tabelaConflitos = new Time[4, 2];
+            var rodadas = new List<Time[,]>();
+
+            var tabelaRodadas = new List<(Time, Time)> { };
+            var quintaRodada = new List<(Time, Time)> { };
+
+            if (usuario is Cbf)
+            {
+                var conflitos = Times.ToArray();
+                Time[] arrayTimes = conflitos;
+
+                for (int j = 0; j < arrayTimes.Length; j++)
+                {
+
+                    for (int k = 4; k < arrayTimes.Length; k++)
+                    {
+                        var temp2 = arrayTimes[k];
+                        arrayTimes[k] = arrayTimes[arrayTimes.Length - 1];
+                        arrayTimes[arrayTimes.Length - 1] = temp2;
+                    }
+                }
+
+                for (int j = 1; j < arrayTimes.Length; j++)
+                {
+
+                    for (int i = 0; i < arrayTimes.Length; i++)
+                    {
+                        quintaRodada.Add((arrayTimes[0], arrayTimes[arrayTimes.Length - 1]));
+                        var temp = arrayTimes.ToList();
+                        temp.RemoveAt(0);
+                        temp.Reverse();
+                        temp.RemoveAt(0);
+                        temp.Reverse();
+
+                        arrayTimes = temp.ToArray();
+
+                        if (arrayTimes.Length == 2)
+                        {
+                            quintaRodada.Add((arrayTimes[0], arrayTimes[1]));
+
+                        }
+                    }
+
+                }
+
+                return quintaRodada;
+            }
+            return quintaRodada = null;
 
         }
 
