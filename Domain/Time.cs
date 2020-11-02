@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,10 +49,10 @@ namespace Domain
             }
         }
 
-        public void AdicionarGolsJogador(string nome)
+        public void AdicionarGolsJogador(Guid id)
         {
 
-            var jogador = Jogadores.FirstOrDefault(j => j.Nome == nome);
+            var jogador = Jogadores.FirstOrDefault(j => j.Id == id);
             // jogador?.MarcarGols(); garante que o jogador so ira marcar gols se nao for null
 
             if (jogador != null)
