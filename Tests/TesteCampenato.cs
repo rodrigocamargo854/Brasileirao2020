@@ -123,17 +123,17 @@ namespace Tests
             var primeiraRodada = campeonato.GerarPrimeiraRodada(cbf);
 
             campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Portuguesa", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[5].Id);
 
             campeonato.AdicionarGolsAoJogo("Atletico", 1, "Ituano", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[6].Id);
 
             campeonato.AdicionarGolsAoJogo("Palmeiras", 1, "Bahia", 0);
             campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[1].Id);
 
             campeonato.AdicionarGolsAoJogo("Santos", 2, "Jabaquara", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[3].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[2].Id);
             campeonato.exibeResultadoPorRodada(cbf);
 
             var vitoriasPrimeiraRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(campeonato.Times);
@@ -191,27 +191,27 @@ namespace Tests
             var segundaRodada = campeonato.GerarSegundaRodada(cbf);
 
             campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Ituano", 1);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Ituano", campeonato.Times[6].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[5].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Ituano", campeonato.Times[6].Jogadores[7].Id);
 
 
             campeonato.AdicionarGolsAoJogo("Portuguesa", 1, "Bahia", 2);
             campeonato.AdicionarGolsDaPartidaAUmJogador("Portuguesa", campeonato.Times[7].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Bahia", campeonato.Times[5].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Bahia", campeonato.Times[5].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Bahia", campeonato.Times[5].Jogadores[5].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Bahia", campeonato.Times[5].Jogadores[6].Id);
 
 
             campeonato.AdicionarGolsAoJogo("Atletico", 1, "Jabaquara", 1);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Jabaquara", campeonato.Times[4].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[2].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Jabaquara", campeonato.Times[4].Jogadores[2].Id);
 
             campeonato.AdicionarGolsAoJogo("Palmeiras", 1, "Santos", 5);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[2].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[5].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[4].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[5].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[6].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[3].Id);
 
             campeonato.exibeResultadoPorRodada(cbf);
             var vitoriasSegundaRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(campeonato.Times);
@@ -271,20 +271,20 @@ namespace Tests
             var terceiraRodada = campeonato.GerarTerceiraRodada(cbf);
 
             campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Bahia", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[2].Id);
 
             campeonato.AdicionarGolsAoJogo("Atletico", 1, "Jabaquara", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[0].Id);
 
             campeonato.AdicionarGolsAoJogo("Ituano", 1, "Santos", 4);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Ituano", campeonato.Times[6].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Ituano", campeonato.Times[6].Jogadores[6].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[7].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[7].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[7].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[6].Id);
 
             campeonato.AdicionarGolsAoJogo("Portuguesa", 1, "Palmeiras", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Portuguesa", campeonato.Times[7].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Portuguesa", campeonato.Times[7].Jogadores[2].Id);
 
 
             campeonato.exibeResultadoPorRodada(cbf);
@@ -348,18 +348,18 @@ namespace Tests
             var quartaRodada = campeonato.GerarQuartaRodada(cbf);
 
             campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Jabaquara", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[2].Id);
 
             campeonato.AdicionarGolsAoJogo("Atletico", 1, "Santos", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[5].Id);
 
 
             campeonato.AdicionarGolsAoJogo("Palmeiras", 1, "Portuguesa", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[2].Id);
 
 
             campeonato.AdicionarGolsAoJogo("Bahia", 1, "Ituano", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Bahia", campeonato.Times[5].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Bahia", campeonato.Times[5].Jogadores[6].Id);
 
 
             Assert.Equal(1, quartaRodada[0].Item1.Gols);
@@ -422,16 +422,16 @@ namespace Tests
             var quartaRodada = campeonato.GerarQuintaRodada(cbf);
 
             campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Portuguesa", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[2].Id);
 
             campeonato.AdicionarGolsAoJogo("Atletico", 1, "Ituano", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[6].Id);
 
             campeonato.AdicionarGolsAoJogo("Palmeiras", 1, "Bahia", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[8].Id);
 
             campeonato.AdicionarGolsAoJogo("Santos", 1, "Jabaquara", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[7].Id);
 
             campeonato.exibeResultadoPorRodada(cbf);
             var vitoriasQuintaRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(campeonato.Times);
@@ -494,7 +494,7 @@ namespace Tests
         {
 
             var campeonato = new Campeonato();
-            var time = GeradorListaDeTimes();
+            var times = GeradorListaDeTimes();
             var pontuacoesDoCampeonato = new Estatisticas();
 
 
@@ -505,45 +505,45 @@ namespace Tests
             var cbf = new Cbf("Admin"); //usuario cbf para validar a inserção de dados
 
             //primeira rodada
-            campeonato.AdicionarTimes(time, cbf);
+            campeonato.AdicionarTimes(times, cbf);
             campeonato.GerarPrimeiraRodada(cbf);
 
             campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Portuguesa", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[3].Id);
             campeonato.AdicionarGolsAoJogo("Atletico", 1, "Ituano", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[5].Id);
             campeonato.AdicionarGolsAoJogo("Palmeiras", 1, "Bahia", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[2].Id);
             campeonato.AdicionarGolsAoJogo("Santos", 2, "Jabaquara", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[7].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[0].Id);
             campeonato.exibeResultadoPorRodada(cbf);
 
             //segunda rodada
             campeonato.GerarSegundaRodada(cbf);
 
             campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Ituano", 1);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Ituano", campeonato.Times[6].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[3].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Ituano", campeonato.Times[6].Jogadores[0].Id);
 
 
             campeonato.AdicionarGolsAoJogo("Portuguesa", 1, "Bahia", 2);
             campeonato.AdicionarGolsDaPartidaAUmJogador("Portuguesa", campeonato.Times[7].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Bahia", campeonato.Times[5].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Bahia", campeonato.Times[5].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Bahia", campeonato.Times[5].Jogadores[0].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Bahia", campeonato.Times[5].Jogadores[3].Id);
 
 
             campeonato.AdicionarGolsAoJogo("Atletico", 1, "Jabaquara", 1);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[2].Id);
             campeonato.AdicionarGolsDaPartidaAUmJogador("Jabaquara", campeonato.Times[4].Jogadores[1].Id);
 
             campeonato.AdicionarGolsAoJogo("Palmeiras", 1, "Santos", 5);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[2].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[7].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[7].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[7].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[7].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[7].Id);
 
             campeonato.exibeResultadoPorRodada(cbf);
 
@@ -552,17 +552,17 @@ namespace Tests
             campeonato.GerarTerceiraRodada(cbf);
 
             campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Bahia", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[3].Id);
 
             campeonato.AdicionarGolsAoJogo("Atletico", 1, "Jabaquara", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[5].Id);
 
             campeonato.AdicionarGolsAoJogo("Ituano", 1, "Santos", 4);
             campeonato.AdicionarGolsDaPartidaAUmJogador("Ituano", campeonato.Times[6].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[7].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[7].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[7].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[7].Id);
 
             campeonato.AdicionarGolsAoJogo("Portuguesa", 1, "Palmeiras", 0);
             campeonato.AdicionarGolsDaPartidaAUmJogador("Portuguesa", campeonato.Times[7].Jogadores[1].Id);
@@ -581,7 +581,7 @@ namespace Tests
 
 
             campeonato.AdicionarGolsAoJogo("Palmeiras", 1, "Portuguesa", 0);
-            campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[2].Id);
 
 
             campeonato.AdicionarGolsAoJogo("Bahia", 1, "Ituano", 0);
@@ -594,7 +594,7 @@ namespace Tests
             var golsBrasileirao2020 = pontuacoesDoCampeonato.ExibirGolsCampeonato(campeonato.Times);
             var pontosTimesBrasileirao2020 = pontuacoesDoCampeonato.ExibirPontosDeCadaTimeCampeonato(campeonato.Times);
             var golsContraDeCadaTime = pontuacoesDoCampeonato.ExibirGolsContra(campeonato.Times);
-            var golsContraDeCadaTime = pontuacoesDoCampeonato.ExibirArtilheirosDoCampeonato( );
+            var artilheirosCampeonato = pontuacoesDoCampeonato.ExibirArtilheirosDoCampeonato(RetornarTodosJogadoresDoCampeonato(times));
 
 
         }
@@ -767,10 +767,15 @@ namespace Tests
         }
 
 
-//todo
-         private List<Jogador> RetornarTodosJogadoresDoCampeonato(List<Time> timesBrasileirao)
+         private List<List<Jogador>> RetornarTodosJogadoresDoCampeonato(List<Time> timesBrasileirao)
         {
-            var jogadoresBrasileirao2020 = new List<Jogador>();
+            var jogadoresBrasileirao2020 = new List<List<Jogador>>();
+
+            for (int i = 0; i < timesBrasileirao.Count; i++)
+            {
+                jogadoresBrasileirao2020.Add(timesBrasileirao[i].Jogadores);
+                
+            }
 
             return jogadoresBrasileirao2020;
 

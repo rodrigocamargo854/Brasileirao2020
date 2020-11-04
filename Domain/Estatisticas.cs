@@ -3,7 +3,9 @@
 
 
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Domain
 {
@@ -88,13 +90,24 @@ namespace Domain
 
         }
 
-        public void ExibirArtilheirosDoCampeonato(List<Jogador> jogadoresCampeonato)
+        public List<(string, int, Guid)> ExibirArtilheirosDoCampeonato(List<List<Jogador>> timesBrasileirao2020)
         {
+            var artilheirosBrasileirao = new List<(string nome, int gols, Guid id)> { };
 
+            foreach (var time in timesBrasileirao2020)
+            {
+                for (int i = 0; i < time.Count; i++)
+                {
+                    if (time[i].Gols > 0)
+                    {
+                        artilheirosBrasileirao.Add((time[i].Nome, time[i].Gols, time[i].Id));
+                    }
+                }
+            }
+
+            return artilheirosBrasileirao.OrderByDescending(item => item.gols).ToList();
 
         }
-
-
 
     }
 }
