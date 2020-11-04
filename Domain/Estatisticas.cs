@@ -26,7 +26,7 @@ namespace Domain
             {
                 if (timesDaRodada[i].Vitorias > 0)
                 {
-                    vitoriasPorTime.Add((timesDaRodada[i].Nome,timesDaRodada[i].Vitorias));
+                    vitoriasPorTime.Add((timesDaRodada[i].Nome, timesDaRodada[i].Vitorias));
                 }
 
             }
@@ -34,11 +34,28 @@ namespace Domain
 
         }
 
-        public List<Time> ExibirDerrotasCampeonato()
+        public List<(string, int)> ExibirDerrotasCampeonato(List<Time> timesBrasileirao2020)
         {
-            var listaDeDerrotas = new List<Time>();
+            var listaDeDerrotas = new List<(string, int)>();
+
+            for (int i = 0; i < timesBrasileirao2020.Count; i++)
+            {
+                listaDeDerrotas.Add((timesBrasileirao2020[i].Nome, timesBrasileirao2020[i].Derrotas));
+            }
 
             return listaDeDerrotas;
+        }
+
+        public List<(string, int)> ExibirPontosDeCadaTimeCampeonato(List<Time> timesBrasileirao2020)
+        {
+            var pontosDoTime = new List<(string, int)>();
+
+            for (int i = 0; i < timesBrasileirao2020.Count; i++)
+            {
+                pontosDoTime.Add((timesBrasileirao2020[i].Nome, timesBrasileirao2020[i].Pontos));
+            }
+
+            return pontosDoTime;
         }
 
         public void ExibirEPorcentagemDeAproveitamento()
@@ -46,18 +63,34 @@ namespace Domain
 
         }
 
-        public void ExibirGolsContra()
+        public List<(string, int)> ExibirGolsContra(List<Time> timesBrasileirao2020)
         {
+            var golsContraTimes = new List<(string, int)>();
+
+            for (int i = 0; i < golsContraTimes.Count; i++)
+            {
+                golsContraTimes.Add((timesBrasileirao2020[i].Nome, timesBrasileirao2020[i].GolsContra));
+            }
+
+            return golsContraTimes;
+        }
+
+        public List<(string, int)> ExibirGolsCampeonato(List<Time> timesBrasileirao2020)
+        {
+            var golsCampeonato = new List<(string, int)>();
+
+            for (int i = 0; i < timesBrasileirao2020.Count; i++)
+            {
+                golsCampeonato.Add((timesBrasileirao2020[i].Nome, timesBrasileirao2020[i].Gols));
+            }
+
+            return golsCampeonato;
 
         }
 
-        public void ExibirGolsCampeonato()
+        public void ExibirArtilheirosDoCampeonato(List<Jogador> jogadoresCampeonato)
         {
 
-        }
-
-        public void ExibirArtilheirosDoCampeonato()
-        {
 
         }
 

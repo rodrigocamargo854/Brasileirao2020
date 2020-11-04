@@ -487,6 +487,118 @@ namespace Tests
 
         }
 
+
+        [Fact]
+
+        public void Deve_Retornar_Pontuacoes_Gerais_Do_Campeonato()
+        {
+
+            var campeonato = new Campeonato();
+            var time = GeradorListaDeTimes();
+            var pontuacoesDoCampeonato = new Estatisticas();
+
+
+            // inserir uma forma que apos o campeonato começar nao registrar novamente resultados do mesmo confronto
+            //inserir Id nos confrontos
+            //
+            //criação de usuario para validacao da inserção de times
+            var cbf = new Cbf("Admin"); //usuario cbf para validar a inserção de dados
+
+            //primeira rodada
+            campeonato.AdicionarTimes(time, cbf);
+            campeonato.GerarPrimeiraRodada(cbf);
+
+            campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Portuguesa", 0);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[1].Id);
+            campeonato.AdicionarGolsAoJogo("Atletico", 1, "Ituano", 0);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[1].Id);
+            campeonato.AdicionarGolsAoJogo("Palmeiras", 1, "Bahia", 0);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[1].Id);
+            campeonato.AdicionarGolsAoJogo("Santos", 2, "Jabaquara", 0);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.exibeResultadoPorRodada(cbf);
+
+            //segunda rodada
+            campeonato.GerarSegundaRodada(cbf);
+
+            campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Ituano", 1);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Ituano", campeonato.Times[6].Jogadores[1].Id);
+
+
+            campeonato.AdicionarGolsAoJogo("Portuguesa", 1, "Bahia", 2);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Portuguesa", campeonato.Times[7].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Bahia", campeonato.Times[5].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Bahia", campeonato.Times[5].Jogadores[1].Id);
+
+
+            campeonato.AdicionarGolsAoJogo("Atletico", 1, "Jabaquara", 1);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Jabaquara", campeonato.Times[4].Jogadores[1].Id);
+
+            campeonato.AdicionarGolsAoJogo("Palmeiras", 1, "Santos", 5);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+
+            campeonato.exibeResultadoPorRodada(cbf);
+
+            //Terceira Rodada
+
+            campeonato.GerarTerceiraRodada(cbf);
+
+            campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Bahia", 0);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[1].Id);
+
+            campeonato.AdicionarGolsAoJogo("Atletico", 1, "Jabaquara", 0);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[1].Id);
+
+            campeonato.AdicionarGolsAoJogo("Ituano", 1, "Santos", 4);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Ituano", campeonato.Times[6].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[1].Id);
+
+            campeonato.AdicionarGolsAoJogo("Portuguesa", 1, "Palmeiras", 0);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Portuguesa", campeonato.Times[7].Jogadores[1].Id);
+
+            campeonato.exibeResultadoPorRodada(cbf);
+
+            //quarta Rodada
+
+            campeonato.GerarQuartaRodada(cbf);
+
+            campeonato.AdicionarGolsAoJogo("Flamengo", 1, "Jabaquara", 0);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Flamengo", campeonato.Times[0].Jogadores[1].Id);
+
+            campeonato.AdicionarGolsAoJogo("Atletico", 1, "Santos", 0);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Atletico", campeonato.Times[1].Jogadores[1].Id);
+
+
+            campeonato.AdicionarGolsAoJogo("Palmeiras", 1, "Portuguesa", 0);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Palmeiras", campeonato.Times[2].Jogadores[1].Id);
+
+
+            campeonato.AdicionarGolsAoJogo("Bahia", 1, "Ituano", 0);
+            campeonato.AdicionarGolsDaPartidaAUmJogador("Bahia", campeonato.Times[5].Jogadores[1].Id);
+
+            campeonato.exibeResultadoPorRodada(cbf);
+
+            //Pontuações do Campeonato de 4 rodadas
+            var derrotas = pontuacoesDoCampeonato.ExibirDerrotasCampeonato(campeonato.Times);
+            var golsBrasileirao2020 = pontuacoesDoCampeonato.ExibirGolsCampeonato(campeonato.Times);
+            var pontosTimesBrasileirao2020 = pontuacoesDoCampeonato.ExibirPontosDeCadaTimeCampeonato(campeonato.Times);
+            var golsContraDeCadaTime = pontuacoesDoCampeonato.ExibirGolsContra(campeonato.Times);
+            var golsContraDeCadaTime = pontuacoesDoCampeonato.ExibirArtilheirosDoCampeonato( );
+
+
+        }
+
         // !Metodo criador de times
 
         private List<Time> GeradorListaDeTimes()
@@ -654,31 +766,21 @@ namespace Tests
 
         }
 
-        // !Metodo criador de jogador
-        // private List<Jogador> GeradorListaJogadores()
-        // {
 
-        //     var jogadores = new List<Jogador>()
-        //     {
-        //         new JogadorCampeonato ("Galvao"),
-        //         new JogadorCampeonato ("Bruno"),
-        //         new JogadorCampeonato ("Jorge salvador"),
-        //         new JogadorCampeonato ("Vamputo"),
-        //         new JogadorCampeonato ("Jorginho satan"),
-        //         new JogadorCampeonato ("Dinamite"),
-        //         new JogadorCampeonato ("fogonorabo"),
-        //         new JogadorCampeonato ("ligeirinho"),
-        //         new JogadorCampeonato ("CaiCai"),
-        //         new JogadorCampeonato ("Banheirinha"),
-        //         new JogadorCampeonato ("deixaQeuEuChuto"),
-        //         new JogadorCampeonato ("PassaPMim"),
-        //         new JogadorCampeonato ("MarcaMarca"),
-        //         new JogadorCampeonato ("Michele"),
-        //         new JogadorCampeonato ("caixeta"),
-        //         new JogadorCampeonato ("Henrique Alves")
-        //     };
-        //     return jogadores;
-        // }
+//todo
+         private List<Jogador> RetornarTodosJogadoresDoCampeonato(List<Time> timesBrasileirao)
+        {
+            var jogadoresBrasileirao2020 = new List<Jogador>();
+
+            return jogadoresBrasileirao2020;
+
+        }
+
+
+
+
+
+       
 
     }
 }
