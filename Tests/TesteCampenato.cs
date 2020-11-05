@@ -6,8 +6,11 @@ using Xunit;
 
 namespace Tests
 {
+
+    
     public class TesteCampeonato
     {
+        
         [Fact]
         public void Deve_retornar_Verdadeiro_ao_adicionar_O_Time_No_Campeonato_se_O_Usuario_For_Cbf()
         {
@@ -136,7 +139,7 @@ namespace Tests
             campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[2].Id);
             campeonato.exibeResultadoPorRodada(cbf);
 
-            var vitoriasPrimeiraRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(campeonato.Times);
+            var vitoriasPrimeiraRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(cbf,campeonato.Times);
 
 
             Assert.Equal(1, primeiraRodada[0].Item1.Gols);
@@ -214,7 +217,7 @@ namespace Tests
             campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[3].Id);
 
             campeonato.exibeResultadoPorRodada(cbf);
-            var vitoriasSegundaRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(campeonato.Times);
+            var vitoriasSegundaRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(cbf,campeonato.Times);
 
 
             Assert.Equal(1, segundaRodada[0].Item1.Gols);
@@ -288,7 +291,7 @@ namespace Tests
 
 
             campeonato.exibeResultadoPorRodada(cbf);
-            var vitoriasTerceiraRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(campeonato.Times);
+            var vitoriasTerceiraRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(cbf,campeonato.Times);
 
 
 
@@ -372,7 +375,7 @@ namespace Tests
             Assert.Equal(0, quartaRodada[3].Item2.Gols);
 
             campeonato.exibeResultadoPorRodada(cbf);
-            var vitoriasQuartaRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(campeonato.Times);
+            var vitoriasQuartaRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(cbf,campeonato.Times);
 
 
 
@@ -434,7 +437,7 @@ namespace Tests
             campeonato.AdicionarGolsDaPartidaAUmJogador("Santos", campeonato.Times[3].Jogadores[7].Id);
 
             campeonato.exibeResultadoPorRodada(cbf);
-            var vitoriasQuintaRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(campeonato.Times);
+            var vitoriasQuintaRodada = vitoriasDaRodada.ExibirVitoriasCampeonato(cbf,campeonato.Times);
 
 
 
@@ -590,13 +593,13 @@ namespace Tests
             campeonato.exibeResultadoPorRodada(cbf);
 
             //Pontuações do Campeonato de 4 rodadas
-            var derrotas = pontuacoesDoCampeonato.ExibirDerrotasCampeonato(campeonato.Times);
-            var golsBrasileirao2020 = pontuacoesDoCampeonato.ExibirGolsCampeonato(campeonato.Times);
-            var pontosTimesBrasileirao2020 = pontuacoesDoCampeonato.ExibirPontosDeCadaTimeCampeonato(campeonato.Times);
-            var golsContraDeCadaTime = pontuacoesDoCampeonato.ExibirGolsContra(campeonato.Times);
-            var cincoArtilheirosCampeonato = pontuacoesDoCampeonato.ExibirArtilheirosDoCampeonato(RetornarTodosJogadoresDoCampeonato(times));
-            var cincoTimesREbaixados = pontuacoesDoCampeonato.ExibirTimesREbaixados(times);
-
+            var derrotas = pontuacoesDoCampeonato.ExibirDerrotasCampeonato(cbf,campeonato.Times);
+            var golsBrasileirao2020 = pontuacoesDoCampeonato.ExibirGolsCampeonato(cbf,campeonato.Times);
+            var pontosTimesBrasileirao2020 = pontuacoesDoCampeonato.ExibirPontosDeCadaTimeCampeonato(cbf,campeonato.Times);
+            var golsContraDeCadaTime = pontuacoesDoCampeonato.ExibirGolsContra(cbf,campeonato.Times);
+            var cincoArtilheirosCampeonato = pontuacoesDoCampeonato.ExibirArtilheirosDoCampeonato(cbf,RetornarTodosJogadoresDoCampeonato(times));
+            var cincoTimesRebaixados = pontuacoesDoCampeonato.ExibirTimesRebaixados(cbf,times);
+            var porcentagemDeAproveitamentoDeCAdaTime = pontuacoesDoCampeonato.ExibirEPorcentagemDeAproveitamento(cbf,times);
 
         }
 
