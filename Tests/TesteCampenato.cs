@@ -594,7 +594,8 @@ namespace Tests
             var golsBrasileirao2020 = pontuacoesDoCampeonato.ExibirGolsCampeonato(campeonato.Times);
             var pontosTimesBrasileirao2020 = pontuacoesDoCampeonato.ExibirPontosDeCadaTimeCampeonato(campeonato.Times);
             var golsContraDeCadaTime = pontuacoesDoCampeonato.ExibirGolsContra(campeonato.Times);
-            var artilheirosCampeonato = pontuacoesDoCampeonato.ExibirArtilheirosDoCampeonato(RetornarTodosJogadoresDoCampeonato(times));
+            var cincoArtilheirosCampeonato = pontuacoesDoCampeonato.ExibirArtilheirosDoCampeonato(RetornarTodosJogadoresDoCampeonato(times));
+            var cincoTimesREbaixados = pontuacoesDoCampeonato.ExibirTimesREbaixados(times);
 
 
         }
@@ -767,14 +768,14 @@ namespace Tests
         }
 
 
-         private List<List<Jogador>> RetornarTodosJogadoresDoCampeonato(List<Time> timesBrasileirao)
+        private List<List<Jogador>> RetornarTodosJogadoresDoCampeonato(List<Time> timesBrasileirao)
         {
             var jogadoresBrasileirao2020 = new List<List<Jogador>>();
 
             for (int i = 0; i < timesBrasileirao.Count; i++)
             {
                 jogadoresBrasileirao2020.Add(timesBrasileirao[i].Jogadores);
-                
+
             }
 
             return jogadoresBrasileirao2020;
@@ -785,7 +786,7 @@ namespace Tests
 
 
 
-       
+
 
     }
 }

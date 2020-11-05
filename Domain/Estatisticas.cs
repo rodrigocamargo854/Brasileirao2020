@@ -105,7 +105,26 @@ namespace Domain
                 }
             }
 
-            return artilheirosBrasileirao.OrderByDescending(item => item.gols).ToList();
+            return (List<(string, int, Guid)>)artilheirosBrasileirao.OrderBy(item => item.gols).TakeLast(5).ToList();
+
+        }
+
+        public List<(string,int)> ExibirTimesREbaixados(List<Time> timesBrasileirao2020)
+        {
+            var artilheirosBrasileirao = new List<(string nome, int pontosTime)> { };
+
+           
+                for (int i = 0; i < timesBrasileirao2020.Count; i++)
+                {
+                
+                    artilheirosBrasileirao.Add((timesBrasileirao2020[i].Nome, timesBrasileirao2020[i].Gols));
+                    
+                }
+            
+
+            return (List<(string, int)>)artilheirosBrasileirao.OrderBy(item => item.pontosTime).Reverse().TakeLast(5).ToList();
+
+// .TakeLast(5)
 
         }
 
