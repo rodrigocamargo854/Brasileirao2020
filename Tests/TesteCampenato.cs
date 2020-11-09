@@ -449,8 +449,8 @@ namespace Tests
             Assert.Equal(0, quartaRodada[2].Item2.Gols);
             Assert.Equal(1, quartaRodada[3].Item1.Gols);
             Assert.Equal(0, quartaRodada[3].Item2.Gols);
-            Assert.Equal(1, campeonato.Times[3].Jogadores[1].Gols);
-            Assert.Equal(1, campeonato.Times[2].Jogadores[1].Gols);
+            Assert.Equal(1, campeonato.Times[3].Jogadores[7].Gols);
+            Assert.Equal(1, campeonato.Times[2].Jogadores[8].Gols);
             Assert.Equal(1, campeonato.Times[1].Jogadores[1].Gols);
             Assert.Equal(1, campeonato.Times[0].Jogadores[1].Gols);
             Assert.Equal(4, vitoriasQuintaRodada.Count());
