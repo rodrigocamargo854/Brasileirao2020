@@ -1,12 +1,12 @@
 ﻿using System;
-using Domain.Users;
+using Domain.Usuarios;
 
 namespace WebAPI.Controllers.Users
 {
     public class CreateUserRequest
     {
-        public string Name { get; set; }
+        public string Nome { get; set; }
         public Profile Profile { get; set; }
-        public string Password { get; set; }
+        public string Senha { get; set; }
     }
 }

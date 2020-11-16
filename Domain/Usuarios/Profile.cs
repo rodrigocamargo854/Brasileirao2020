@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain.Users
+namespace Domain.Usuarios
 {
     public enum Profile
     {

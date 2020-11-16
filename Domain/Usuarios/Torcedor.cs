@@ -1,4 +1,5 @@
-namespace Domain{
+namespace Domain.Usuarios
+{
     //herança da classe usuario
     public sealed class Torcedor : Usuario
     {

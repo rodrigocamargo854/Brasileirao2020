@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-namespace Domain
+namespace Domain.Usuarios
 {
         public sealed class Cbf : Usuario
         {
