@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Domain.Jogadores;
 
 namespace Domain
 {
     public class Time
     {
+
+        public Guid Id { get; set; }
         public List<Jogador> Jogadores { get; private set; } = new List<Jogador>();
         public Jogador Artilheiro { get; private set; }
 

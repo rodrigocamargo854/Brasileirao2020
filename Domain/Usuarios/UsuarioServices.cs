@@ -69,7 +69,13 @@ namespace Domain.Usuarios
         {
             return UsuarioRepositorio.RetornarIdUsuario(name);
         }
-      
+
+        public Usuario GetById(Guid id)
+        {
+            return UsuarioRepositorio.Usuarios.FirstOrDefault(x => x.Id == id);
+            
+        }
+
 
     }
 }

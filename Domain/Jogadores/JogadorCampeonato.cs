@@ -1,6 +1,6 @@
 using System;
 
-namespace Domain
+namespace Domain.Jogadores
 {
     public class JogadorCampeonato : Jogador
     {

@@ -18,8 +18,6 @@ namespace WebAPI.Controllers.Users
             usuarioServices = new UsuarioServices();
         }
 
-
-
         [HttpPost]
         public IActionResult PostUsuario(CreateUserRequest request)
         {
@@ -41,9 +39,6 @@ namespace WebAPI.Controllers.Users
             return Ok(idUser);
         }
 
-
-
-
         [HttpGet("{idUser}")]
         public Usuario GetUsuario(Guid idUser)
         {
@@ -56,7 +51,7 @@ namespace WebAPI.Controllers.Users
         {
             usuarioServices.RemoverUsuario(idUser);
 
-            return Content("Usuario Deletado");
+            return Content("Usuário deletado!");
         }
     }
 }

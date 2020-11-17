@@ -1,25 +1,28 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Domain.Usuarios;
 
-namespace Domain
-{
-    public abstract class Usuario
+namespace Domain.Jogadores {
+    public  class Jogador 
     {
+       public Guid Id { get;  private set; } = new Guid();
         public string Nome { get; set; }
+        public int Gols { get; private set;}
 
-        public Guid Id { get; set; } = Guid.NewGuid();
-        public string Password { get; set; }
-        // public Profile Profile { get; set; }
-
-        public Usuario(string nome)
+        public Jogador(string nome)
         {
-            Nome = nome;
             Id = Guid.NewGuid();
+            Nome = nome;
+            
         }
 
-// metodos de validação, onde o usuario valida ele mesmo
+        public void MarcarGols()
+        {
+            Gols++;
+        }
+
+
+
          private bool ValidarNomeUsuario()
         {
             if (string.IsNullOrEmpty(Nome) || string.IsNullOrWhiteSpace(Nome) || Nome.StartsWith(" ") || Nome.EndsWith(" ")) return false;
@@ -40,7 +43,7 @@ namespace Domain
 
            return (erros, erros.Count==0);
        }
+
+        
     }
-
 }
-
